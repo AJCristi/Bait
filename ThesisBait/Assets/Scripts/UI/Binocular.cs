@@ -16,8 +16,10 @@ public class Binocular : MonoBehaviour
 
     AudioListener DC, BC;
 
-     
+    float Fov, minFov, maxFov;
 
+    public GameObject Player;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +33,18 @@ public class Binocular : MonoBehaviour
 
         BC = BinocsCamera.GetComponent<AudioListener>();
         BC.enabled = false;
+
+        Fov = BinocsCamera.fieldOfView;
+        minFov = Fov;//60
+        maxFov = 20;
+
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //BinocsCamPosUpdate();
         if (CanUseBinocs)
         {
             if (Input.GetMouseButtonDown(1))
@@ -54,6 +62,7 @@ public class Binocular : MonoBehaviour
     void UseBinocs()
     {
         BinocsInUse = !BinocsInUse;
+        BinocsCamera.gameObject.GetComponent<FPLook>().ResetCamPos();
         if (BinocsInUse)
         {
             BCanvas.enabled = true;
@@ -89,19 +98,41 @@ public class Binocular : MonoBehaviour
 
     void BinocsCamPosUpdate()
     {
-        //todo
+        //transform.position = new Vector3(Player.transform.position.x, 7.0f, Player.transform.position.z);
+
+        BinocsCamera.gameObject.transform.position = 
+            new Vector3(Player.transform.position.x, 7.0f, Player.transform.position.z);
     }
 
     void Zoom()
     {
-        //todo finish up
+        
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)// up
         {
-            Debug.Log("Up");
+            
+            if (BinocsCamera.fieldOfView <= minFov && BinocsCamera.fieldOfView >= maxFov )
+            {                
+                BinocsCamera.fieldOfView -= 5f;
+                if (BinocsCamera.fieldOfView < maxFov)
+                {
+                    Debug.Log("Up");
+                    BinocsCamera.fieldOfView = maxFov;
+                }
+            }
+           
         }
         else if(Input.GetAxis("Mouse ScrollWheel") < 0f)//down
         {
-            Debug.Log("Down");
+            
+            if (BinocsCamera.fieldOfView <= minFov && BinocsCamera.fieldOfView >= maxFov)
+            {
+                BinocsCamera.fieldOfView += 5f;
+                if(BinocsCamera.fieldOfView > minFov)
+                {
+                    Debug.Log("Down");
+                    BinocsCamera.fieldOfView = minFov;
+                }
+            }
         }
     }
     
