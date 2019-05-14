@@ -15,10 +15,16 @@ public class FishingArea : MonoBehaviour
 
     bool IsPlayerInside;
 
+    public bool Depleted;
+
+    public float LowYield, MediumYield, HighYield;
+
+    GameObject Player;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Depleted = false;
     }
 
     // Update is called once per frame
@@ -32,6 +38,7 @@ public class FishingArea : MonoBehaviour
         if (other.tag == "Player")
         {
             IsPlayerInside = true;
+            Player = other.gameObject;
         }
     }
 
@@ -40,8 +47,26 @@ public class FishingArea : MonoBehaviour
         if (other.tag == "Player")
         {
             IsPlayerInside = false;
+            Player = null;
         }
     }
 
+    public void AddFish()
+    {
+        switch (Yield)
+        {
+            case AmountYielded.Low:
+                Player.GetComponent<PlayerFishing>().FishAmt += LowYield;
+                break;
 
+            case AmountYielded.Medium:
+                Player.GetComponent<PlayerFishing>().FishAmt += MediumYield;
+                break;
+
+            case AmountYielded.High:
+                Player.GetComponent<PlayerFishing>().FishAmt += HighYield;
+                break;
+
+        }
+    }
 }

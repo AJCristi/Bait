@@ -44,7 +44,7 @@ public class Binocular : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //BinocsCamPosUpdate();
+        BinocsCamPosUpdate();
         if (CanUseBinocs)
         {
             if (Input.GetMouseButtonDown(1))
@@ -62,7 +62,7 @@ public class Binocular : MonoBehaviour
     void UseBinocs()
     {
         BinocsInUse = !BinocsInUse;
-        BinocsCamera.gameObject.GetComponent<FPLook>().ResetCamPos();
+        //BinocsCamera.gameObject.GetComponent<FPLook>().ResetCamPos();
         if (BinocsInUse)
         {
             BCanvas.enabled = true;
