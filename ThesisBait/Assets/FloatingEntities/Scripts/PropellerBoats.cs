@@ -18,11 +18,16 @@ public class PropellerBoats : MonoBehaviour
 
   float angle;
 
+    float OriginalRPM;
+    public float SlowdownSpdAmt;
+
   void Awake()
   {
     engine_rpm = 0F;
     throttle = 0F;
     rb = GetComponent<Rigidbody>();
+
+        OriginalRPM = engine_max_rpm;
   }
 
   void Update()
@@ -82,4 +87,14 @@ public class PropellerBoats : MonoBehaviour
   {
     Handles.Label(propellers[0].position, engine_rpm.ToString());
   }
+
+    public void Slowdown()
+    {
+        engine_max_rpm -= SlowdownSpdAmt;
+    }
+
+    public void RestoreSpeed()
+    {
+        engine_max_rpm = OriginalRPM;
+    }
 }

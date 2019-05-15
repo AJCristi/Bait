@@ -18,8 +18,8 @@ public static class STATICPlayerStats
         }
     }
 
-    public static bool TrawlUnlocked = false;
-    public static bool CastUnlocked = false;
+    public static bool TrawlUnlocked = true;
+    public static bool CastUnlocked = true  ;
 
-
+    
 }

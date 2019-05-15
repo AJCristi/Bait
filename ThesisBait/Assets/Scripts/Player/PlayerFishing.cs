@@ -18,6 +18,8 @@ public class PlayerFishing : MonoBehaviour
 
     public Button HandheldButton, TrawlButton, CastButton;
 
+    public Image HandheldSelector, TrawlSelector, CastSelector;
+
     public Text FishKG;
     public float FishAmt;
 
@@ -29,7 +31,11 @@ public class PlayerFishing : MonoBehaviour
     {
         SelectedNet = NetType.Handheld;
 
-        if(STATICPlayerStats.TrawlUnlocked)
+        HandheldSelector.enabled = false;
+        TrawlSelector.enabled = false;
+        CastSelector.enabled = false;
+
+        if (STATICPlayerStats.TrawlUnlocked)
         {
             TrawlButton.interactable = true;
         }
@@ -58,8 +64,9 @@ public class PlayerFishing : MonoBehaviour
 
         SelectNet();
         //Debug.Log(SelectedNet);
+        Selector();
 
-         
+
     }
 
     void SelectNet()
@@ -96,7 +103,7 @@ public class PlayerFishing : MonoBehaviour
         }
     }
 
-     private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag =="FishArea")
         {
@@ -111,6 +118,30 @@ public class PlayerFishing : MonoBehaviour
         {
             IsOverFishingArea = false;
             FishingArea = null;
+        }
+    }
+
+    void Selector()
+    {
+        switch(SelectedNet)
+        {
+            case NetType.Cast:
+                HandheldSelector.enabled = false;
+                TrawlSelector.enabled = false;
+                CastSelector.enabled = true;
+                break;
+
+            case NetType.Handheld:
+                HandheldSelector.enabled = true;
+                TrawlSelector.enabled = false;
+                CastSelector.enabled = false;
+                break;
+
+            case NetType.Trawl:
+                HandheldSelector.enabled = false;
+                TrawlSelector.enabled = true;
+                CastSelector.enabled = false;
+                break;
         }
     }
 
