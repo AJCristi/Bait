@@ -53,12 +53,12 @@ public class FishingHandheld : MonoBehaviour
         {
             Background.enabled = true;
             MeterImage.enabled = true;
-            timeRemaining += Time.deltaTime;
-            Debug.Log(timeRemaining);
+            timeRemaining += Time.deltaTime;            
         }
         else
         {
-            Debug.Log("Done"); timeRemaining = 0;
+            Debug.Log("Done");
+            timeRemaining = 0;
             MeterImage.fillAmount = 0;
             Background.enabled = false;
             MeterImage.enabled = false;

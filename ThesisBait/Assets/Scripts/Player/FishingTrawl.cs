@@ -69,7 +69,7 @@ public class FishingTrawl : MonoBehaviour
             }
             else
             {
-                Debug.Log("STOIPPED");
+                
                 started = false;
             }
         }

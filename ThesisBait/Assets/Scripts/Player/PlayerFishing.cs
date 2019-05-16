@@ -96,8 +96,7 @@ public class PlayerFishing : MonoBehaviour
                 SelectedNet = NetType.Cast;
             }
             else
-            {
-                //
+            {                
                 SelectedNet = NetType.Handheld;
             }
         }

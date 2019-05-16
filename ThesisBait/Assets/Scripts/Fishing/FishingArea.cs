@@ -19,6 +19,8 @@ public class FishingArea : MonoBehaviour
 
     public float LowYield, MediumYield, HighYield;
 
+    public bool HasNet;
+
     GameObject Player;
 
     // Start is called before the first frame update
@@ -68,5 +70,5 @@ public class FishingArea : MonoBehaviour
                 break;
 
         }
-    }
+    }    
 }
