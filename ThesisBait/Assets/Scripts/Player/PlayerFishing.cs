@@ -35,7 +35,7 @@ public class PlayerFishing : MonoBehaviour
         TrawlSelector.enabled = false;
         CastSelector.enabled = false;
 
-        if (STATICPlayerStats.TrawlUnlocked)
+        if (GlobalStats.Instance.TrawlUnlocked)
         {
             TrawlButton.interactable = true;
         }
@@ -44,7 +44,7 @@ public class PlayerFishing : MonoBehaviour
             TrawlButton.interactable = false;
         }
 
-        if (STATICPlayerStats.CastUnlocked)
+        if (GlobalStats.Instance.CastUnlocked)
         {
             CastButton.interactable = true;
         }
@@ -78,20 +78,20 @@ public class PlayerFishing : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if(STATICPlayerStats.TrawlUnlocked)
+            if(GlobalStats.Instance.TrawlUnlocked)
             {
                 SelectedNet = NetType.Trawl;
             }
             else
             {
-                //
+                
                 SelectedNet = NetType.Handheld;
             }
         }
 
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (STATICPlayerStats.CastUnlocked)
+            if (GlobalStats.Instance.CastUnlocked)
             {
                 SelectedNet = NetType.Cast;
             }

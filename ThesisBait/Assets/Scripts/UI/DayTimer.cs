@@ -8,11 +8,13 @@ public class DayTimer : MonoBehaviour
     public Image SunImage;
     public Text TimerTextDisplay;
 
+    public GameObject EndScreen;
+
     public float TotalTime;
     float timeRatio, timeRemaining;
 
     string minutes;
-    string seconds;
+    string seconds;    
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +45,16 @@ public class DayTimer : MonoBehaviour
 
     void CheckEnd()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            EndScreen.GetComponent<EndScreen>().DisplayEnd();
+        }
+
+
         if (timeRemaining <= 0)
         {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<EndScreen>().DisplayEnd();
-            // add tester
+            EndScreen.GetComponent<EndScreen>().DisplayEnd();
+            
         }
     }
 }

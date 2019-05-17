@@ -19,7 +19,9 @@ public static class STATICPlayerStats
     }
 
     public static bool TrawlUnlocked = true;
-    public static bool CastUnlocked = true  ;
+    public static bool CastUnlocked = true;
 
     public static float PhpPerKG = 60;
+
+
 }
