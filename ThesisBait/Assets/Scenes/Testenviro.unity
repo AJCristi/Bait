@@ -157,12 +157,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 127.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
---- !u!1 &50714563 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1639024075713010548, guid: 1659b2de19ce4dc408581159698d9e02,
-    type: 3}
-  m_PrefabInstance: {fileID: 1637168355563880772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &98363643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,37 +2153,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1637168355563880772}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1105899473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105899472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 520be01c3bf93de4ab1194f6a5c7ac79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeployedTrawl: 0
-  Background: {fileID: 1198662072}
-  MeterImage: {fileID: 98363645}
-  TotalTime: 3
---- !u!114 &1105899475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105899472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d6d99cf118b5044ad807e9960c1db7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CastNetPrefab: {fileID: 7494626301874524158, guid: 1a31e5b63859a014f9a2a5fae577ad8b,
-    type: 3}
-  SpawnNetArea: {fileID: 50714563}
 --- !u!1 &1138990516
 GameObject:
   m_ObjectHideFlags: 0
@@ -4298,11 +4261,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NCGS_VAKTAPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 1639024075713010548, guid: 1659b2de19ce4dc408581159698d9e02,
-        type: 3}
-      propertyPath: m_Name
-      value: NetSpawnArea
-      objectReference: {fileID: 0}
     - target: {fileID: 1637168353565672500, guid: 1659b2de19ce4dc408581159698d9e02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4371,10 +4329,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 321782689}
     - target: {fileID: 1105899474, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
-      propertyPath: FishKG
-      value: 
-      objectReference: {fileID: 2057732607}
-    - target: {fileID: 1105899474, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
       propertyPath: HandheldSelector
       value: 
       objectReference: {fileID: 999735172}
@@ -4386,6 +4340,10 @@ PrefabInstance:
       propertyPath: CastSelector
       value: 
       objectReference: {fileID: 137567669}
+    - target: {fileID: 1105899474, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
+      propertyPath: FishKG
+      value: 
+      objectReference: {fileID: 2057732607}
     - target: {fileID: 1105899482, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
       propertyPath: Background
       value: 
@@ -4394,25 +4352,14 @@ PrefabInstance:
       propertyPath: MeterImage
       value: 
       objectReference: {fileID: 926891675}
-    - target: {fileID: 1105899482, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
-      propertyPath: TotalTime
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670554897165295204, guid: 1659b2de19ce4dc408581159698d9e02,
-        type: 3}
-      propertyPath: SlowdownSpdAmt
-      value: 2500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632888955344276550, guid: 1659b2de19ce4dc408581159698d9e02,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -11.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632888955344276550, guid: 1659b2de19ce4dc408581159698d9e02,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.051
-      objectReference: {fileID: 0}
+    - target: {fileID: 1105899473, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
+      propertyPath: Background
+      value: 
+      objectReference: {fileID: 1198662072}
+    - target: {fileID: 1105899473, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
+      propertyPath: MeterImage
+      value: 
+      objectReference: {fileID: 98363645}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
 --- !u!1001 &4170706159326048426

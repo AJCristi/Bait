@@ -19,6 +19,8 @@ public class BillsHome : MonoBehaviour
 
     bool doneComputing;
 
+    GameObject UpgradeMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class BillsHome : MonoBehaviour
         MoneyEarned.text = "PHP : " + GlobalStats.Instance.MoneyEarned.ToString();
         BillsAmt.text = "PHP: -" + Bills.ToString();
         FoodsAmt.text = "PHP: -" + Food.ToString();
+        UpgradeMenu = GameObject.Find("UpgradeMenu");
     }
 
     // Update is called once per frame
@@ -51,6 +54,11 @@ public class BillsHome : MonoBehaviour
         float x = GlobalStats.Instance.MoneyEarned - (Bills + Food);
         GlobalStats.Instance.Savings += x;
         SavingsAmount.text = GlobalStats.Instance.Savings.ToString();
-        doneComputing = true;//todo check
+        doneComputing = true;
+    }
+
+    public void UpgradeButton()
+    {
+        UpgradeMenu.GetComponent<UpgradesHome>().OpenMenu();
     }
 }

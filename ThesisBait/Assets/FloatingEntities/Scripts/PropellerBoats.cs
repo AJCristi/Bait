@@ -28,11 +28,18 @@ public class PropellerBoats : MonoBehaviour
     rb = GetComponent<Rigidbody>();
 
         OriginalRPM = engine_max_rpm;
+        
   }
 
-  void Update()
+    private void Start()
+    {
+        GlobalStats.Instance.AssignRudder(); 
+    }
+
+    void Update()
   {
-    float frame_rpm = engine_rpm * Time.deltaTime;
+        
+        float frame_rpm = engine_rpm * Time.deltaTime;
     for (int i = 0; i < propellers.Length; i++)
     {
       propellers[i].localRotation = Quaternion.Euler(propellers[i].localRotation.eulerAngles + new Vector3(0, 0, -frame_rpm));
@@ -73,14 +80,16 @@ public class PropellerBoats : MonoBehaviour
 
   public void RudderRight()
   {
-    angle -= 0.9F;
+    angle -= GlobalStats.Instance.RudderFloat;
+        
     angle = Mathf.Clamp(angle, -90F, 90F);
   }
 
   public void RudderLeft()
   {
-    angle += 0.9F;
-    angle = Mathf.Clamp(angle, -90F, 90F);
+    angle += GlobalStats.Instance.RudderFloat;
+        
+        angle = Mathf.Clamp(angle, -90F, 90F);
   }
 
   void OnDrawGizmos()

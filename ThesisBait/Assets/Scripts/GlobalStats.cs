@@ -25,4 +25,47 @@ public class GlobalStats : MonoBehaviour
     public bool CastUnlocked;
 
     public float Month, Day;
+
+    public enum Rudder
+    {
+        P1,
+        P2,
+        P3
+    }
+    public Rudder CurRudderLvl = Rudder.P1;
+    public float RudderFloat;
+
+    public void AssignRudder()
+    {
+        switch (CurRudderLvl)
+        {
+            case Rudder.P1:
+                RudderFloat = 0.5f;
+                break;
+
+            case Rudder.P2:
+                RudderFloat = 1f;
+                break;
+
+            case Rudder.P3:
+                RudderFloat = 2f;
+                break;
+        }
+    }
+
+    public void UpgradeRPM()
+    {
+        if (CurRudderLvl == Rudder.P1)
+        {
+            CurRudderLvl = Rudder.P2;
+        }
+        else if(CurRudderLvl == Rudder.P2)
+        {
+            CurRudderLvl = Rudder.P3;
+        }
+        else
+        {
+            CurRudderLvl = Rudder.P3;
+        }
+    }
 }

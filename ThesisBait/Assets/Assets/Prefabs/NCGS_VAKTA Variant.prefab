@@ -17,6 +17,9 @@ MonoBehaviour:
   HandheldButton: {fileID: 0}
   TrawlButton: {fileID: 0}
   CastButton: {fileID: 0}
+  HandheldSelector: {fileID: 0}
+  TrawlSelector: {fileID: 0}
+  CastSelector: {fileID: 0}
   FishKG: {fileID: 0}
   FishAmt: 0
   IsOverFishingArea: 0
@@ -35,7 +38,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Background: {fileID: 0}
   MeterImage: {fileID: 0}
+  TotalTime: 8
+--- !u!114 &1105899473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637168353565959474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520be01c3bf93de4ab1194f6a5c7ac79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeployedTrawl: 0
+  Background: {fileID: 0}
+  MeterImage: {fileID: 0}
   TotalTime: 3
+--- !u!114 &1105899475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637168353565959474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d6d99cf118b5044ad807e9960c1db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CastNetPrefab: {fileID: 7494626301874524158, guid: 1a31e5b63859a014f9a2a5fae577ad8b,
+    type: 3}
+  SpawnNetArea: {fileID: 1639024075713010548}
 --- !u!1001 &1637168353565815014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45,7 +79,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 153044, guid: e1e9f48d71f586e48b0ab82651cd8eb4, type: 3}
       propertyPath: m_Name
-      value: NCGS_VAKTA
+      value: NCGS_VAKTAPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 153044, guid: e1e9f48d71f586e48b0ab82651cd8eb4, type: 3}
       propertyPath: m_TagString
@@ -95,31 +129,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114233348017685360, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 59476553488910652, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -2.0011787
-      objectReference: {fileID: 0}
-    - target: {fileID: 59476553488910652, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114669315090722434, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
         type: 3}
       propertyPath: engine_max_rpm
       value: 3600
+      objectReference: {fileID: 0}
+    - target: {fileID: 114669315090722434, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
+        type: 3}
+      propertyPath: SlowdownSpdAmt
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868826386234528, guid: e1e9f48d71f586e48b0ab82651cd8eb4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.051
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868826386234528, guid: e1e9f48d71f586e48b0ab82651cd8eb4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856280652344210, guid: e1e9f48d71f586e48b0ab82651cd8eb4, type: 3}
+      propertyPath: m_Name
+      value: NetSpawnArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 59476553488910652, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.21482277
+      objectReference: {fileID: 0}
+    - target: {fileID: 59476553488910652, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -11.089996
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1e9f48d71f586e48b0ab82651cd8eb4, type: 3}
 --- !u!1 &1637168353565959474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 153044, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1637168353565815014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1639024075713010548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1856280652344210, guid: e1e9f48d71f586e48b0ab82651cd8eb4,
     type: 3}
   m_PrefabInstance: {fileID: 1637168353565815014}
   m_PrefabAsset: {fileID: 0}
