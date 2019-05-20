@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class BillsHome : MonoBehaviour
 {
     public Text Date;
-    public Text SavingsAmount, MoneyEarned;
-    
+    public Text SavingsAmount, MoneyEarned;    
 
     public float Bills;
     public Text BillsAmt;
@@ -38,10 +37,11 @@ public class BillsHome : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown && !doneComputing)
-        {
-            CalculateFinal();
-        }
+        //if(Input.anyKeyDown && !doneComputing)
+        //{
+        //    CalculateFinal();
+        //}
+        CalculateFinal();
     }
 
     void AssignDate()
@@ -53,7 +53,7 @@ public class BillsHome : MonoBehaviour
     {
         float x = GlobalStats.Instance.MoneyEarned - (Bills + Food);
         GlobalStats.Instance.Savings += x;
-        SavingsAmount.text = GlobalStats.Instance.Savings.ToString();
+        TotalAmt.text = "PHP : " + GlobalStats.Instance.Savings.ToString();
         doneComputing = true;
     }
 

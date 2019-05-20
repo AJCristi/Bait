@@ -4247,6 +4247,16 @@ PrefabInstance:
       propertyPath: Day
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 1158541904568262992, guid: 097cc07a6b036cc489b3f31468ff898f,
+        type: 3}
+      propertyPath: TrawlUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158541904568262992, guid: 097cc07a6b036cc489b3f31468ff898f,
+        type: 3}
+      propertyPath: CastUnlocked
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 097cc07a6b036cc489b3f31468ff898f, type: 3}
 --- !u!1001 &1637168355563880772
@@ -4360,6 +4370,11 @@ PrefabInstance:
       propertyPath: MeterImage
       value: 
       objectReference: {fileID: 98363645}
+    - target: {fileID: 1670554897165295204, guid: 1659b2de19ce4dc408581159698d9e02,
+        type: 3}
+      propertyPath: engine_max_rpm
+      value: 2900
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
 --- !u!1001 &4170706159326048426

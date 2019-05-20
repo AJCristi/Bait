@@ -12,7 +12,7 @@ public class PropellerBoats : MonoBehaviour
   int direction = 1;
 
   public float propellers_constant = 0.6F;
-  public float engine_max_rpm = 600.0F;
+  public float engine_max_rpm;
   public float acceleration_cst = 1.0F;
   public float drag = 0.01F;
 
@@ -27,13 +27,17 @@ public class PropellerBoats : MonoBehaviour
     throttle = 0F;
     rb = GetComponent<Rigidbody>();
 
-        OriginalRPM = engine_max_rpm;
-        
+    
+
+
   }
 
     private void Start()
     {
-        GlobalStats.Instance.AssignRudder(); 
+        GlobalStats.Instance.AssignRudder();
+        GlobalStats.Instance.AssignSpeed();
+        engine_max_rpm = GlobalStats.Instance.SpeedFloat;
+        OriginalRPM = engine_max_rpm;
     }
 
     void Update()

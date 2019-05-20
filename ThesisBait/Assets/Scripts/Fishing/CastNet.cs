@@ -18,6 +18,8 @@ public class CastNet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TotalTime = GlobalStats.Instance.CastFloat;
+
         UI = gameObject.transform.GetChild(0).gameObject;
         Player = GameObject.FindGameObjectWithTag("Player");
         

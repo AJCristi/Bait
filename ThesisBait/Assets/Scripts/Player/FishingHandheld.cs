@@ -21,6 +21,8 @@ public class FishingHandheld : MonoBehaviour
 
         MeterImage.fillAmount = 0;
         timeRemaining = 0;
+
+        TotalTime = GlobalStats.Instance.HandFloat;
     }
 
     // Update is called once per frame
