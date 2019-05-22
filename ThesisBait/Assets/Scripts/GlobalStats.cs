@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlobalStats : MonoBehaviour
 {
@@ -34,6 +35,18 @@ public class GlobalStats : MonoBehaviour
     }
 
     public float Month, Day;
+    public void AdvanceDay()
+    {
+        if(Day <= 30)
+        {
+            Day++;
+        }
+        else
+        {
+            Month++;
+            Day = 1;
+        }
+    }   
 
     public enum Rudder
     {
@@ -354,5 +367,7 @@ public class GlobalStats : MonoBehaviour
 
         return x;
     }
+
+    public float HappinessWife, HappinessDaughter;
 
 }

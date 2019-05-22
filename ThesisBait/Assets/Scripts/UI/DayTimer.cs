@@ -14,13 +14,20 @@ public class DayTimer : MonoBehaviour
     float timeRatio, timeRemaining;
 
     string minutes;
-    string seconds;    
+    string seconds;
+
+    public Text MonthTxt, DayTxt;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+
         SunImage.fillAmount = 1;
-        timeRemaining = TotalTime;        
+        timeRemaining = TotalTime;
+
+        MonthTxt.text = GlobalStats.Instance.Month.ToString();
+        DayTxt.text = GlobalStats.Instance.Day.ToString();
     }
 
     // Update is called once per frame
@@ -45,16 +52,15 @@ public class DayTimer : MonoBehaviour
 
     void CheckEnd()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            EndScreen.GetComponent<EndScreen>().DisplayEnd();
-        }
-
-
         if (timeRemaining <= 0)
         {
-            EndScreen.GetComponent<EndScreen>().DisplayEnd();
-            
+            End();
         }
+    }
+
+    public void End()
+    {
+        EndScreen.GetComponent<EndScreen>().DisplayEnd();
+        //Time.timeScale = 0;
     }
 }

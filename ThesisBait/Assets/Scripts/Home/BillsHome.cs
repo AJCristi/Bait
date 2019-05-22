@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BillsHome : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class BillsHome : MonoBehaviour
 
     GameObject UpgradeMenu;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +40,11 @@ public class BillsHome : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.anyKeyDown && !doneComputing)
-        //{
-        //    CalculateFinal();
-        //}
-        CalculateFinal();
+        if(!doneComputing)
+        {
+            CalculateFinal();
+        }
+        TotalAmt.text = "PHP : " + GlobalStats.Instance.Savings.ToString();
     }
 
     void AssignDate()
@@ -60,5 +63,10 @@ public class BillsHome : MonoBehaviour
     public void UpgradeButton()
     {
         UpgradeMenu.GetComponent<UpgradesHome>().OpenMenu();
+    }
+
+    public void Next()
+    {
+        SceneManager.LoadScene("TestEnviroEvent");
     }
 }

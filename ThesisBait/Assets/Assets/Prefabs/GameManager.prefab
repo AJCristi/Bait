@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1158541904568262998}
-  - component: {fileID: 1158541904568262999}
   - component: {fileID: 1158541904568262992}
   m_Layer: 0
   m_Name: GameManager
@@ -32,22 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1158541904568262999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158541904568262997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03359d27dffa8fd4db29a5418a466da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SunImage: {fileID: 0}
-  TimerTextDisplay: {fileID: 0}
-  EndScreen: {fileID: 0}
-  TotalTime: 150
 --- !u!114 &1158541904568262992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +43,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff44eaedb91cde549bb2cb55d2eeaca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Money: 0
+  MoneyEarned: 0
+  Savings: 500
   TrawlUnlocked: 0
   CastUnlocked: 0
+  Month: 5
+  Day: 17
+  CurRudderLvl: 0
+  RudderFloat: 0
+  CurSpeedLvl: 0
+  SpeedFloat: 0
+  CurHandLvl: 0
+  HandFloat: 0
+  CurTrawlLvl: 0
+  TrawlFloat: 0
+  CurCastLvl: 0
+  CastFloat: 0
+  HappinessWife: 50
+  HappinessDaughter: 50
