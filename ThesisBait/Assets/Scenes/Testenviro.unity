@@ -4847,7 +4847,7 @@ PrefabInstance:
     - target: {fileID: 1637168353565672500, guid: 1659b2de19ce4dc408581159698d9e02,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.03
+      value: 1.17
       objectReference: {fileID: 0}
     - target: {fileID: 1637168353565672500, guid: 1659b2de19ce4dc408581159698d9e02,
         type: 3}
@@ -4938,11 +4938,6 @@ PrefabInstance:
       propertyPath: MeterImage
       value: 
       objectReference: {fileID: 98363645}
-    - target: {fileID: 1670554897165295204, guid: 1659b2de19ce4dc408581159698d9e02,
-        type: 3}
-      propertyPath: engine_max_rpm
-      value: 2900
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1659b2de19ce4dc408581159698d9e02, type: 3}
 --- !u!1001 &3912625878029961813
