@@ -21,6 +21,7 @@ public class EventHome : MonoBehaviour
         eventTriggered = false;
         EventArea.SetActive(false);
 
+        EventArea.transform.GetChild(1).GetComponent<Button>().interactable = true;
         Month.text = GlobalStats.Instance.Month.ToString();
         Day.text = GlobalStats.Instance.Day.ToString();
 
@@ -49,6 +50,8 @@ public class EventHome : MonoBehaviour
             if(EventObj.ClickedButton)
             {
                 EventArea.transform.GetChild(1).GetComponent<Button>().interactable = false;
+                Debug.Log(EventObj.ClickedButton);
+                //todo bug button broke
             }
         }
     }

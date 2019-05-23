@@ -43,9 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc31d33be590954a8fb203bb76d65c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerMonth: 0
-  TriggerDay: 0
-  ClickedButton: 0
+  TriggerMonth: 5
+  TriggerDay: 17
+  ClickedButton: 1
   Description: Your daughter needs school supplies, if you buy her more, she'll be
     happy.
   ThisType: 0
+  ToDecreaseMoney: 0
+  MoneyReq: 10
+  IncDecAmountHappiness: 0
+  DaughterAffected: 0
+  WifeAffected: 0
