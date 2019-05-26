@@ -26,7 +26,31 @@ public class GlobalStats : MonoBehaviour
 
     [Range(1, 3)]
     public int BoatSpdLvl;
+    //decrease travel time
 
     [Range(1, 3)]
     public int NetLevel;
+    //increase # of fish per catch
+
+    [Range(1, 3)]
+    public int BaitLevel;
+    //increase catch per second
+
+    public enum Weather
+    {
+        Sunny,
+        Overcast,
+        Weather 
+    }
+
+    public enum FishingLocation
+    {
+        SandyShoals,
+        ExposedReef,
+        LonelyIsland
+    }
+    public FishingLocation SelectedLocation;
+
+    
+
 }

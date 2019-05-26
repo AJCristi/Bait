@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestEnvironment/1_MarketPlaceTest.unity
+    guid: e1aeb628cdf99df4498155a8affdd8fc
+  - enabled: 1
+    path: Assets/Scenes/TestEnvironment/2_FishingTest.unity
+    guid: 6e56b48f61a94cd47b2d022eb9829788
+  - enabled: 1
+    path: Assets/Scenes/TestEnvironment/3_HomeTest.unity
+    guid: f66305d0228e57c428cf010768e0528c
   m_configObjects: {}

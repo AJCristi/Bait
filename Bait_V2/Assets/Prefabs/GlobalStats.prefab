@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26925662425526787}
   - component: {fileID: 3923929537082286830}
+  - component: {fileID: 1336597407784750090}
   m_Layer: 0
   m_Name: GlobalStats
   m_TagString: Untagged
@@ -43,5 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1373ad3399fe224d9a987da274beb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSavings: 0
-  FishKG: 0
+  PlayerSavings: 1000
+  FishKG: 3
+  PhpPerKG: 30
+  BoatSpdLvl: 1
+  NetLevel: 1
+  BaitLevel: 1
+  SelectedLocation: 0
+--- !u!114 &1336597407784750090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5261880151926188326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275c32757a47cba43a570b68cae87cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

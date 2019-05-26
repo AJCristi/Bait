@@ -20,6 +20,12 @@ public class MarketMenu : MonoBehaviour
 
     public float NetLv2Cost, NetLv3Cost;
 
+    public Text BaitLvlText;
+    public Text BaitCostText;
+    public GameObject BaitObj;
+
+    public float BaitLv2Cost, BaitLv3Cost;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +99,22 @@ public class MarketMenu : MonoBehaviour
             NetCostText.text = " xd";
             NetObj.SetActive(false);
         }
+
+        BaitLvlText.text = "Bait Level " + GlobalStats.Instance.BaitLevel.ToString();
+        if (GlobalStats.Instance.BaitLevel == 1)
+        {
+            BaitCostText.text = "PHP: " + BaitLv2Cost.ToString();
+        }
+
+        else if (GlobalStats.Instance.BaitLevel == 2)
+        {
+            BaitCostText.text = "PHP: " + BaitLv3Cost.ToString();
+        }
+        else
+        {
+            BaitCostText.text = " xd";
+            BaitObj.SetActive(false);
+        }
     }
 
     public void UpgradeSpeed()
@@ -135,6 +157,29 @@ public class MarketMenu : MonoBehaviour
                 {
                     GlobalStats.Instance.NetLevel++;
                     GlobalStats.Instance.PlayerSavings -= NetLv3Cost;
+                }
+                break;
+
+        }
+    }
+
+    public void UpgradeBait()
+    {
+        switch (GlobalStats.Instance.BaitLevel)
+        {
+            case 1:
+                if (GlobalStats.Instance.PlayerSavings >= BaitLv2Cost)
+                {
+                    GlobalStats.Instance.BaitLevel++;
+                    GlobalStats.Instance.PlayerSavings -= BaitLv2Cost;
+                }
+                break;
+
+            case 2:
+                if (GlobalStats.Instance.PlayerSavings >= BaitLv3Cost)
+                {
+                    GlobalStats.Instance.BaitLevel++;
+                    GlobalStats.Instance.PlayerSavings -= BaitLv3Cost;
                 }
                 break;
 
