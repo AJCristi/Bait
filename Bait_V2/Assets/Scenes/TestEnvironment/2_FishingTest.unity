@@ -720,7 +720,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 383247498}
+      - m_Target: {fileID: 1941379578}
         m_MethodName: NextScene
         m_Mode: 5
         m_Arguments:
@@ -985,25 +985,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362608971}
-  m_LocalRotation: {x: -0.32846186, y: 0, z: 0, w: 0.94451725}
-  m_LocalPosition: {x: 0, y: -63.28, z: -84.22}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1031.9099, y: -215.20796, z: -1278.9037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &383247498 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1336597407784750090, guid: d74575acafd7f9d44bacbb47eec50fd5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1940916128}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 275c32757a47cba43a570b68cae87cee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &495792036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 895307174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 850.9681, y: -222.21275, z: -1316.9751}
+  m_LocalPosition: {x: 1210.6896, y: -106.14751, z: -665.15436}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3653,6 +3641,7 @@ GameObject:
   - component: {fileID: 1941379572}
   - component: {fileID: 1941379576}
   - component: {fileID: 1941379577}
+  - component: {fileID: 1941379578}
   m_Layer: 5
   m_Name: FishingMain
   m_TagString: Untagged
@@ -3779,6 +3768,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FishCaughtDisplay: {fileID: 1491522472}
   NetStatus: {fileID: 1200094775}
+--- !u!114 &1941379578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941379571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 275c32757a47cba43a570b68cae87cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2020270063
 GameObject:
   m_ObjectHideFlags: 0

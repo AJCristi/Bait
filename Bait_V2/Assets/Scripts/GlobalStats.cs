@@ -24,6 +24,23 @@ public class GlobalStats : MonoBehaviour
 
     public float PhpPerKG;
 
+    public enum FoodItems
+    {
+        Chicken, 
+        Beef,
+        Vegetables,
+        Pork,
+        None
+    }
+    public float ChickenHap, ChickenHung;
+    public float BeefHap, BeefHung;
+    public float VegetablesHap, VegetablesHung;
+    public float PorkHap, PorkHung;
+
+    public FoodItems PrevFood = FoodItems.None;
+    public FoodItems CurFood;
+    public bool BoughtFood;
+
     [Range(1, 3)]
     public int BoatSpdLvl;
     //decrease travel time
@@ -51,6 +68,9 @@ public class GlobalStats : MonoBehaviour
     }
     public FishingLocation SelectedLocation;
 
-    
+    public float ElectricityCost, WaterCost;
+
+    [Range(1, 100)]
+    public float WifeHappiness, DaughterHappiness,Hunger;
 
 }
