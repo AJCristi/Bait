@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Confirmation : MonoBehaviour
 {
-    public Text DisplayNetLvl,DisplaySpdLvl,DisplayBaitLvl;
+    public Text DisplayNetLvl,DisplaySpdLvl,DisplayBaitLvl,DisplayFuelLvl;
 
     public Text SelectedLoc,LocDescript;
 

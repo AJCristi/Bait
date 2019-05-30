@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class MarketMenu : MonoBehaviour
 {
-    public Text Savings, FishKG;
-    public Text ConversionRate,FishEarnings;
+    public Text Savings, FishKG;    
 
     public Text BoatSpeedLvlText;
     public Text BoatSpeedCostText;
     public GameObject SpeedObj;
 
     public float BoatSpdLv2Cost, BoatSpdLv3Cost;
+
+    public Text BoatFuelLvlText;
+    public Text BoatFuelCostText;
+    public GameObject FuelObj;
+
+    public float BoatFuelLv2Cost, BoatFuelLv3Cost;
 
     public Text NetLvlText;
     public Text NetCostText;
@@ -36,7 +41,7 @@ public class MarketMenu : MonoBehaviour
     void Update()
     {
         UpdatePlayerStats();
-        ShowConversion();
+        
         BoatUpgrades();
     }
 
@@ -44,26 +49,6 @@ public class MarketMenu : MonoBehaviour
     {
         Savings.text = "PHP: " + GlobalStats.Instance.PlayerSavings.ToString();
         FishKG.text = "Kg's of fish: " + GlobalStats.Instance.FishKG.ToString();
-    }
-
-    void ShowConversion()
-    {
-        ConversionRate.text = "PHP/KG: " + GlobalStats.Instance.PhpPerKG.ToString();
-        FishEarnings.text = "You will earn " + CalculateEarnings().ToString();
-    }
-
-    public void SellFish()
-    {
-        if(GlobalStats.Instance.FishKG > 0)
-        {
-            GlobalStats.Instance.PlayerSavings += CalculateEarnings();
-            GlobalStats.Instance.FishKG = 0;
-        }
-    }
-
-    float CalculateEarnings()
-    {
-        return GlobalStats.Instance.PhpPerKG * GlobalStats.Instance.FishKG;
     }
 
     void BoatUpgrades()
@@ -82,6 +67,22 @@ public class MarketMenu : MonoBehaviour
         {
             BoatSpeedCostText.text = " xd";
             SpeedObj.SetActive(false);
+        }
+
+        BoatFuelLvlText.text = "Current Level " + GlobalStats.Instance.FuelTankLevel.ToString();
+        if (GlobalStats.Instance.FuelTankLevel == 1)
+        {
+            BoatFuelCostText.text = "PHP: " + BoatFuelLv2Cost.ToString();
+        }
+
+        else if (GlobalStats.Instance.FuelTankLevel == 2)
+        {
+            BoatFuelCostText.text = "PHP: " + BoatFuelLv3Cost.ToString();
+        }
+        else
+        {
+            BoatFuelCostText.text = " xd";
+            FuelObj.SetActive(false);
         }
 
         NetLvlText.text = "Net Level " + GlobalStats.Instance.NetLevel.ToString();
@@ -134,6 +135,29 @@ public class MarketMenu : MonoBehaviour
                 {
                     GlobalStats.Instance.BoatSpdLvl++;
                     GlobalStats.Instance.PlayerSavings -= BoatSpdLv3Cost;
+                }
+                break;
+
+        }
+    }
+
+    public void UpgradeFuel()
+    {
+        switch (GlobalStats.Instance.FuelTankLevel)
+        {
+            case 1:
+                if (GlobalStats.Instance.PlayerSavings >= BoatFuelLv2Cost)
+                {
+                    GlobalStats.Instance.FuelTankLevel++;
+                    GlobalStats.Instance.PlayerSavings -= BoatFuelLv2Cost;
+                }
+                break;
+
+            case 2:
+                if (GlobalStats.Instance.PlayerSavings >= BoatFuelLv3Cost)
+                {
+                    GlobalStats.Instance.FuelTankLevel++;
+                    GlobalStats.Instance.PlayerSavings -= BoatFuelLv3Cost;
                 }
                 break;
 

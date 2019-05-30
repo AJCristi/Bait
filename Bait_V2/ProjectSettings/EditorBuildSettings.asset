@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TestEnvironment/0_DayStart.unity
+    guid: a7490b7298318474a8549af0f7d4a09c
+  - enabled: 1
+    path: Assets/Scenes/TestEnvironment/0.5_DayController.unity
+    guid: 418aee24a9de360419a0809a6f1cfcb1
+  - enabled: 1
     path: Assets/Scenes/TestEnvironment/1_MarketPlaceTest.unity
     guid: e1aeb628cdf99df4498155a8affdd8fc
   - enabled: 1

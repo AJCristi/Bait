@@ -43,9 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1373ad3399fe224d9a987da274beb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Month: 0
+  Day: 0
   PlayerSavings: 200
   FishKG: 0
+  smallKG: 0
+  medKG: 0
+  largeKG: 0
   PhpPerKG: 30
+  smallFishPerKG: 60
+  medFishPerKG: 100
+  largeFishPerKG: 240
   ChickenHap: 20
   ChickenHung: 20
   BeefHap: 35
@@ -55,14 +63,21 @@ MonoBehaviour:
   PorkHap: 15
   PorkHung: 15
   PrevFood: 4
-  CurFood: 0
+  CurFood: 4
   BoughtFood: 0
   BoatSpdLvl: 1
   NetLevel: 1
   BaitLevel: 1
+  FuelTankLevel: 1
+  Forecast: 0
   SelectedLocation: 0
   ElectricityCost: 150
   WaterCost: 150
   WifeHappiness: 50
   DaughterHappiness: 50
   Hunger: 50
+  TS1: 2
+  TS2: 2
+  TS3: 2
+  TS4: 2
+  CurrentTime: 1

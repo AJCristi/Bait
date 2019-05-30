@@ -23,6 +23,8 @@ public class FoodMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         ChickenTxt.text = "PHP: " + ChickenPrice.ToString();
         BeefTxt.text = "PHP: " + BeefPrice.ToString();
         VeggTxt.text = "PHP: " + VeggPrice.ToString();
@@ -31,6 +33,11 @@ public class FoodMenu : MonoBehaviour
         if (picked)
         {
             GlobalStats.Instance.BoughtFood = true;
+            
+        }
+
+        if (GlobalStats.Instance.BoughtFood)
+        {
             Menu.SetActive(false);
             BoughtText.SetActive(true);
             BoughtText.GetComponent<Text>().text =
