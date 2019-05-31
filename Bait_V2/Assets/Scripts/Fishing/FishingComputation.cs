@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class FishingComputation : MonoBehaviour
 {
-    public Text FishCaughtDisplay;
+    public Text FishcaughtSmall, FishcaughtMed, FishcaughtLarge;
 
     public Image NetStatus;
     float timeRatio;
 
     float fishCaught;
     float toAdd;
+
+    float smallF, medF, largeF;
 
     float x;
 
@@ -27,13 +29,19 @@ public class FishingComputation : MonoBehaviour
         x = 0;
         AssignStats();
 
+        smallF = 0;
+        medF = 0;
+        largeF = 0;
+
         addedGlobal = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        FishCaughtDisplay.text = "Fish caught : " + fishCaught;
+        FishcaughtSmall.text = smallF.ToString("00") + " kg";
+        FishcaughtMed.text = medF.ToString("00") + " kg";
+        FishcaughtLarge.text = largeF.ToString("00") + " kg";
 
         if (IsFishing())
         {            
@@ -44,7 +52,10 @@ public class FishingComputation : MonoBehaviour
         {
             if(!addedGlobal)
             {
-                GlobalStats.Instance.FishKG += fishCaught;
+                //GlobalStats.Instance.FishKG += fishCaught;
+                GlobalStats.Instance.smallKG += smallF;
+                GlobalStats.Instance.medKG += medF;
+                GlobalStats.Instance.largeKG += largeF;
                 addedGlobal = true;
             }
             
@@ -57,30 +68,30 @@ public class FishingComputation : MonoBehaviour
         switch(GlobalStats.Instance.BaitLevel)
         {
             case 1:
-                catchResetTime = 10;
+                catchResetTime = 8;
                 break;
 
             case 2:
-                catchResetTime = 7;
+                catchResetTime = 6;
                 break;
 
             case 3:
-                catchResetTime = 5;
+                catchResetTime = 3;
                 break;
         }
 
         switch (GlobalStats.Instance.NetLevel)
         {
             case 1:
-                numOfFish = 3;
+                numOfFish = 1;
                 break;
 
             case 2:
-                numOfFish = 6;
+                numOfFish = 2;
                 break;
 
             case 3:
-                numOfFish = 8;
+                numOfFish = 4;
                 break;
         }
     }
@@ -114,24 +125,110 @@ public class FishingComputation : MonoBehaviour
 
     void CatchFish()
     {
-        float f = 0;
+        //float f = 0;
+        //switch(GlobalStats.Instance.SelectedLocation)
+        //{
+        //    case GlobalStats.FishingLocation.SandyShoals:
+        //        f = .9f;
+        //        break;
+
+        //    case GlobalStats.FishingLocation.ExposedReef:
+        //        f = 1.1f;
+        //        break;
+
+        //    case GlobalStats.FishingLocation.LonelyIsland:
+        //        f = 1.5f;
+        //        break;
+        //}
+        ////todo add weather
+
+        //toAdd = f * numOfFish;
+        //fishCaught += toAdd;  
         switch(GlobalStats.Instance.SelectedLocation)
         {
             case GlobalStats.FishingLocation.SandyShoals:
-                f = .9f;
+                switch(TypeofFish())
+                {
+                    case float x when (x < 75 && x >= 0):
+                        CatchSmall();
+                        break;
+
+                    case float x when (x >= 75 && x < 95):
+                        CatchMed();
+                        break;
+
+                    case float x when (x >= 95):
+                        CatchLarge();
+                        break;
+                }
                 break;
 
             case GlobalStats.FishingLocation.ExposedReef:
-                f = 1.1f;
+                switch (TypeofFish())
+                {
+                    case float x when (x < 55 && x >= 0):
+                        CatchSmall();
+                        break;
+
+                    case float x when (x >= 55 && x < 95):
+                        CatchMed();
+                        break;
+
+                    case float x when (x >= 95):
+                        CatchLarge();
+                        break;
+                }
                 break;
 
             case GlobalStats.FishingLocation.LonelyIsland:
-                f = 1.5f;
+                switch (TypeofFish())
+                {
+                    case float x when (x < 75 && x >= 0):
+                        CatchSmall();
+                        break;
+
+                    case float x when (x >= 75 && x < 85):
+                        CatchMed();
+                        break;
+
+                    case float x when (x >= 85):
+                        CatchLarge();
+                        break;
+                }
                 break;
         }
-        //todo add weather
 
-        toAdd = f * numOfFish;
-        fishCaught += toAdd;
+    }
+
+    void CatchSmall()
+    {
+        float fx = 0;
+        fx = Random.Range(GlobalStats.Instance.SmallMinKG,
+                            GlobalStats.Instance.SmallMaxKG);
+        smallF += (fx * numOfFish);
+        Debug.Log("Small");
+    }
+
+    void CatchMed()
+    {
+        float fx = 0;
+        fx = Random.Range(GlobalStats.Instance.MedMinKG,
+                            GlobalStats.Instance.MedMaxKG);
+        medF += (fx * numOfFish);
+        Debug.Log("Med");
+    }
+
+    void CatchLarge()
+    {
+        float fx = 0;
+        fx = Random.Range(GlobalStats.Instance.LargeMinKG,
+                            GlobalStats.Instance.LargeMaxKG);
+        largeF += (fx * numOfFish);
+        Debug.Log("LARGE");
+    }
+
+    float TypeofFish()
+    {
+        return Random.Range(0, 100);
     }
 }

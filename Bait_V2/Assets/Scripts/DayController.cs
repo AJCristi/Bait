@@ -12,7 +12,9 @@ public class DayController : MonoBehaviour
 
     public GameObject GoHome,Market,Fishing;
 
-    public Text Haul, Savings;
+    public Text Savings;
+
+    public Text SmallF, MedF, LargeF;
 
     public Text Month, Day;
 
@@ -31,8 +33,11 @@ public class DayController : MonoBehaviour
     void Update()
     {
         CheckButtons();
+        SmallF.text = GlobalStats.Instance.smallKG.ToString("00") + " kg";
+        MedF.text = GlobalStats.Instance.medKG.ToString("00") + " kg";
+        LargeF.text = GlobalStats.Instance.largeKG.ToString("00") + " kg";
 
-        Haul.text = "Today's haul: " + GlobalStats.Instance.FishKG;
+
         Savings.text = "Savings PHP: " + GlobalStats.Instance.PlayerSavings;
     }
 
@@ -241,7 +246,7 @@ public class DayController : MonoBehaviour
         GlobalStats.Instance.TS3 = GlobalStats.Activity.None;
         GlobalStats.Instance.TS4 = GlobalStats.Activity.None;
 
-        SceneManager.LoadScene("4_HomeTest");
+        SceneManager.LoadScene("3_HomeTest");
 
     }
 }

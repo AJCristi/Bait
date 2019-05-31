@@ -14,6 +14,12 @@ public class FishMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         SmallRate.text = "Small / Kg -- " + GlobalStats.Instance.smallFishPerKG.ToString();
         MedRate.text = "Meduim / Kg -- " + GlobalStats.Instance.medFishPerKG.ToString();
         LargeRate.text = "Large / Kg -- " + GlobalStats.Instance.largeFishPerKG.ToString();
@@ -21,14 +27,9 @@ public class FishMenu : MonoBehaviour
         SmallHaul.text = GlobalStats.Instance.smallKG.ToString() + " kgs";
         MedHaul.text = GlobalStats.Instance.medKG.ToString() + " kgs";
         LargeHaul.text = GlobalStats.Instance.largeKG.ToString() + " kgs";
+
         Compute();
         Earnings.text = "Earnings -- PHP " + totalearning.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void Compute()
@@ -46,6 +47,9 @@ public class FishMenu : MonoBehaviour
 
     public void Sell()
     {
+        GlobalStats.Instance.smallKG = 0;
+        GlobalStats.Instance.medKG = 0;
+        GlobalStats.Instance.largeKG = 0;
         GlobalStats.Instance.PlayerSavings += totalearning;
     }
 }

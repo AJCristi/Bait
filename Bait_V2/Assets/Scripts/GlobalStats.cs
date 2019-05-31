@@ -25,7 +25,13 @@ public class GlobalStats : MonoBehaviour
 
     public float FishKG;
     public float smallKG, medKG, largeKG;
-    
+
+    public float SmallMinKG, SmallMaxKG;
+    public float MedMinKG, MedMaxKG;
+    public float LargeMinKG, LargeMaxKG;
+
+    public float setAsideFishAmt;
+
     public float PhpPerKG;
     public float smallFishPerKG,medFishPerKG,largeFishPerKG;
 
@@ -35,12 +41,14 @@ public class GlobalStats : MonoBehaviour
         Beef,
         Vegetables,
         Pork,
+        Fish,
         None
     }
     public float ChickenHap, ChickenHung;
     public float BeefHap, BeefHung;
     public float VegetablesHap, VegetablesHung;
     public float PorkHap, PorkHung;
+    public float FishHap, FishHung;
 
     public FoodItems PrevFood = FoodItems.None;
     public FoodItems CurFood;
@@ -95,5 +103,7 @@ public class GlobalStats : MonoBehaviour
 
     [Range(1, 5)]
     public int CurrentTime;
+
+    
 
 }

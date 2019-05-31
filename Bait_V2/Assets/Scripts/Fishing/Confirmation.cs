@@ -7,9 +7,10 @@ public class Confirmation : MonoBehaviour
 {
     public Text DisplayNetLvl,DisplaySpdLvl,DisplayBaitLvl,DisplayFuelLvl;
 
-    public Text SelectedLoc,LocDescript;
+    public Text SelectedLoc,LocDescript,FishDescript;
 
     public string LocSSDescription, LocERDescription, LocLIDescription;
+    public string FishSSDescription, FishERDescription, FishLIDescription;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Confirmation : MonoBehaviour
     void DisplayBoatStats()
     {
         DisplayNetLvl.text = GlobalStats.Instance.NetLevel.ToString();
+        DisplayFuelLvl.text = GlobalStats.Instance.FuelTankLevel.ToString();
         DisplayBaitLvl.text = GlobalStats.Instance.BaitLevel.ToString();
         DisplaySpdLvl.text = GlobalStats.Instance.BoatSpdLvl.ToString();
     }
@@ -38,16 +40,19 @@ public class Confirmation : MonoBehaviour
             case GlobalStats.FishingLocation.ExposedReef:
                 SelectedLoc.text = "Exposed Reef";
                 LocDescript.text = LocERDescription;
+                FishDescript.text = FishERDescription;
                 break;
 
             case GlobalStats.FishingLocation.LonelyIsland:
                 SelectedLoc.text = "Lonely Island";
                 LocDescript.text = LocLIDescription;
+                FishDescript.text = FishLIDescription;
                 break;
 
             case GlobalStats.FishingLocation.SandyShoals:
                 SelectedLoc.text = "Sandy Shoals";
                 LocDescript.text = LocSSDescription;
+                FishDescript.text = FishSSDescription;
                 break;
         }
     }

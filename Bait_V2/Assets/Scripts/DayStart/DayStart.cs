@@ -9,7 +9,7 @@ public class DayStart : MonoBehaviour
 
     public Text FuelLvl, MotorLvl, BaitLvl, NetLvl;
 
-    public Text FishAmt;
+    public Text FishSmallDis, FishMedDis, FishLargeDis;
 
     public Text SmallPrice, MedPrice, LargePrice;
 
@@ -27,7 +27,9 @@ public class DayStart : MonoBehaviour
         BaitLvl.text = GlobalStats.Instance.BaitLevel.ToString();
         NetLvl.text = GlobalStats.Instance.NetLevel.ToString();
 
-        FishAmt.text = GlobalStats.Instance.FishKG.ToString() + " Kgs";
+        FishSmallDis.text = GlobalStats.Instance.smallKG.ToString() + " Kgs";
+        FishMedDis.text = GlobalStats.Instance.medKG.ToString() + " Kgs";
+        FishLargeDis.text = GlobalStats.Instance.largeKG.ToString() + " Kgs";
 
         SmallPrice.text = "PHP " + GlobalStats.Instance.smallFishPerKG.ToString() + " /kg";
         MedPrice.text = "PHP " + GlobalStats.Instance.medFishPerKG.ToString() + " /kg";

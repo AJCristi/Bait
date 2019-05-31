@@ -41,6 +41,23 @@ public class FishingScene : MonoBehaviour
     void Start()
     {
         started = false;
+
+        switch(GlobalStats.Instance.FuelTankLevel)
+        {
+            case 1:
+                TimeLeft += 0;
+                break;
+
+            case 2:
+                TimeLeft += 15;
+                break;
+
+            case 3:
+                TimeLeft += 25;
+                break;
+        }
+
+
         timeRemaining = TimeLeft;
         FF = false;
         x = 0;
@@ -135,17 +152,77 @@ public class FishingScene : MonoBehaviour
         switch(GlobalStats.Instance.SelectedLocation)
         {
             case GlobalStats.FishingLocation.SandyShoals:
-                CalculateStatus(5, 5);
+                CalculateStatus(CheckTravel(1), CheckTravel(1));
                 break;
 
             case GlobalStats.FishingLocation.LonelyIsland:
-                CalculateStatus(15, 15);
+                CalculateStatus(CheckTravel(3), CheckTravel(3));
                 break;
 
             case GlobalStats.FishingLocation.ExposedReef:
-                CalculateStatus(10, 10);
+                CalculateStatus(CheckTravel(2), CheckTravel(2));
                 break;
         }
+    }
+
+    float CheckTravel(float area)
+    {
+        //1 = SS 2=LI 3=ER
+        float x = 0;
+        switch(GlobalStats.Instance.BoatSpdLvl)
+        {
+            case 1:
+                switch(area)
+                {
+                    case 1:
+                        x = 5f;
+                        break;
+
+                    case 2:
+                        x = 3f;
+                        break;
+
+                    case 3:
+                        x = 1.5f;
+                        break;
+                }
+                break;
+
+            case 2:
+                switch (area)
+                {
+                    case 1:
+                        x = 10f;
+                        break;
+
+                    case 2:
+                        x = 7f;
+                        break;
+
+                    case 3:
+                        x = 5f;
+                        break;
+                }
+                break;
+
+            case 3:
+                switch (area)
+                {
+                    case 1:
+                        x = 15f;
+                        break;
+
+                    case 2:
+                        x = 11f;
+                        break;
+
+                    case 3:
+                        x = 7f;
+                        break;
+                }
+                break;
+        }
+        return x;
     }
 
     void CalculateStatus(float GoingTime, float ComingTime)

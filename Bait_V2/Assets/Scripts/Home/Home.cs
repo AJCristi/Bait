@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Home : MonoBehaviour
 {
-    public Text Savings,calcSavings,HaulTD;
+    public Text Savings,calcSavings;
 
     public Text ElecDisplay, WaterDisplay,PrevDisplay;
 
@@ -20,8 +20,7 @@ public class Home : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        HaulTD.text = "Haul today: " + GlobalStats.Instance.FishKG.ToString() + " kg's";
+    {        
         Savings.text = "Savings: PHP " + GlobalStats.Instance.PlayerSavings.ToString();
         calcSavings.text = "PHP: " + GlobalStats.Instance.PlayerSavings.ToString();
     }

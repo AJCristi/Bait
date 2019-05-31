@@ -84,4 +84,27 @@ public class FoodMenu : MonoBehaviour
             picked = true;
         }
     }
+
+    public void FromHaul()
+    {
+        if (GlobalStats.Instance.smallKG > 0)
+        {
+            GlobalStats.Instance.smallKG -= .5f;
+            GlobalStats.Instance.CurFood = GlobalStats.FoodItems.Fish;
+        }
+        else if(GlobalStats.Instance.medKG > 0)
+        {
+            GlobalStats.Instance.medKG -= .5f;
+            GlobalStats.Instance.CurFood = GlobalStats.FoodItems.Fish;
+        }
+        else if(GlobalStats.Instance.largeKG > 0)
+        {
+            GlobalStats.Instance.medKG -= .5f;
+            GlobalStats.Instance.CurFood = GlobalStats.FoodItems.Fish;
+        }
+        else
+        {
+            Debug.Log("non");
+        }
+    }
 }

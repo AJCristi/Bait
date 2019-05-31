@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MarketMenu : MonoBehaviour
 {
-    public Text Savings, FishKG;    
+    public Text Savings;    
 
     public Text BoatSpeedLvlText;
     public Text BoatSpeedCostText;
@@ -48,7 +48,7 @@ public class MarketMenu : MonoBehaviour
     void UpdatePlayerStats()
     {
         Savings.text = "PHP: " + GlobalStats.Instance.PlayerSavings.ToString();
-        FishKG.text = "Kg's of fish: " + GlobalStats.Instance.FishKG.ToString();
+        
     }
 
     void BoatUpgrades()

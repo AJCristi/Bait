@@ -50,6 +50,13 @@ MonoBehaviour:
   smallKG: 0
   medKG: 0
   largeKG: 0
+  SmallMinKG: 0.5
+  SmallMaxKG: 1
+  MedMinKG: 0.5
+  MedMaxKG: 2.5
+  LargeMinKG: 0.5
+  LargeMaxKG: 2
+  setAsideFishAmt: 0
   PhpPerKG: 30
   smallFishPerKG: 60
   medFishPerKG: 100
@@ -62,6 +69,8 @@ MonoBehaviour:
   VegetablesHung: 20
   PorkHap: 15
   PorkHung: 15
+  FishHap: 10
+  FishHung: 20
   PrevFood: 4
   CurFood: 4
   BoughtFood: 0
