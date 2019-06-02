@@ -27,6 +27,10 @@ public class FishingScene : MonoBehaviour
 
     public Text StatusTxt;
 
+    public Text Weather, WDes;
+
+    public string SunnyDes, OverDes, RainDes;
+
 
     public enum FishingStatus
     {
@@ -42,7 +46,9 @@ public class FishingScene : MonoBehaviour
     {
         started = false;
 
-        switch(GlobalStats.Instance.FuelTankLevel)
+        
+
+        switch (GlobalStats.Instance.FuelTankLevel)
         {
             case 1:
                 TimeLeft += 0;
@@ -100,6 +106,23 @@ public class FishingScene : MonoBehaviour
     {        
         if (started)
         {
+            Weather.text = GlobalStats.Instance.Forecast.ToString();
+
+            switch (GlobalStats.Instance.Forecast)
+            {
+                case GlobalStats.Weather.Overcast:
+                    WDes.text = OverDes;
+                    break;
+
+                case GlobalStats.Weather.Sunny:
+                    WDes.text = SunnyDes;
+                    break;
+
+                case GlobalStats.Weather.Rainy:
+                    WDes.text = RainDes;
+                    break;
+            }
+            
             timeRatio = timeRemaining / TimeLeft;
             TimerImage.fillAmount = timeRatio;
             SetCurrentTimeUI();

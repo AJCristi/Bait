@@ -13,7 +13,7 @@ public class FamilyFood : MonoBehaviour
     bool poppedInd;
     float x;
 
-    public GameObject SleepButton;
+    
 
     public Button storeButton;
     public Button GetFromHaul;
@@ -32,7 +32,7 @@ public class FamilyFood : MonoBehaviour
     {
         x = 0;
         poppedInd = false;
-        SleepButton.SetActive(false);
+       
 
         HappinessIndicator.SetActive(false);
         HungerIndicator.SetActive(false);
@@ -93,7 +93,7 @@ public class FamilyFood : MonoBehaviour
                 poppedInd = false;
                 x = 0;
             }
-            SleepButton.SetActive(true);
+            GetComponent<Home>().FoodDone = true;
         }
 
         switch(GlobalStats.Instance.CurFood)

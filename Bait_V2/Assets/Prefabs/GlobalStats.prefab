@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1373ad3399fe224d9a987da274beb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Month: 0
-  Day: 0
+  Month: 6
+  Day: 19
   PlayerSavings: 200
   FishKG: 0
   smallKG: 0

@@ -200,12 +200,34 @@ public class FishingComputation : MonoBehaviour
 
     }
 
+    float WeatherEffect()
+    {
+        float x = 0;
+
+        switch(GlobalStats.Instance.Forecast)
+        {
+            case GlobalStats.Weather.Sunny:
+                x = 1f;
+                break;
+
+            case GlobalStats.Weather.Overcast:
+                x = 1.5f;
+                break;
+
+            case GlobalStats.Weather.Rainy:
+                x = .8f;
+                break;
+        }
+
+        return x;
+    }
+
     void CatchSmall()
     {
         float fx = 0;
         fx = Random.Range(GlobalStats.Instance.SmallMinKG,
                             GlobalStats.Instance.SmallMaxKG);
-        smallF += (fx * numOfFish);
+        smallF += (fx * numOfFish) * WeatherEffect();
         Debug.Log("Small");
     }
 
@@ -214,7 +236,7 @@ public class FishingComputation : MonoBehaviour
         float fx = 0;
         fx = Random.Range(GlobalStats.Instance.MedMinKG,
                             GlobalStats.Instance.MedMaxKG);
-        medF += (fx * numOfFish);
+        medF += (fx * numOfFish) * WeatherEffect();
         Debug.Log("Med");
     }
 
@@ -223,7 +245,7 @@ public class FishingComputation : MonoBehaviour
         float fx = 0;
         fx = Random.Range(GlobalStats.Instance.LargeMinKG,
                             GlobalStats.Instance.LargeMaxKG);
-        largeF += (fx * numOfFish);
+        largeF += (fx * numOfFish) * WeatherEffect();
         Debug.Log("LARGE");
     }
 

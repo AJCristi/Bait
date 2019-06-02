@@ -35,6 +35,7 @@ public class DayStart : MonoBehaviour
         MedPrice.text = "PHP " + GlobalStats.Instance.medFishPerKG.ToString() + " /kg";
         LargePrice.text = "PHP " + GlobalStats.Instance.largeFishPerKG.ToString() + " /kg";
 
+        AssignWeatherToday();
         WeatherForecastToday.text = GlobalStats.Instance.Forecast.ToString();
     }
 
@@ -42,5 +43,24 @@ public class DayStart : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void AssignWeatherToday()
+    {
+        float x = Random.Range(1, 100);
+        Debug.Log(x);
+        if (x < 50)
+        {
+            GlobalStats.Instance.Forecast = GlobalStats.Weather.Sunny;
+        }
+        else if (x >= 50 && x < 80)
+        {
+            GlobalStats.Instance.Forecast = GlobalStats.Weather.Overcast;
+        }
+        else
+        {
+            GlobalStats.Instance.Forecast = GlobalStats.Weather.Rainy;
+        }
+
     }
 }

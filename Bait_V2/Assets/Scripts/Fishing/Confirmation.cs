@@ -12,6 +12,10 @@ public class Confirmation : MonoBehaviour
     public string LocSSDescription, LocERDescription, LocLIDescription;
     public string FishSSDescription, FishERDescription, FishLIDescription;
 
+    public Text Weather, WDescription;
+
+    public string SunnyDes, OverDes, RainDes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,9 @@ public class Confirmation : MonoBehaviour
     {
         DisplayBoatStats();
         DisplayLocation();
+        DisplayWeather();
+
+
     }
 
     void DisplayBoatStats()
@@ -31,6 +38,25 @@ public class Confirmation : MonoBehaviour
         DisplayFuelLvl.text = GlobalStats.Instance.FuelTankLevel.ToString();
         DisplayBaitLvl.text = GlobalStats.Instance.BaitLevel.ToString();
         DisplaySpdLvl.text = GlobalStats.Instance.BoatSpdLvl.ToString();
+    }
+
+    void DisplayWeather()
+    {
+        Weather.text = GlobalStats.Instance.Forecast.ToString();
+        switch (GlobalStats.Instance.Forecast)
+        {
+            case GlobalStats.Weather.Overcast:
+                WDescription.text = OverDes;
+                break;
+
+            case GlobalStats.Weather.Sunny:
+                WDescription.text = SunnyDes;
+                break;
+
+            case GlobalStats.Weather.Rainy:
+                WDescription.text = RainDes;
+                break;
+        }
     }
 
     void DisplayLocation()

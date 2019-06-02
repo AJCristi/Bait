@@ -10,12 +10,19 @@ public class Home : MonoBehaviour
     public Text ElecDisplay, WaterDisplay,PrevDisplay;
 
     bool calculated;
+
+    public GameObject SleepBtn;
+    public bool FoodDone, EventDone;
+
     // Start is called before the first frame update
     void Start()
     {
         calculated = false;
         DisplayBills();
         CalclateNewSavings();
+        FoodDone = false;
+        EventDone = false;
+        SleepBtn.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,6 +30,12 @@ public class Home : MonoBehaviour
     {        
         Savings.text = "Savings: PHP " + GlobalStats.Instance.PlayerSavings.ToString();
         calcSavings.text = "PHP: " + GlobalStats.Instance.PlayerSavings.ToString();
+        Debug.Log(EventDone + " - " + FoodDone);
+        if (EventDone && FoodDone)
+        {
+            
+            SleepBtn.SetActive(true);
+        }
     }
 
     void DisplayBills()
@@ -37,7 +50,6 @@ public class Home : MonoBehaviour
         if(!calculated)
         {
             GlobalStats.Instance.PlayerSavings -= GlobalStats.Instance.ElectricityCost + GlobalStats.Instance.WaterCost;
-
             calculated = true;
         }
     }
