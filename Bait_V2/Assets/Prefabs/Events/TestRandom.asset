@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6954e5ff4316bc94aa5d276f3185eae7, type: 3}
   m_Name: TestRandom
   m_EditorClassIdentifier: 
-  title: spotlight uh
+  title: Payment
   description: moonlight yuh
   IsRandom: 1
   Trmonth: 0
   TRday: 0
   thisEvent: 0
-  HappinessPlus: 0
-  HungerPlus: 0
-  HappinessMinus: 0
-  HungerMinus: 0
-  moneyPay: 0
+  HappinessPlus: 10
+  HungerPlus: 10
+  HappinessMinus: 10
+  HungerMinus: 10
+  moneyPay: 20

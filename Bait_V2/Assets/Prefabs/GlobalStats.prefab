@@ -50,12 +50,12 @@ MonoBehaviour:
   smallKG: 0
   medKG: 0
   largeKG: 0
-  SmallMinKG: 0.5
+  SmallMinKG: 0.2
   SmallMaxKG: 1
-  MedMinKG: 0.5
-  MedMaxKG: 2.5
-  LargeMinKG: 0.5
-  LargeMaxKG: 2
+  MedMinKG: 0.3
+  MedMaxKG: 1.2
+  LargeMinKG: 0.2
+  LargeMaxKG: 1.5
   setAsideFishAmt: 0
   PhpPerKG: 30
   smallFishPerKG: 60

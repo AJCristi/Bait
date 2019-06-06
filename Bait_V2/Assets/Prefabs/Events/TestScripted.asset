@@ -17,9 +17,9 @@ MonoBehaviour:
   IsRandom: 0
   Trmonth: 6
   TRday: 19
-  thisEvent: 0
-  HappinessPlus: 0
+  thisEvent: 1
+  HappinessPlus: 5
   HungerPlus: 0
-  HappinessMinus: 0
+  HappinessMinus: 5
   HungerMinus: 0
   moneyPay: 0

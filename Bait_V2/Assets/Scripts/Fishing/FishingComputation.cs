@@ -7,6 +7,9 @@ public class FishingComputation : MonoBehaviour
 {
     public Text FishcaughtSmall, FishcaughtMed, FishcaughtLarge;
 
+    public Text NoFish;
+    bool nofish;
+
     public Image NetStatus;
     float timeRatio;
 
@@ -16,6 +19,8 @@ public class FishingComputation : MonoBehaviour
     float smallF, medF, largeF;
 
     float x;
+
+    float y;
 
     float catchResetTime, numOfFish;
 
@@ -27,26 +32,42 @@ public class FishingComputation : MonoBehaviour
         fishCaught = 0;
         toAdd = 0;
         x = 0;
+        y = 0;
         AssignStats();
 
         smallF = 0;
         medF = 0;
         largeF = 0;
-
+        nofish = false;
+        NoFish.enabled = false;
         addedGlobal = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        FishcaughtSmall.text = smallF.ToString("00") + " kg";
-        FishcaughtMed.text = medF.ToString("00") + " kg";
-        FishcaughtLarge.text = largeF.ToString("00") + " kg";
+        FishcaughtSmall.text = smallF.ToString() + " kg";
+        FishcaughtMed.text = medF.ToString() + " kg";
+        FishcaughtLarge.text = largeF.ToString() + " kg";
 
         if (IsFishing())
         {            
-            Compute();
+            Compute();            
         }
+
+        if (nofish)
+        {
+            y += Time.deltaTime;
+            NoFish.enabled = true;
+        }
+
+        if(y > 2f)
+        {
+            nofish = false;
+            NoFish.enabled = false;
+            y = 0;
+        }       
+
 
         if(GetComponent<FishingScene>().curStatus == FishingScene.FishingStatus.Done)
         {
@@ -124,49 +145,43 @@ public class FishingComputation : MonoBehaviour
     }
 
     void CatchFish()
-    {
-        //float f = 0;
-        //switch(GlobalStats.Instance.SelectedLocation)
-        //{
-        //    case GlobalStats.FishingLocation.SandyShoals:
-        //        f = .9f;
-        //        break;
-
-        //    case GlobalStats.FishingLocation.ExposedReef:
-        //        f = 1.1f;
-        //        break;
-
-        //    case GlobalStats.FishingLocation.LonelyIsland:
-        //        f = 1.5f;
-        //        break;
-        //}
-        ////todo add weather
-
-        //toAdd = f * numOfFish;
-        //fishCaught += toAdd;  
+    {        
         switch(GlobalStats.Instance.SelectedLocation)
         {
             case GlobalStats.FishingLocation.SandyShoals:
                 switch(TypeofFish())
                 {
-                    case float x when (x < 75 && x >= 0):
+                    case float x when (x >= 0 && x < 40):
+                        Debug.Log(x);
+                        NoCatch();
+                        break;
+
+                    case float x when (x < 75 && x >= 40):
+                        Debug.Log(x);
                         CatchSmall();
                         break;
 
                     case float x when (x >= 75 && x < 95):
+                        Debug.Log(x);
                         CatchMed();
                         break;
 
                     case float x when (x >= 95):
+                        Debug.Log(x);
                         CatchLarge();
                         break;
+                    
                 }
                 break;
 
             case GlobalStats.FishingLocation.ExposedReef:
                 switch (TypeofFish())
                 {
-                    case float x when (x < 55 && x >= 0):
+                    case float x when (x >= 0 && x < 40):
+                        NoCatch();
+                        break;
+
+                    case float x when (x < 55 && x >= 40):
                         CatchSmall();
                         break;
 
@@ -183,7 +198,11 @@ public class FishingComputation : MonoBehaviour
             case GlobalStats.FishingLocation.LonelyIsland:
                 switch (TypeofFish())
                 {
-                    case float x when (x < 75 && x >= 0):
+                    case float x when (x >= 0 && x < 40):
+                        NoCatch();
+                        break;
+
+                    case float x when (x < 75 && x >= 40):
                         CatchSmall();
                         break;
 
@@ -247,6 +266,12 @@ public class FishingComputation : MonoBehaviour
                             GlobalStats.Instance.LargeMaxKG);
         largeF += (fx * numOfFish) * WeatherEffect();
         Debug.Log("LARGE");
+    }
+
+    void NoCatch()
+    {
+        nofish = true;
+        Debug.Log("No fish");
     }
 
     float TypeofFish()
