@@ -46,7 +46,6 @@ MonoBehaviour:
   Month: 6
   Day: 19
   PlayerSavings: 200
-  FishKG: 0
   smallKG: 0
   medKG: 0
   largeKG: 0
@@ -71,13 +70,21 @@ MonoBehaviour:
   PorkHung: 15
   FishHap: 10
   FishHung: 20
-  PrevFood: 4
-  CurFood: 4
+  PrevFood: 5
+  CurFood: 5
   BoughtFood: 0
   BoatSpdLvl: 1
   NetLevel: 1
   BaitLevel: 1
   FuelTankLevel: 1
+  CurrentNet: 0
+  CurrentBait: 0
+  BreadAmt: 25
+  InsectAmt: 20
+  WormAmt: 10
+  TrawlingNetLevel: 1
+  CastNetLevel: 1
+  RodNetLevel: 1
   Forecast: 0
   SelectedLocation: 0
   ElectricityCost: 150

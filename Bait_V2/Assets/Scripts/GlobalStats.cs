@@ -23,8 +23,14 @@ public class GlobalStats : MonoBehaviour
 
     public float PlayerSavings;
 
-    public float FishKG;
+    //public float FishKG;
+
+    //Small -- Galunggong
+    //Medium -- Tilapia
+    //Large -- Lapu-Lapu
+
     public float smallKG, medKG, largeKG;
+
 
     public float SmallMinKG, SmallMaxKG;
     public float MedMinKG, MedMaxKG;
@@ -70,6 +76,35 @@ public class GlobalStats : MonoBehaviour
     [Range(1, 3)]
     public int FuelTankLevel;
     //increase Time on station
+
+    public enum NetType
+    {
+        Trawling,
+        Cast,
+        Rod
+    }
+    public NetType CurrentNet;
+
+    public enum BaitType
+    {
+        Bread,
+        Insects,
+        Worms
+    }
+    public BaitType CurrentBait;
+
+    public int BreadAmt, InsectAmt, WormAmt;
+
+    // faster net reset
+    [Range(1, 5)]
+    public int TrawlingNetLevel;
+
+    [Range(1, 5)]
+    public int CastNetLevel;
+
+    [Range(1, 5)]
+    public int RodNetLevel;
+
 
     public enum Weather
     {

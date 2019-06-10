@@ -10,6 +10,8 @@ public class FoodMenu : MonoBehaviour
 
     public Text ChickenTxt, BeefTxt, VeggTxt, PorkTxt;
     public float ChickenPrice, BeefPrice, VeggPrice, PorkPrice;
+
+    public Button Fish;
     bool picked;
 
     // Start is called before the first frame update
@@ -23,7 +25,7 @@ public class FoodMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         ChickenTxt.text = "PHP: " + ChickenPrice.ToString();
         BeefTxt.text = "PHP: " + BeefPrice.ToString();
@@ -33,7 +35,7 @@ public class FoodMenu : MonoBehaviour
         if (picked)
         {
             GlobalStats.Instance.BoughtFood = true;
-            
+
         }
 
         if (GlobalStats.Instance.BoughtFood)
@@ -42,6 +44,18 @@ public class FoodMenu : MonoBehaviour
             BoughtText.SetActive(true);
             BoughtText.GetComponent<Text>().text =
                 "Your meal later is : " + GlobalStats.Instance.CurFood.ToString();
+        }
+
+        if (GlobalStats.Instance.smallKG < .5f &&
+            GlobalStats.Instance.medKG < .5f &&
+            GlobalStats.Instance.largeKG < .5f)
+        {
+            Fish.interactable = false;
+        }
+
+        else
+        {
+            Fish.interactable = true;
         }
     }
 
@@ -87,17 +101,17 @@ public class FoodMenu : MonoBehaviour
 
     public void FromHaul()
     {
-        if (GlobalStats.Instance.smallKG > 0)
+        if (GlobalStats.Instance.smallKG > .5f)
         {
             GlobalStats.Instance.smallKG -= .5f;
             GlobalStats.Instance.CurFood = GlobalStats.FoodItems.Fish;
         }
-        else if(GlobalStats.Instance.medKG > 0)
+        else if(GlobalStats.Instance.medKG > .5f)
         {
             GlobalStats.Instance.medKG -= .5f;
             GlobalStats.Instance.CurFood = GlobalStats.FoodItems.Fish;
         }
-        else if(GlobalStats.Instance.largeKG > 0)
+        else if(GlobalStats.Instance.largeKG > .5f)
         {
             GlobalStats.Instance.medKG -= .5f;
             GlobalStats.Instance.CurFood = GlobalStats.FoodItems.Fish;

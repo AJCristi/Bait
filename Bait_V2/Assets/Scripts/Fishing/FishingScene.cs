@@ -31,7 +31,6 @@ public class FishingScene : MonoBehaviour
 
     public string SunnyDes, OverDes, RainDes;
 
-
     public enum FishingStatus
     {
         Moving,
@@ -45,7 +44,6 @@ public class FishingScene : MonoBehaviour
     void Start()
     {
         started = false;
-
         
 
         switch (GlobalStats.Instance.FuelTankLevel)

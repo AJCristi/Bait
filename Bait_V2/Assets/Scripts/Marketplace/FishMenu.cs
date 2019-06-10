@@ -20,13 +20,40 @@ public class FishMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SmallRate.text = "Small / Kg -- " + GlobalStats.Instance.smallFishPerKG.ToString();
-        MedRate.text = "Meduim / Kg -- " + GlobalStats.Instance.medFishPerKG.ToString();
-        LargeRate.text = "Large / Kg -- " + GlobalStats.Instance.largeFishPerKG.ToString();
+        if(GlobalStats.Instance.smallKG > 0)
+        {
+            SmallHaul.enabled = true;
+        }
+        else
+        {
+            SmallHaul.enabled = false;
+        }
 
-        SmallHaul.text = GlobalStats.Instance.smallKG.ToString() + " kgs";
-        MedHaul.text = GlobalStats.Instance.medKG.ToString() + " kgs";
-        LargeHaul.text = GlobalStats.Instance.largeKG.ToString() + " kgs";
+        if (GlobalStats.Instance.medKG > 0)
+        {
+            MedHaul.enabled = true;
+        }
+        else
+        {
+            MedHaul.enabled = false;
+        }
+
+        if (GlobalStats.Instance.largeKG > 0)
+        {
+            LargeHaul.enabled = true;
+        }
+        else
+        {
+            LargeHaul.enabled = false;
+        }
+
+        SmallRate.text = "Galunggong / Kg -- " + GlobalStats.Instance.smallFishPerKG.ToString();
+        MedRate.text = "Tilapia / Kg -- " + GlobalStats.Instance.medFishPerKG.ToString();
+        LargeRate.text = "Lapu-Lapu / Kg -- " + GlobalStats.Instance.largeFishPerKG.ToString();
+
+        SmallHaul.text = GlobalStats.Instance.smallKG.ToString("F2") + " kgs";
+        MedHaul.text = GlobalStats.Instance.medKG.ToString("F2") + " kgs";
+        LargeHaul.text = GlobalStats.Instance.largeKG.ToString("F2") + " kgs";
 
         Compute();
         Earnings.text = "Earnings -- PHP " + totalearning.ToString();

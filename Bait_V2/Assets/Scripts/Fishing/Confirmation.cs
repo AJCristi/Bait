@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class Confirmation : MonoBehaviour
 {
-    public Text DisplayNetLvl,DisplaySpdLvl,DisplayBaitLvl,DisplayFuelLvl;
-
-    public Text SelectedLoc,LocDescript,FishDescript;
+  
+    public Text SelectedLoc,LocDescript,FishDescript,NetDescript;
 
     public string LocSSDescription, LocERDescription, LocLIDescription;
     public string FishSSDescription, FishERDescription, FishLIDescription;
@@ -25,20 +24,10 @@ public class Confirmation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DisplayBoatStats();
+        
         DisplayLocation();
         DisplayWeather();
-
-
-    }
-
-    void DisplayBoatStats()
-    {
-        DisplayNetLvl.text = GlobalStats.Instance.NetLevel.ToString();
-        DisplayFuelLvl.text = GlobalStats.Instance.FuelTankLevel.ToString();
-        DisplayBaitLvl.text = GlobalStats.Instance.BaitLevel.ToString();
-        DisplaySpdLvl.text = GlobalStats.Instance.BoatSpdLvl.ToString();
-    }
+    }    
 
     void DisplayWeather()
     {

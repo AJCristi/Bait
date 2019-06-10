@@ -24,7 +24,7 @@ public class DayController : MonoBehaviour
     void Start()
     {       
         CheckTime();
-        CheckFood();
+        
         Month.text = GlobalStats.Instance.Month.ToString();
         Day.text = GlobalStats.Instance.Day.ToString();
     }
@@ -33,9 +33,11 @@ public class DayController : MonoBehaviour
     void Update()
     {
         CheckButtons();
-        SmallF.text = GlobalStats.Instance.smallKG.ToString("00") + " kg";
-        MedF.text = GlobalStats.Instance.medKG.ToString("00") + " kg";
-        LargeF.text = GlobalStats.Instance.largeKG.ToString("00") + " kg";
+        CheckFood();
+
+        SmallF.text = GlobalStats.Instance.smallKG.ToString("F2") + " kg";
+        MedF.text = GlobalStats.Instance.medKG.ToString("F2") + " kg";
+        LargeF.text = GlobalStats.Instance.largeKG.ToString("F2") + " kg";
 
 
         Savings.text = "Savings PHP: " + GlobalStats.Instance.PlayerSavings;
@@ -109,7 +111,7 @@ public class DayController : MonoBehaviour
         switch(GlobalStats.Instance.CurrentTime)
         {
             case 1:
-                GoHome.SetActive(false);
+                //GoHome.SetActive(false);
                 Market.SetActive(true);
                 Fishing.SetActive(true);
 
@@ -119,7 +121,7 @@ public class DayController : MonoBehaviour
                 D4Indicator.SetActive(false);
                 break;
             case 2:
-                GoHome.SetActive(false);
+                //GoHome.SetActive(false);
                 Market.SetActive(true);
                 Fishing.SetActive(true);
 
@@ -129,7 +131,7 @@ public class DayController : MonoBehaviour
                 D4Indicator.SetActive(false);
                 break;
             case 3:
-                GoHome.SetActive(false);
+                //GoHome.SetActive(false);
                 Market.SetActive(true);
                 Fishing.SetActive(true);
 
@@ -139,7 +141,7 @@ public class DayController : MonoBehaviour
                 D4Indicator.SetActive(false);
                 break;
             case 4:
-                GoHome.SetActive(false);
+                //GoHome.SetActive(false);
                 Market.SetActive(true);
                 Fishing.SetActive(true);
 
@@ -164,6 +166,7 @@ public class DayController : MonoBehaviour
 
     void CheckFood()
     {
+        Debug.Log(GlobalStats.Instance.CurFood);
         switch(GlobalStats.Instance.CurFood)
         {
             case GlobalStats.FoodItems.Beef:
@@ -180,6 +183,10 @@ public class DayController : MonoBehaviour
 
             case GlobalStats.FoodItems.Vegetables:
                 Dinner.text = "You have Vegetables for dinner!";
+                break;
+
+            case GlobalStats.FoodItems.Fish:
+                Dinner.text = "You have Fish for dinner!";
                 break;
 
             case GlobalStats.FoodItems.None:
@@ -240,7 +247,7 @@ public class DayController : MonoBehaviour
 
     public void HeadHome()
     {
-        GlobalStats.Instance.CurrentTime = 0;
+        GlobalStats.Instance.CurrentTime = 1;
         GlobalStats.Instance.TS1 = GlobalStats.Activity.None;
         GlobalStats.Instance.TS2 = GlobalStats.Activity.None;
         GlobalStats.Instance.TS3 = GlobalStats.Activity.None;

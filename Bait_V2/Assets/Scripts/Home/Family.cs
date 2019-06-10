@@ -230,7 +230,7 @@ public class Family : MonoBehaviour
 
     public void HaulConfirm()
     {
-        GlobalStats.Instance.FishKG -= haulConsumeAmt;
+        //GlobalStats.Instance.FishKG -= haulConsumeAmt;
 
         GlobalStats.Instance.DaughterHappiness += happinessCalc;
         GlobalStats.Instance.WifeHappiness += happinessCalc;
