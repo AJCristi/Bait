@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6954e5ff4316bc94aa5d276f3185eae7, type: 3}
   m_Name: TestScripted
   m_EditorClassIdentifier: 
-  title: 'YE YE YE '
-  description: SZN nigga
+  title: Happiness Scripted
+  description: Yes happy no not happy
   IsRandom: 0
   Trmonth: 6
   TRday: 19

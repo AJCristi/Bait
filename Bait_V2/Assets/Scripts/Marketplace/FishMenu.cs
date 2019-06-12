@@ -61,15 +61,17 @@ public class FishMenu : MonoBehaviour
 
     void Compute()
     {
-        float x = 0;
-        float y = 0;
-        float z = 0;
+        float x;
+        float y;
+        float z;
 
         x = GlobalStats.Instance.smallKG * GlobalStats.Instance.smallFishPerKG;
         y = GlobalStats.Instance.medKG * GlobalStats.Instance.medFishPerKG;
-        x = GlobalStats.Instance.largeKG * GlobalStats.Instance.largeFishPerKG;
+        z = GlobalStats.Instance.largeKG * GlobalStats.Instance.largeFishPerKG;        
+
 
         totalearning = x + y + z;
+        
     }
 
     public void Sell()
@@ -78,5 +80,7 @@ public class FishMenu : MonoBehaviour
         GlobalStats.Instance.medKG = 0;
         GlobalStats.Instance.largeKG = 0;
         GlobalStats.Instance.PlayerSavings += totalearning;
+        GlobalStats.Instance.TotalMoneyEarned += totalearning;
+
     }
 }

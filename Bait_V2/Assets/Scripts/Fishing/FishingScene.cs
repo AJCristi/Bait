@@ -17,7 +17,7 @@ public class FishingScene : MonoBehaviour
     string minutes;
     string seconds;
 
-    bool started;
+    public bool started;
 
     float x;
     float y;

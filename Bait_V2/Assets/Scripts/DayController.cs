@@ -35,6 +35,33 @@ public class DayController : MonoBehaviour
         CheckButtons();
         CheckFood();
 
+        if(GlobalStats.Instance.smallKG > 0)
+        {
+            SmallF.enabled = true;
+        }
+        else
+        {
+            SmallF.enabled = false;
+        }
+
+        if (GlobalStats.Instance.medKG > 0)
+        {
+            MedF.enabled = true;
+        }
+        else
+        {
+            MedF.enabled = false;
+        }
+
+        if (GlobalStats.Instance.largeKG > 0)
+        {
+            LargeF.enabled = true;
+        }
+        else
+        {
+            LargeF.enabled = false;
+        }
+
         SmallF.text = GlobalStats.Instance.smallKG.ToString("F2") + " kg";
         MedF.text = GlobalStats.Instance.medKG.ToString("F2") + " kg";
         LargeF.text = GlobalStats.Instance.largeKG.ToString("F2") + " kg";
@@ -166,7 +193,7 @@ public class DayController : MonoBehaviour
 
     void CheckFood()
     {
-        Debug.Log(GlobalStats.Instance.CurFood);
+        //Debug.Log(GlobalStats.Instance.CurFood);
         switch(GlobalStats.Instance.CurFood)
         {
             case GlobalStats.FoodItems.Beef:
@@ -193,52 +220,50 @@ public class DayController : MonoBehaviour
                 Dinner.text = "You don't have anything for dinner..";
                 break;
         }
-    }
+    }   
 
-    public void StartActivity(string scene)
+    public void StartMarket(string scene)
     {
-        switch(scene)
+        switch (GlobalStats.Instance.CurrentTime)
         {
-            case "1_MarketPlaceTest":
-                switch(GlobalStats.Instance.CurrentTime)
-                {
-                    case 1:
-                        GlobalStats.Instance.TS1 = GlobalStats.Activity.Market;
-                        break;
-
-                    case 2:
-                        GlobalStats.Instance.TS2 = GlobalStats.Activity.Market;
-                        break;
-
-                    case 3:
-                        GlobalStats.Instance.TS3 = GlobalStats.Activity.Market;
-                        break;
-
-                    case 4:
-                        GlobalStats.Instance.TS4 = GlobalStats.Activity.Market;
-                        break;
-                }                
+            case 1:
+                GlobalStats.Instance.TS1 = GlobalStats.Activity.Market;
                 break;
 
-            case "2_FishingTest":
-                switch (GlobalStats.Instance.CurrentTime)
-                {
-                    case 1:
-                        GlobalStats.Instance.TS1 = GlobalStats.Activity.Fishing;
-                        break;
+            case 2:
+                GlobalStats.Instance.TS2 = GlobalStats.Activity.Market;
+                break;
 
-                    case 2:
-                        GlobalStats.Instance.TS2 = GlobalStats.Activity.Fishing;
-                        break;
+            case 3:
+                GlobalStats.Instance.TS3 = GlobalStats.Activity.Market;
+                break;
 
-                    case 3:
-                        GlobalStats.Instance.TS3 = GlobalStats.Activity.Fishing;
-                        break;
+            case 4:
+                GlobalStats.Instance.TS4 = GlobalStats.Activity.Market;
+                break;
+        }
+        GlobalStats.Instance.CurrentTime++;
+        SceneManager.LoadScene(scene);
+    }
 
-                    case 4:
-                        GlobalStats.Instance.TS4 = GlobalStats.Activity.Fishing;
-                        break;
-                }
+    public void StartFish(string scene)
+    {
+        switch (GlobalStats.Instance.CurrentTime)
+        {
+            case 1:
+                GlobalStats.Instance.TS1 = GlobalStats.Activity.Fishing;
+                break;
+
+            case 2:
+                GlobalStats.Instance.TS2 = GlobalStats.Activity.Fishing;
+                break;
+
+            case 3:
+                GlobalStats.Instance.TS3 = GlobalStats.Activity.Fishing;
+                break;
+
+            case 4:
+                GlobalStats.Instance.TS4 = GlobalStats.Activity.Fishing;
                 break;
         }
         GlobalStats.Instance.CurrentTime++;
@@ -254,6 +279,18 @@ public class DayController : MonoBehaviour
         GlobalStats.Instance.TS4 = GlobalStats.Activity.None;
 
         SceneManager.LoadScene("3_HomeTest");
+
+    }
+
+    public void HeadHomeTutorial()
+    {
+        GlobalStats.Instance.CurrentTime = 1;
+        GlobalStats.Instance.TS1 = GlobalStats.Activity.None;
+        GlobalStats.Instance.TS2 = GlobalStats.Activity.None;
+        GlobalStats.Instance.TS3 = GlobalStats.Activity.None;
+        GlobalStats.Instance.TS4 = GlobalStats.Activity.None;
+
+        SceneManager.LoadScene("3_HomeTestTutorial");
 
     }
 }

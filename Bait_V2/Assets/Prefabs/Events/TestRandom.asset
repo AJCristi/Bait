@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestRandom
   m_EditorClassIdentifier: 
   title: Payment
-  description: moonlight yuh
+  description: 'Yes = pay no = '
   IsRandom: 1
   Trmonth: 0
   TRday: 0

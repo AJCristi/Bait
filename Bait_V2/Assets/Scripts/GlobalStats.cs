@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GlobalStats : MonoBehaviour
 {
@@ -16,6 +17,19 @@ public class GlobalStats : MonoBehaviour
         else if (Instance != this)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public bool EndSavings;
+
+    public float TotalMoneyEarned;
+    public float TotalFishCaught;
+
+    private void Update()
+    {
+        if (EndSavings)
+        {
+            SceneManager.LoadScene("4_GameOver");   
         }
     }
 

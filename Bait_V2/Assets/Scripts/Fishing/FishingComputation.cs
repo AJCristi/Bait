@@ -209,7 +209,7 @@ public class FishingComputation : MonoBehaviour
 
             case 3:
                 catchResetTime = 3;
-                break;
+                break; 
         }
 
         //switch (GlobalStats.Instance.NetLevel)
@@ -258,76 +258,7 @@ public class FishingComputation : MonoBehaviour
 
     void CatchFish()
     {        
-        //switch(GlobalStats.Instance.SelectedLocation)
-        //{
-        //    case GlobalStats.FishingLocation.SandyShoals:
-        //        switch(Random100())
-        //        {
-        //            case float x when (x >= 0 && x < 40):
-        //                Debug.Log(x);
-        //                NoCatch();
-        //                break;
-
-        //            case float x when (x < 75 && x >= 40):
-        //                Debug.Log(x);
-        //                CatchSmall();
-        //                break;
-
-        //            case float x when (x >= 75 && x < 95):
-        //                Debug.Log(x);
-        //                CatchMed();
-        //                break;
-
-        //            case float x when (x >= 95):
-        //                Debug.Log(x);
-        //                CatchLarge();
-        //                break;
-                    
-        //        }
-        //        break;
-
-        //    case GlobalStats.FishingLocation.ExposedReef:
-        //        switch (Random100())
-        //        {
-        //            case float x when (x >= 0 && x < 40):
-        //                NoCatch();
-        //                break;
-
-        //            case float x when (x < 55 && x >= 40):
-        //                CatchSmall();
-        //                break;
-
-        //            case float x when (x >= 55 && x < 95):
-        //                CatchMed();
-        //                break;
-
-        //            case float x when (x >= 95):
-        //                CatchLarge();
-        //                break;
-        //        }
-        //        break;
-
-        //    case GlobalStats.FishingLocation.LonelyIsland:
-        //        switch (Random100())
-        //        {
-        //            case float x when (x >= 0 && x < 40):
-        //                NoCatch();
-        //                break;
-
-        //            case float x when (x < 75 && x >= 40):
-        //                CatchSmall();
-        //                break;
-
-        //            case float x when (x >= 75 && x < 85):
-        //                CatchMed();
-        //                break;
-
-        //            case float x when (x >= 85):
-        //                CatchLarge();
-        //                break;
-        //        }
-        //        break;
-        //}
+        
         switch(GlobalStats.Instance.CurrentNet)
         {
             case GlobalStats.NetType.Rod:
@@ -444,6 +375,7 @@ public class FishingComputation : MonoBehaviour
         fx = Random.Range(GlobalStats.Instance.SmallMinKG,
                             GlobalStats.Instance.SmallMaxKG);
         smallF += (fx * numOfFish);
+        GlobalStats.Instance.TotalFishCaught += smallF;
         caughtFish = true;
         Debug.Log("Small");
     }
@@ -454,6 +386,7 @@ public class FishingComputation : MonoBehaviour
         fx = Random.Range(GlobalStats.Instance.MedMinKG,
                             GlobalStats.Instance.MedMaxKG);
         medF += (fx * numOfFish);
+        GlobalStats.Instance.TotalFishCaught += medF;
         caughtFish = true;
         Debug.Log("Med");
     }
@@ -464,6 +397,7 @@ public class FishingComputation : MonoBehaviour
         fx = Random.Range(GlobalStats.Instance.LargeMinKG,
                             GlobalStats.Instance.LargeMaxKG);
         largeF += (fx * numOfFish);
+        GlobalStats.Instance.TotalFishCaught += largeF;
         caughtFish = true;
         Debug.Log("LARGE");
     }

@@ -33,7 +33,7 @@ public class MarketMenu : MonoBehaviour
 
     public Text NetTypeText;
 
-    int buyBaitAmt;
+    public int buyBaitAmt;
 
     // Start is called before the first frame update
     void Start()

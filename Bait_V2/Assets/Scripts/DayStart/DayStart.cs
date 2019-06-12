@@ -5,27 +5,70 @@ using UnityEngine.UI;
 
 public class DayStart : MonoBehaviour
 {
-    public Text Month, Day;
-
-    public Text FuelLvl, MotorLvl, BaitLvl, NetLvl;
+    public Text Month, Day;    
 
     public Text FishSmallDis, FishMedDis, FishLargeDis;
 
     public Text SmallPrice, MedPrice, LargePrice;
 
     public Text WeatherForecastToday;
-    //todo add foodstorage
 
+    public Text BreadBait, InsectBait, WormBait;
+
+    public Text RodNet, CastNet, TrawlNet;
+
+    public GameObject GearTab, FoodTab, MarketTab;
+
+    enum SelectedTab
+    {
+        Gear,
+        Food,
+        Market
+    }
+    SelectedTab ST;
+   
     // Start is called before the first frame update
     void Start()
     {
+        ST = SelectedTab.Gear;
+
         Month.text = GlobalStats.Instance.Month.ToString();
         Day.text = GlobalStats.Instance.Day.ToString();
 
-        FuelLvl.text = GlobalStats.Instance.FuelTankLevel.ToString();
-        MotorLvl.text = GlobalStats.Instance.BoatSpdLvl.ToString();
-        BaitLvl.text = GlobalStats.Instance.BaitLevel.ToString();
-        NetLvl.text = GlobalStats.Instance.NetLevel.ToString();
+        BreadBait.text = GlobalStats.Instance.BreadAmt.ToString();
+        InsectBait.text = GlobalStats.Instance.InsectAmt.ToString();
+        WormBait.text = GlobalStats.Instance.WormAmt.ToString();
+
+        RodNet.text = GlobalStats.Instance.RodNetLevel.ToString();
+        CastNet.text = GlobalStats.Instance.RodNetLevel.ToString();
+        TrawlNet.text = GlobalStats.Instance.RodNetLevel.ToString();
+
+        if (GlobalStats.Instance.smallKG > 0)
+        {
+            FishSmallDis.enabled = true;
+        }
+        else
+        {
+            FishSmallDis.enabled = false;
+        }
+
+        if (GlobalStats.Instance.medKG > 0)
+        {
+            FishMedDis.enabled = true;
+        }
+        else
+        {
+            FishMedDis.enabled = false;
+        }
+
+        if (GlobalStats.Instance.largeKG > 0)
+        {
+            FishLargeDis.enabled = true;
+        }
+        else
+        {
+            FishLargeDis.enabled = false;
+        }
 
         FishSmallDis.text = GlobalStats.Instance.smallKG.ToString() + " Kgs";
         FishMedDis.text = GlobalStats.Instance.medKG.ToString() + " Kgs";
@@ -42,18 +85,52 @@ public class DayStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        switch(ST)
+        {
+            case SelectedTab.Food:
+                GearTab.SetActive(false);
+                FoodTab.SetActive(true);
+                MarketTab.SetActive(false);
+                break;
+
+            case SelectedTab.Gear:
+                GearTab.SetActive(true);
+                FoodTab.SetActive(false);
+                MarketTab.SetActive(false);
+                break;
+
+            case SelectedTab.Market:
+                GearTab.SetActive(false);
+                FoodTab.SetActive(false);
+                MarketTab.SetActive(true);
+                break;
+        }
+    }
+
+    public void SelectFood()
+    {
+        ST = SelectedTab.Food;
+    }
+
+    public void SelectGear()
+    {
+        ST = SelectedTab.Gear;
+    }
+
+    public void SelectMarket()
+    {
+        ST = SelectedTab.Market;
     }
 
     void AssignWeatherToday()
     {
         float x = Random.Range(1, 100);
         Debug.Log(x);
-        if (x < 50)
+        if (x < 40)
         {
             GlobalStats.Instance.Forecast = GlobalStats.Weather.Sunny;
         }
-        else if (x >= 50 && x < 80)
+        else if (x >= 40 && x < 80)
         {
             GlobalStats.Instance.Forecast = GlobalStats.Weather.Overcast;
         }
@@ -63,4 +140,5 @@ public class DayStart : MonoBehaviour
         }
 
     }
+   
 }

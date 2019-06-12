@@ -14,6 +14,8 @@ public class Home : MonoBehaviour
     public GameObject SleepBtn;
     public bool FoodDone, EventDone;
 
+    public GameObject GameoverScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,8 @@ public class Home : MonoBehaviour
         FoodDone = false;
         EventDone = false;
         SleepBtn.SetActive(false);
+
+        GameoverScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,9 +36,13 @@ public class Home : MonoBehaviour
         calcSavings.text = "PHP: " + GlobalStats.Instance.PlayerSavings.ToString();
         Debug.Log(EventDone + " - " + FoodDone);
         if (EventDone && FoodDone)
-        {
-            
+        {            
             SleepBtn.SetActive(true);
+        }
+
+        if (GlobalStats.Instance.PlayerSavings <= 0)
+        {
+            GameoverScreen.SetActive(true);
         }
     }
 
@@ -50,7 +58,16 @@ public class Home : MonoBehaviour
         if(!calculated)
         {
             GlobalStats.Instance.PlayerSavings -= GlobalStats.Instance.ElectricityCost + GlobalStats.Instance.WaterCost;
+            if(GlobalStats.Instance.PlayerSavings < 0)
+            {
+                GlobalStats.Instance.PlayerSavings = 0;
+            }
             calculated = true;
         }
+    }
+
+    public void GameOver()
+    {
+        GlobalStats.Instance.EndSavings = true;
     }
 }
