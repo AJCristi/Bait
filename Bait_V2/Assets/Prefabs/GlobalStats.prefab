@@ -43,8 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1373ad3399fe224d9a987da274beb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Month: 6
-  Day: 19
+  EndSavings: 0
+  TotalMoneyEarned: 0
+  TotalFishCaught: 0
+  Month: 5
+  Day: 16
+  CurTime: 8
   PlayerSavings: 200
   smallKG: 0
   medKG: 0
@@ -97,3 +101,5 @@ MonoBehaviour:
   TS3: 2
   TS4: 2
   CurrentTime: 1
+  EventsList: []
+  ActiveEvent: {fileID: 0}

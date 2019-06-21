@@ -26,22 +26,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestEnvironment/4_GameOver.unity
     guid: 610c310461b92d74296833d6b2ddd5a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial/0_DayStartTutorial.unity
     guid: 2b800ae19cb79ec408c23e329dfe8518
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial/0.5_DayControllerTutorial.unity
     guid: 7dcae671eb8ca1c49b2dbb64135ef2d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial/1_MarketPlaceTestTutorial.unity
     guid: d9e4de64ea9b8ba4eb55f18f01e1b880
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial/2_FishingTestTutorial.unity
     guid: 40af091ed05ef5f4f9a6d240db0084fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial/3_HomeTestTutorial.unity
     guid: e8356182ef0389240a3e3a58849d2e54
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial/4_GameOverTutorial.unity
     guid: c6788d052762e6c4a87a9128d999d75c
+  - enabled: 1
+    path: Assets/Scenes/Final/1_MapSelector.unity
+    guid: c0401626b09d263489953833e60d48e6
   m_configObjects: {}

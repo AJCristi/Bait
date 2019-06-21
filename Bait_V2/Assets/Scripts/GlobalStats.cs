@@ -33,7 +33,32 @@ public class GlobalStats : MonoBehaviour
         }
     }
 
-    public float Month, Day;
+    public int Month, Day;
+
+    public void AdvanceDay()
+    {
+        if(Month < 12)
+        {
+            Month++;
+        }
+        else if (Month == 12)
+        {
+            Month = 1;
+        }
+
+        if (Day < 30)
+        {
+            Day++;
+        }
+        else if(Day == 31)
+        {
+            Day = 1;
+        }
+
+    }
+
+    [Range (5,20)]
+    public int CurTime;
 
     public float PlayerSavings;
 
@@ -153,6 +178,7 @@ public class GlobalStats : MonoBehaviour
     [Range(1, 5)]
     public int CurrentTime;
 
-    
+    public List<EventData> EventsList = new List<EventData>();
+    public EventData ActiveEvent;
 
 }
