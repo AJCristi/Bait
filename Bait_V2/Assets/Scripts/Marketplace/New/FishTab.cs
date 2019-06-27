@@ -25,9 +25,9 @@ public class FishTab : MonoBehaviour
         PTilapia = 0;
         PLapu = 0;
 
-        GalungPerKG.text = GlobalStats.Instance.smallFishPerKG.ToString() + "/KG";
-        TilaPerKg.text = GlobalStats.Instance.medFishPerKG.ToString() + "/KG";
-        LapuPerKG.text = GlobalStats.Instance.largeFishPerKG.ToString() + "/KG";
+        GalungPerKG.text = GlobalStats.Instance.NewsmallFishPerKG.ToString() + "/KG";
+        TilaPerKg.text = GlobalStats.Instance.NewmedFishPerKG.ToString() + "/KG";
+        LapuPerKG.text = GlobalStats.Instance.NewlargeFishPerKG.ToString() + "/KG";
     }
 
     // Update is called once per frame
@@ -51,12 +51,12 @@ public class FishTab : MonoBehaviour
         float y;
         float z;
 
-        x = PGalung * GlobalStats.Instance.smallFishPerKG;
-        y = PTilapia * GlobalStats.Instance.medFishPerKG;
-        z = PLapu * GlobalStats.Instance.largeFishPerKG;
+        x = PGalung * GlobalStats.Instance.NewsmallFishPerKG;
+        y = PTilapia * GlobalStats.Instance.NewmedFishPerKG;
+        z = PLapu * GlobalStats.Instance.NewlargeFishPerKG;
 
         totalearning = x + y + z;
-        Earnings.text = totalearning.ToString();
+        Earnings.text = totalearning.ToString("F2");
     }
 
     public void Sell()

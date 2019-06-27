@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TabController : MonoBehaviour
 {
@@ -15,12 +17,29 @@ public class TabController : MonoBehaviour
 
     public GameObject FishTab, BaitTab, GearTab;
 
+    public Text MarketPrices;
+
     // Start is called before the first frame update
     void Start()
     {
         FishTab.SetActive(false);
         BaitTab.SetActive(false);
         GearTab.SetActive(false);
+
+        switch (GlobalStats.Instance.PricesToday)
+        {
+            case GlobalStats.MarketPrices.Normal:
+                MarketPrices.text = "Market Prices are normal today";
+                break;
+
+            case GlobalStats.MarketPrices.Higher:
+                MarketPrices.text = "Market Prices are higher today";
+                break;
+
+            case GlobalStats.MarketPrices.Lower:
+                MarketPrices.text = "Market Prices are lower today";
+                break;
+        }
 
     }
 
@@ -60,5 +79,10 @@ public class TabController : MonoBehaviour
     public void SelectGear()
     {
         ActiveTab = Tabs.Gear;
+    }
+
+    public void ReturnBack()
+    {
+        SceneManager.LoadScene("1_MapSelector");
     }
 }

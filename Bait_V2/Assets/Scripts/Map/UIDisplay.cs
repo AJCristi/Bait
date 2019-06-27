@@ -14,13 +14,13 @@ public class UIDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GlobalStats.Instance.CurTime = 8;
+        //GlobalStats.Instance.CurTime = 8;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Savings.text = GlobalStats.Instance.PlayerSavings.ToString();
+        Savings.text = GlobalStats.Instance.PlayerSavings.ToString("F2");
         Date.text = GlobalStats.Instance.Month.ToString() + "/" + GlobalStats.Instance.Day.ToString();
 
         switch(GlobalStats.Instance.Forecast)

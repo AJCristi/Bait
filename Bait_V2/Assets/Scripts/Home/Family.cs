@@ -82,15 +82,15 @@ public class Family : MonoBehaviour
             StatsPanel.GetComponent<RectTransform>().transform.position = startingPos;
         }
 
-        if (GlobalStats.Instance.CurFood == GlobalStats.FoodItems.None 
-            || !GlobalStats.Instance.BoughtFood)
-        {
-            storeButton.interactable = false;
-        }
-        else
-        {
-            storeButton.interactable = true;
-        }
+        //if (GlobalStats.Instance.CurFood == GlobalStats.FoodItems.None 
+        //    || !GlobalStats.Instance.BoughtFood)
+        //{
+        //    storeButton.interactable = false;
+        //}
+        //else
+        //{
+        //    storeButton.interactable = true;
+        //}
 
         if(poppedInd)
         {

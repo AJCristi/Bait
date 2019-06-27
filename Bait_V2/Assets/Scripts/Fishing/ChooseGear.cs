@@ -221,10 +221,6 @@ public class ChooseGear : MonoBehaviour
                 TilapiaChances -= 10;
                 LapuChances -= 10;
                 break;
-        }
-
-        
-
-        
+        }        
     }
 }

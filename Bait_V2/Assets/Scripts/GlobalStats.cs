@@ -18,34 +18,28 @@ public class GlobalStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }    
 
     public bool EndSavings;
 
     public float TotalMoneyEarned;
     public float TotalFishCaught;
+    public int TotalDaysPassed;
 
     private void Update()
-    {
-        if (EndSavings)
+    {        
+        if(PlayerSavings < 0)
         {
-            SceneManager.LoadScene("4_GameOver");   
+            PlayerSavings = 0;
         }
     }
 
     public int Month, Day;
 
+    public int EndMonth, EndDay;
+
     public void AdvanceDay()
     {
-        if(Month < 12)
-        {
-            Month++;
-        }
-        else if (Month == 12)
-        {
-            Month = 1;
-        }
-
         if (Day < 30)
         {
             Day++;
@@ -53,12 +47,18 @@ public class GlobalStats : MonoBehaviour
         else if(Day == 31)
         {
             Day = 1;
+            Month++;
         }
-
+        TotalDaysPassed++;
     }
 
-    [Range (5,20)]
+    [Range (5,24)]
     public int CurTime;
+
+    public void AdvanceTime(int x)
+    {
+        CurTime += x;
+    }
 
     public float PlayerSavings;
 
@@ -74,9 +74,7 @@ public class GlobalStats : MonoBehaviour
     public float SmallMinKG, SmallMaxKG;
     public float MedMinKG, MedMaxKG;
     public float LargeMinKG, LargeMaxKG;
-
-    public float setAsideFishAmt;
-
+    
     public float PhpPerKG;
     public float smallFishPerKG,medFishPerKG,largeFishPerKG;
 
@@ -160,6 +158,7 @@ public class GlobalStats : MonoBehaviour
         LonelyIsland
     }
     public FishingLocation SelectedLocation;
+    public int SSHours, ERHours, LIHours;
 
     public float ElectricityCost, WaterCost;
 
@@ -178,7 +177,93 @@ public class GlobalStats : MonoBehaviour
     [Range(1, 5)]
     public int CurrentTime;
 
-    public List<EventData> EventsList = new List<EventData>();
-    public EventData ActiveEvent;
+    public List<DataEvent> EventsList = new List<DataEvent>();
+    public DataEvent ActiveEvent;
 
+    public void ResetAllEvents()
+    {
+        foreach(DataEvent data in EventsList)
+        {
+            data.ResetDates();
+            data.Completed = false;
+        }
+    }
+
+    public void EventMinusDay()
+    {
+        if(ActiveEvent != null)
+            ActiveEvent.DaysRemaining--;
+    }
+
+    public void RandomForecast()
+    {
+        float x = Random.Range(1, 100);
+                   
+        if(x >= 0 && x < 33)
+        {
+            Forecast = Weather.Sunny;
+        }
+        else if(x >= 33 && x < 66)
+        {
+            Forecast = Weather.Overcast;
+        }
+        else
+        {
+            Forecast = Weather.Rainy;
+        }
+    }
+
+    public enum MarketPrices
+    {
+        Lower,
+        Normal,
+        Higher
+    }
+    public MarketPrices PricesToday;
+
+    public float NewsmallFishPerKG, NewmedFishPerKG, NewlargeFishPerKG;
+
+    public void MarketDecide()
+    {
+        NewsmallFishPerKG = smallFishPerKG;
+        NewmedFishPerKG = medFishPerKG;
+        NewlargeFishPerKG = largeFishPerKG;
+
+        float x = Random.Range(1, 100);
+
+        if (x >= 0 && x < 40)
+        {
+            PricesToday = MarketPrices.Normal;
+        }
+        else if (x >= 40 && x < 75)
+        {
+            PricesToday = MarketPrices.Lower;
+        }
+        else
+        {
+            PricesToday = MarketPrices.Higher;
+        }
+        float y = 0;
+        switch (PricesToday)
+        {            
+            case MarketPrices.Normal:
+                //unchanged
+                break;
+
+            case MarketPrices.Lower:
+                y = Random.Range(1, 15);
+                NewsmallFishPerKG -= y;
+                NewmedFishPerKG -= y;
+                NewlargeFishPerKG -= y;
+                break;
+
+            case MarketPrices.Higher:
+                y = Random.Range(1, 15);
+                NewsmallFishPerKG += y;
+                NewmedFishPerKG += y;
+                NewlargeFishPerKG += y;
+                break;
+        }
+
+    }
 }

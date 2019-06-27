@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Event", menuName = "New Event", order = 51)]
+//[CreateAssetMenu(fileName = "Event", menuName = "New Event", order = 51)]
 public class EventData : ScriptableObject
 {
     [SerializeField]

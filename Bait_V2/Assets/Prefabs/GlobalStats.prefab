@@ -46,8 +46,11 @@ MonoBehaviour:
   EndSavings: 0
   TotalMoneyEarned: 0
   TotalFishCaught: 0
-  Month: 5
-  Day: 16
+  TotalDaysPassed: 0
+  Month: 7
+  Day: 1
+  EndMonth: 7
+  EndDay: 30
   CurTime: 8
   PlayerSavings: 200
   smallKG: 0
@@ -59,7 +62,6 @@ MonoBehaviour:
   MedMaxKG: 1.2
   LargeMinKG: 0.2
   LargeMaxKG: 1.5
-  setAsideFishAmt: 0
   PhpPerKG: 30
   smallFishPerKG: 60
   medFishPerKG: 100
@@ -91,6 +93,9 @@ MonoBehaviour:
   RodNetLevel: 1
   Forecast: 0
   SelectedLocation: 0
+  SSHours: 3
+  ERHours: 5
+  LIHours: 7
   ElectricityCost: 150
   WaterCost: 150
   WifeHappiness: 50
@@ -101,5 +106,11 @@ MonoBehaviour:
   TS3: 2
   TS4: 2
   CurrentTime: 1
-  EventsList: []
+  EventsList:
+  - {fileID: 7243169123116590667, guid: b8fe227ea42a21743bc0264fc6b72a1c, type: 3}
+  - {fileID: 7243169123116590667, guid: dc895009391a4104dadec6a0096763ef, type: 3}
   ActiveEvent: {fileID: 0}
+  PricesToday: 0
+  NewsmallFishPerKG: 0
+  NewmedFishPerKG: 0
+  NewlargeFishPerKG: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MapController : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class MapController : MonoBehaviour
     public Button Loc3Btn;
     bool Loc3ConfirmMenu;
     float Loc3Timer;
+
+
+    public Text Loc1Hour, Loc2Hour, Loc3Hour;
+    public Text MarketPlaceIndicator;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +63,15 @@ public class MapController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Loc1Hour.text = GlobalStats.Instance.SSHours.ToString() + " hours";
+        Loc2Hour.text = GlobalStats.Instance.ERHours.ToString() + " hours";
+        Loc3Hour.text = GlobalStats.Instance.LIHours.ToString() + " hours";
+        MarketUpdate();
+        if (GlobalStats.Instance.CurTime >= 20)
+        {
+            SceneManager.LoadScene("4_Home");
+        }
+
         if (EventSystem.current.currentSelectedGameObject == HomeBtn.gameObject)
         {
             HomeMenu.SetActive(true);
@@ -184,9 +198,30 @@ public class MapController : MonoBehaviour
 
     }
 
+    void MarketUpdate()
+    {
+        switch(GlobalStats.Instance.PricesToday)
+        {
+            case GlobalStats.MarketPrices.Higher:
+                MarketPlaceIndicator.color = Color.green;
+                MarketPlaceIndicator.text = "++";
+                break;
+
+            case GlobalStats.MarketPrices.Normal:
+                MarketPlaceIndicator.color = Color.white;
+                MarketPlaceIndicator.text = "~~";
+                break;
+
+            case GlobalStats.MarketPrices.Lower:
+                MarketPlaceIndicator.color = Color.red;
+                MarketPlaceIndicator.text = "--";
+                break;
+        }
+    }
+
     public void YesHome()
     {
-        Debug.Log("BRUH MOMENTS");
+        SceneManager.LoadScene("4_Home");
     }
 
     public void NoHome()
@@ -196,7 +231,10 @@ public class MapController : MonoBehaviour
 
     public void YesMarket()
     {
-        //todo
+        GlobalStats.Instance.AdvanceTime(2);
+        SceneManager.LoadScene("2_MarketPlace");      
+
+
     }
 
     public void NoMarket()
@@ -206,7 +244,8 @@ public class MapController : MonoBehaviour
 
     public void YesLoc1Confirm()
     {
-        //todo gotolocation
+        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
+        SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc1Confirm()
@@ -226,7 +265,8 @@ public class MapController : MonoBehaviour
 
     public void YesLoc2Confirm()
     {
-        //todo gotolocation
+        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.ExposedReef;
+        SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc2Confirm()
@@ -246,7 +286,8 @@ public class MapController : MonoBehaviour
 
     public void YesLoc3Confirm()
     {
-        //todo gotolocation
+        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.LonelyIsland;
+        SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc3Confirm()
