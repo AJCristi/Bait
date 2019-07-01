@@ -78,6 +78,10 @@ public class GlobalStats : MonoBehaviour
     public float PhpPerKG;
     public float smallFishPerKG,medFishPerKG,largeFishPerKG;
 
+    public int GGPieces, TilaPieces, LapuPieces;
+
+    public int RodPieces, CastPieces, TrawlPieces;
+
     public enum FoodItems
     {
         Chicken, 

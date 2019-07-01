@@ -16,6 +16,12 @@ public class NetTab : MonoBehaviour
 
     public GameObject BuyBtn;
 
+    public Text RodAmt, CastAmt, TrawlAmt;
+    public Text CurSelectedAmt, CurSelectedPrice;
+
+    public GameObject BuyNetBtn;
+    float gearPrice;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +33,26 @@ public class NetTab : MonoBehaviour
     {
         CheckSelected();
         CalculatePrice();
+
+        CheckNets();
+
+        if (GlobalStats.Instance.PlayerSavings < curPrice)
+        {
+            BuyBtn.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            BuyBtn.GetComponent<Button>().interactable = true;
+        }
+
+        if (GlobalStats.Instance.PlayerSavings < gearPrice)
+        {
+            BuyNetBtn.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            BuyNetBtn.GetComponent<Button>().interactable = true;
+        }
     }
 
     void CheckSelected()
@@ -40,6 +66,8 @@ public class NetTab : MonoBehaviour
 
                 CurSelectedDesc.text = "Uses 5 bait per cast";
                 CurSelectedLvl.text = "Level: " + GlobalStats.Instance.CastNetLevel.ToString();
+
+                CurSelectedAmt.text = GlobalStats.Instance.CastPieces.ToString() + " pieces";
                 break;
 
             case GlobalStats.NetType.Rod:
@@ -47,6 +75,8 @@ public class NetTab : MonoBehaviour
 
                 CurSelectedDesc.text = "Uses 1 bait per cast";
                 CurSelectedLvl.text = "Level: " + GlobalStats.Instance.RodNetLevel.ToString();
+
+                CurSelectedAmt.text = GlobalStats.Instance.RodPieces.ToString() + " pieces";
                 break;
 
             case GlobalStats.NetType.Trawling:
@@ -54,6 +84,8 @@ public class NetTab : MonoBehaviour
 
                 CurSelectedDesc.text = "Uses 10 bait per cast";
                 CurSelectedLvl.text ="Level: "+ GlobalStats.Instance.TrawlingNetLevel.ToString();
+
+                CurSelectedAmt.text = GlobalStats.Instance.TrawlPieces.ToString() + " pieces";
                 break;
         }
     }
@@ -204,6 +236,52 @@ public class NetTab : MonoBehaviour
                     break;
             }
             GlobalStats.Instance.PlayerSavings -= curPrice;
+        }
+    }
+
+    void CheckNets()
+    {
+        RodAmt.text = GlobalStats.Instance.RodPieces.ToString();
+        CastAmt.text = GlobalStats.Instance.CastPieces.ToString();
+        TrawlAmt.text = GlobalStats.Instance.TrawlPieces.ToString();
+
+        CurSelectedPrice.text = gearPrice.ToString();
+
+        switch (GlobalStats.Instance.CurrentNet)
+        {
+            case GlobalStats.NetType.Cast:
+                gearPrice = 20;
+                break;
+
+            case GlobalStats.NetType.Rod:
+                gearPrice = 10;
+                break;
+
+            case GlobalStats.NetType.Trawling:
+                gearPrice = 30;
+                break;
+        }
+    }
+
+    public void BuyNet()
+    {
+        if (GlobalStats.Instance.PlayerSavings >= gearPrice)
+        {
+            switch(GlobalStats.Instance.CurrentNet)
+            {
+                case GlobalStats.NetType.Cast:
+                    GlobalStats.Instance.CastPieces++;
+                    break;
+
+                case GlobalStats.NetType.Rod:
+                    GlobalStats.Instance.RodPieces++;
+                    break;
+
+                case GlobalStats.NetType.Trawling:
+                    GlobalStats.Instance.TrawlPieces++;
+                    break;
+            }
+            GlobalStats.Instance.PlayerSavings -= gearPrice;
         }
     }
 }

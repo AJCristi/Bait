@@ -11,6 +11,8 @@ public class FishDisplay : MonoBehaviour, IPointerEnterHandler
     public GameObject Window;
 
     public Text GG, Tilapia, Lapu2;
+    public Text GGPcs, TilaPcs, LapuPcs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,10 @@ public class FishDisplay : MonoBehaviour, IPointerEnterHandler
         GG.text = GlobalStats.Instance.smallKG.ToString("F2") + " kg";
         Tilapia.text = GlobalStats.Instance.medKG.ToString("F2") + " kg";
         Lapu2.text = GlobalStats.Instance.largeKG.ToString("F2") + " kg";
+
+        GGPcs.text = GlobalStats.Instance.GGPieces.ToString();
+        TilaPcs.text = GlobalStats.Instance.TilaPieces.ToString();
+        LapuPcs.text = GlobalStats.Instance.LapuPieces.ToString();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

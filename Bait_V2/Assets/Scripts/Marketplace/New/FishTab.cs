@@ -16,7 +16,10 @@ public class FishTab : MonoBehaviour
     float PGalung, PTilapia, PLapu;
 
     public Text Earnings;
-    float totalearning;    
+    float totalearning;
+
+    public Image GGprice, Tilaprice, Lapuprice;
+    public Sprite UpPrice, DownPrice;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,35 @@ public class FishTab : MonoBehaviour
         PlayerHaul();
         CheckOwnSelling();
         Compute();
+
+        switch(GlobalStats.Instance.PricesToday)
+        {
+            case GlobalStats.MarketPrices.Higher:
+                GGprice.enabled = true;
+                Tilaprice.enabled = true;
+                Lapuprice.enabled = true;
+
+                GGprice.sprite = UpPrice;
+                Tilaprice.sprite = UpPrice;
+                Lapuprice.sprite = UpPrice;
+                break;
+
+            case GlobalStats.MarketPrices.Lower:
+                GGprice.enabled = true;
+                Tilaprice.enabled = true;
+                Lapuprice.enabled = true;
+
+                GGprice.sprite = DownPrice;
+                Tilaprice.sprite = DownPrice;
+                Lapuprice.sprite = DownPrice;
+                break;
+
+            case GlobalStats.MarketPrices.Normal:
+                GGprice.enabled = false;
+                Tilaprice.enabled = false;
+                Lapuprice.enabled = false;
+                break;
+        }
     }
 
     void PlayerHaul()

@@ -18,6 +18,7 @@ public class ChoosingGear : MonoBehaviour
     public Image NetImg;
     public Sprite Rod, Cast, Trawl;
     public Text NetTitle, NetLevel, NetDesc;
+    public Text NetPieces;
 
     public Image BaitImg;
     public Sprite Bread, Insect, Worm;
@@ -28,6 +29,8 @@ public class ChoosingGear : MonoBehaviour
     public GameObject FishingScene;
 
     public Text LocationName,Hours;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -85,18 +88,24 @@ public class ChoosingGear : MonoBehaviour
                 NetImg.sprite = Cast;
                 NetLevel.text = "Level: " + GlobalStats.Instance.CastNetLevel.ToString();
                 NetDesc.text = "Uses 5 bait per cast";
+
+                NetPieces.text = GlobalStats.Instance.CastPieces.ToString() + " pieces";
                 break;
 
             case GlobalStats.NetType.Rod:
                 NetImg.sprite = Rod;
                 NetLevel.text = "Level: " + GlobalStats.Instance.RodNetLevel.ToString();
                 NetDesc.text = "Uses 1 bait per cast";
+
+                NetPieces.text = GlobalStats.Instance.RodPieces.ToString() + " pieces";
                 break;
 
             case GlobalStats.NetType.Trawling:
                 NetImg.sprite = Trawl;
                 NetLevel.text = "Level: " + GlobalStats.Instance.TrawlingNetLevel.ToString();
                 NetDesc.text = "Uses 10 bait per cast";
+
+                NetPieces.text = GlobalStats.Instance.TrawlPieces.ToString() + " pieces";
                 break;
         }
     }

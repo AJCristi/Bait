@@ -32,7 +32,8 @@ public class MapController : MonoBehaviour
 
 
     public Text Loc1Hour, Loc2Hour, Loc3Hour;
-    public Text MarketPlaceIndicator;
+    public Image MarketPlaceIndicator;
+    public Sprite Up, Down;
 
     // Start is called before the first frame update
     void Start()
@@ -203,18 +204,18 @@ public class MapController : MonoBehaviour
         switch(GlobalStats.Instance.PricesToday)
         {
             case GlobalStats.MarketPrices.Higher:
-                MarketPlaceIndicator.color = Color.green;
-                MarketPlaceIndicator.text = "++";
+                
+                MarketPlaceIndicator.sprite = Up;
                 break;
 
             case GlobalStats.MarketPrices.Normal:
-                MarketPlaceIndicator.color = Color.white;
-                MarketPlaceIndicator.text = "~~";
+                MarketPlaceIndicator.sprite = null;
+
                 break;
 
             case GlobalStats.MarketPrices.Lower:
-                MarketPlaceIndicator.color = Color.red;
-                MarketPlaceIndicator.text = "--";
+                
+                MarketPlaceIndicator.sprite = Down;
                 break;
         }
     }
@@ -244,8 +245,8 @@ public class MapController : MonoBehaviour
 
     public void YesLoc1Confirm()
     {
-        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
-        SceneManager.LoadScene("3_Fishing");
+        //GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
+        //SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc1Confirm()
@@ -255,7 +256,9 @@ public class MapController : MonoBehaviour
 
     public void YesLoc1()
     {
-        Loc1ConfirmMenu = true;
+        //Loc1ConfirmMenu = true;
+        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
+        SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc1()
@@ -265,8 +268,8 @@ public class MapController : MonoBehaviour
 
     public void YesLoc2Confirm()
     {
-        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.ExposedReef;
-        SceneManager.LoadScene("3_Fishing");
+        //GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.ExposedReef;
+        //SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc2Confirm()
@@ -276,7 +279,9 @@ public class MapController : MonoBehaviour
 
     public void YesLoc2()
     {
-        Loc2ConfirmMenu = true;
+        //Loc2ConfirmMenu = true;
+        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.ExposedReef;
+        SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc2()
@@ -286,8 +291,8 @@ public class MapController : MonoBehaviour
 
     public void YesLoc3Confirm()
     {
-        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.LonelyIsland;
-        SceneManager.LoadScene("3_Fishing");
+        //GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.LonelyIsland;
+        //SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc3Confirm()
@@ -297,7 +302,9 @@ public class MapController : MonoBehaviour
 
     public void YesLoc3()
     {
-        Loc3ConfirmMenu = true;
+        //Loc3ConfirmMenu = true;
+        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.LonelyIsland;
+        SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc3()

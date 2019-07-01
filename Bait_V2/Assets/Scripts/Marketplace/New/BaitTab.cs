@@ -18,6 +18,8 @@ public class BaitTab : MonoBehaviour
 
     float baitPrice;
     public Text BaitPriceTxt;
+
+    public Button DecreaseButton, BuyBtn;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,24 @@ public class BaitTab : MonoBehaviour
         WormAmt.text = GlobalStats.Instance.WormAmt.ToString();
 
         BuyBaitAmt.text = baitAmt.ToString();
+
+        if(baitAmt <= 0)
+        {
+            DecreaseButton.interactable = false;
+        }
+        else
+        {
+            DecreaseButton.interactable = true;
+        }
+
+        if (GlobalStats.Instance.PlayerSavings < baitPrice)
+        {
+            BuyBtn.interactable = false;
+        }
+        else
+        {
+            BuyBtn.interactable = true;
+        }
     }
 
     void CheckSelected()

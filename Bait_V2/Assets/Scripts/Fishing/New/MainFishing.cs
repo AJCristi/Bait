@@ -31,7 +31,8 @@ public class MainFishing : MonoBehaviour
 
     public Text FishcaughtGG, FishcaughtTila, FishcaughtLL;
 
-    float catchResetTime, numOfFish;
+    float catchResetTime;
+    int numOfFish;
 
     public Text NoFish;
     bool nofish;
@@ -42,6 +43,11 @@ public class MainFishing : MonoBehaviour
     float galunggongAmt, tilapiaAmt, lapu2Amt;
 
     public Text CurNet, CurBait;
+
+    public Text FFtext;
+
+    public bool hasGear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +67,9 @@ public class MainFishing : MonoBehaviour
         lapu2Amt = 0;
 
         nofish = false;
-        NoFish.enabled = false;        
+        NoFish.enabled = false;
+
+        hasGear = true;
 
         hasBait = true;
         CaughtFishTxt.enabled = false;
@@ -168,7 +176,23 @@ public class MainFishing : MonoBehaviour
 
     void UpdateCurGear()
     {
-        CurNet.text = GlobalStats.Instance.CurrentNet.ToString();
+        
+        switch (GlobalStats.Instance.CurrentNet)
+        {
+            case GlobalStats.NetType.Cast:
+                CurNet.text = GlobalStats.Instance.CastPieces.ToString() + " pieces";
+                break;
+
+            case GlobalStats.NetType.Rod:
+                CurNet.text = GlobalStats.Instance.RodPieces.ToString() + " pieces"; ;
+                break;
+
+            case GlobalStats.NetType.Trawling:
+                CurNet.text = GlobalStats.Instance.TrawlPieces.ToString() + " pieces"; ;
+                break;
+        }
+
+
         switch(GlobalStats.Instance.CurrentBait)
         {
             case GlobalStats.BaitType.Bread:
@@ -191,8 +215,19 @@ public class MainFishing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(FF)
+        {
+            FFtext.text = "10x";
+        }
+        else
+        {
+            FFtext.text = "1x";
+        }
+
         FishUI();
         UpdateCurGear();
+        CheckGear();
+
         if (Started)
         {
             StartFishing();
@@ -422,8 +457,9 @@ public class MainFishing : MonoBehaviour
                 break;
         }
 
-        if (hasBait)
+        if (hasBait && hasGear)
         {
+            gameObject.GetComponent<Notifs>().ActivateBait();
             if (Random100() <= P.GalunggongChances)
             {
                 CatchGG();
@@ -441,9 +477,13 @@ public class MainFishing : MonoBehaviour
                 CatchLL();
                 return;
             }
-        }        
+        }
+        else
+        {
+            NoCatch();
+        }
 
-        NoCatch();
+        
     }
 
     void CatchGG()
@@ -455,6 +495,10 @@ public class MainFishing : MonoBehaviour
         GlobalStats.Instance.TotalFishCaught += galunggongAmt;
         caughtFish = true;
         Debug.Log("GG");
+        GlobalStats.Instance.GGPieces += numOfFish;
+
+        SubtractGear();
+        gameObject.GetComponent<Notifs>().ActivateFish(1, numOfFish);
     }
 
     void CatchTilapia()
@@ -466,6 +510,10 @@ public class MainFishing : MonoBehaviour
         GlobalStats.Instance.TotalFishCaught += tilapiaAmt;
         caughtFish = true;
         Debug.Log("Med");
+        GlobalStats.Instance.TilaPieces += numOfFish;
+
+        SubtractGear();
+        gameObject.GetComponent<Notifs>().ActivateFish(2, numOfFish);
     }
 
     void CatchLL()
@@ -477,12 +525,19 @@ public class MainFishing : MonoBehaviour
         GlobalStats.Instance.TotalFishCaught += lapu2Amt;
         caughtFish = true;
         Debug.Log("LARGE");
+        GlobalStats.Instance.LapuPieces += numOfFish;
+
+
+        SubtractGear();
+        gameObject.GetComponent<Notifs>().ActivateFish(3, numOfFish);
     }
 
     void NoCatch()
     {
+
         nofish = true;
         Debug.Log("No fish");
+        gameObject.GetComponent<Notifs>().NoCatch();
     }
 
     float Random100()
@@ -493,6 +548,80 @@ public class MainFishing : MonoBehaviour
     public void DoneFishing()
     {
         SceneManager.LoadScene("1_MapSelector");
+    }
+
+    void CheckGear()
+    {
+        switch(GlobalStats.Instance.CurrentNet)
+        {
+            case GlobalStats.NetType.Rod:
+                if(GlobalStats.Instance.RodPieces > 0)
+                {
+                    hasGear = true;
+                }
+                else
+                {
+                    hasGear = false;                    
+                }
+                break;
+
+            case GlobalStats.NetType.Cast:
+                if (GlobalStats.Instance.CastPieces > 0)
+                {
+                    hasGear = true;
+                }
+                else
+                {
+                    hasGear = false;
+                }
+                break;
+
+            case GlobalStats.NetType.Trawling:
+                if (GlobalStats.Instance.TrawlPieces > 0)
+                {
+                    hasGear = true;
+                }
+                else
+                {
+                    hasGear = false;
+                }
+                break;
+        }
+    }
+
+    void SubtractGear()
+    {
+        if(Random100() < 10)
+        {
+            gameObject.GetComponent<Notifs>().ActivateGear();
+
+            switch(GlobalStats.Instance.CurrentNet)
+            {
+                case GlobalStats.NetType.Rod:
+                    GlobalStats.Instance.RodPieces--;
+                    if (GlobalStats.Instance.RodPieces < 0)
+                    {
+                        GlobalStats.Instance.RodPieces = 0;
+                    }
+                    break;
+
+                case GlobalStats.NetType.Cast:
+                    GlobalStats.Instance.CastPieces--;
+                    if (GlobalStats.Instance.CastPieces < 0)
+                    {
+                        GlobalStats.Instance.CastPieces = 0;
+                    }
+                    break;
+
+                case GlobalStats.NetType.Trawling:
+                    GlobalStats.Instance.TrawlPieces--;
+                    if (GlobalStats.Instance.TrawlPieces < 0)
+                    {
+                        GlobalStats.Instance.TrawlPieces = 0;
+                    }
+                    break;
+            }
+        }
     }
 
 }
