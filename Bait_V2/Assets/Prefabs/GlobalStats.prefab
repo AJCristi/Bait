@@ -66,6 +66,12 @@ MonoBehaviour:
   smallFishPerKG: 60
   medFishPerKG: 100
   largeFishPerKG: 240
+  GGPieces: 0
+  TilaPieces: 0
+  LapuPieces: 0
+  RodPieces: 20
+  CastPieces: 10
+  TrawlPieces: 10
   ChickenHap: 20
   ChickenHung: 20
   BeefHap: 35
@@ -109,6 +115,7 @@ MonoBehaviour:
   EventsList:
   - {fileID: 7243169123116590667, guid: b8fe227ea42a21743bc0264fc6b72a1c, type: 3}
   - {fileID: 7243169123116590667, guid: dc895009391a4104dadec6a0096763ef, type: 3}
+  - {fileID: 7243169123116590667, guid: d3388e37408e49049b9f83a02e7ca99c, type: 3}
   ActiveEvent: {fileID: 0}
   PricesToday: 0
   NewsmallFishPerKG: 0

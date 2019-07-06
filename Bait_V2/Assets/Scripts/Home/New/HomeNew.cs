@@ -18,6 +18,12 @@ public class HomeNew : MonoBehaviour
     Tab Active;
 
     public Text BeforeMoneyTxt, BillTxt, FoodTxt, MoneyText;
+
+    public Text CashPerDay,CashRate;
+    float CPD,Rate;
+
+    public Text HighestCPD;
+
     float beforeMoney, bills, food;
 
     bool subtracted;
@@ -35,8 +41,10 @@ public class HomeNew : MonoBehaviour
         beforeMoney = GlobalStats.Instance.PlayerSavings;
 
         Date.text = GlobalStats.Instance.Month.ToString() + "/" + GlobalStats.Instance.Day.ToString();
-        bills = 100;
-        food = 200;
+        bills = 200;
+        food = 300;
+
+        CalculateRate();
     }
 
     // Update is     called once per frame
@@ -55,6 +63,7 @@ public class HomeNew : MonoBehaviour
                 break;
         }
 
+        
         BillsUI();
         ScoreUI();
 
@@ -73,6 +82,14 @@ public class HomeNew : MonoBehaviour
         TTFishCaught.text = GlobalStats.Instance.TotalFishCaught.ToString();
         TTMoneyEarned.text = GlobalStats.Instance.TotalMoneyEarned.ToString();
         TTDays.text = GlobalStats.Instance.TotalDaysPassed.ToString();
+
+        CPD = GlobalStats.Instance.PerDayEarning;
+        CashPerDay.text = CPD.ToString();
+
+        
+        CashRate.text = Rate.ToString() + "%";
+
+
     }
 
     void BillsUI()
@@ -80,6 +97,33 @@ public class HomeNew : MonoBehaviour
         BeforeMoneyTxt.text = beforeMoney.ToString();
         BillTxt.text = bills.ToString();
         FoodTxt.text = food.ToString();
+    }
+
+    void CalculateRate()
+    {
+        Rate = 0;
+        if (GlobalStats.Instance.YesterdayEarning > GlobalStats.Instance.PerDayEarning)
+        {
+            float dec = GlobalStats.Instance.YesterdayEarning - GlobalStats.Instance.PerDayEarning;
+            float decPer = dec / GlobalStats.Instance.YesterdayEarning * 100;
+
+            CashRate.color = Color.red;
+            Rate = decPer;
+        }
+        else if (GlobalStats.Instance.YesterdayEarning < GlobalStats.Instance.PerDayEarning)
+        {
+            float inc = GlobalStats.Instance.PerDayEarning - GlobalStats.Instance.YesterdayEarning;
+            float incPer = inc / GlobalStats.Instance.YesterdayEarning * 100;
+
+            CashRate.color = Color.green;
+            Rate = incPer;
+        }
+
+        else
+        {
+            CashRate.color = Color.yellow;
+            Rate = 0;
+        }
     }
 
     public void BillsTab()
@@ -119,6 +163,11 @@ public class HomeNew : MonoBehaviour
         {
             SceneManager.LoadScene("1_MapSelector");
         }
+        GlobalStats.Instance.PerDayEarning = 0;
+
+        GlobalStats.Instance.UpdateRate();
+        GlobalStats.Instance.CheckHighestEarnings();
+
         GlobalStats.Instance.CurTime = 5;
         GlobalStats.Instance.RandomForecast();
         GlobalStats.Instance.MarketDecide();

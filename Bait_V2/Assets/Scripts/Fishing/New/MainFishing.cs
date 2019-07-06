@@ -25,6 +25,7 @@ public class MainFishing : MonoBehaviour
     float x;
     float y;
     float z;
+    float zz;
     bool FF;
 
     public Button Done;
@@ -59,6 +60,8 @@ public class MainFishing : MonoBehaviour
         y = 0;
         z = 0;
 
+        zz = 0;
+
         caughtFish = false;
         baitUsed = false;
 
@@ -78,6 +81,8 @@ public class MainFishing : MonoBehaviour
         Done.interactable = false;
         catchResetTime = 0;
         SetCatchResetTime();
+
+       
     }
 
     public void FastForward()
@@ -230,6 +235,7 @@ public class MainFishing : MonoBehaviour
 
         if (Started)
         {
+            
             StartFishing();
 
             if (FF)
@@ -259,6 +265,18 @@ public class MainFishing : MonoBehaviour
             }
         }
 
+        if(GetComponent<GraphicChanger>().CurrentFState != GraphicChanger.FishingState.Default)
+        {
+            zz += Time.deltaTime;
+        }
+
+        else
+        {
+            zz = 0;
+            GetComponent<GraphicChanger>().Default();
+        }
+
+
         if (nofish)
         {
             y += Time.deltaTime;
@@ -284,6 +302,7 @@ public class MainFishing : MonoBehaviour
         {
             caughtFish = false;
             CaughtFishTxt.enabled = false;
+            
             y = 0;
         }
 
@@ -344,6 +363,7 @@ public class MainFishing : MonoBehaviour
         {
             x += Time.deltaTime;
             timeRatio = x / catchResetTime;
+            
             //add 
         }
         else
@@ -496,7 +516,7 @@ public class MainFishing : MonoBehaviour
         caughtFish = true;
         Debug.Log("GG");
         GlobalStats.Instance.GGPieces += numOfFish;
-
+        GetComponent<GraphicChanger>().Caught();
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(1, numOfFish);
     }
@@ -511,7 +531,7 @@ public class MainFishing : MonoBehaviour
         caughtFish = true;
         Debug.Log("Med");
         GlobalStats.Instance.TilaPieces += numOfFish;
-
+        GetComponent<GraphicChanger>().Caught();
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(2, numOfFish);
     }
@@ -527,14 +547,14 @@ public class MainFishing : MonoBehaviour
         Debug.Log("LARGE");
         GlobalStats.Instance.LapuPieces += numOfFish;
 
-
+        GetComponent<GraphicChanger>().Caught();
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(3, numOfFish);
     }
 
     void NoCatch()
     {
-
+        GetComponent<GraphicChanger>().None();
         nofish = true;
         Debug.Log("No fish");
         gameObject.GetComponent<Notifs>().NoCatch();
@@ -551,7 +571,7 @@ public class MainFishing : MonoBehaviour
     }
 
     void CheckGear()
-    {
+    {    
         switch(GlobalStats.Instance.CurrentNet)
         {
             case GlobalStats.NetType.Rod:

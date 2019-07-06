@@ -24,19 +24,49 @@ public class GlobalStats : MonoBehaviour
 
     public float TotalMoneyEarned;
     public float TotalFishCaught;
+
+    public float PerDayEarning;
+    public float YesterdayEarning;
+
+    public float HighestEarnings;
+
+    public void CheckHighestEarnings()
+    {
+        if (PerDayEarning >= HighestEarnings)
+        {
+            HighestEarnings = PerDayEarning;
+        }
+    }
+
+    public void UpdateRate()
+    {
+        YesterdayEarning = 0;
+        YesterdayEarning = PerDayEarning;
+    }
+
     public int TotalDaysPassed;
 
     private void Update()
     {        
-        if(PlayerSavings < 0)
-        {
-            PlayerSavings = 0;
-        }
+        //if(PlayerSavings < 0)
+        //{
+        //    PlayerSavings = 0;
+        //}
+        
     }
 
     public int Month, Day;
 
     public int EndMonth, EndDay;
+
+    public void CheckWin()
+    {
+        if(EndDay>= Day)
+        {
+            SceneManager.LoadScene("5_Credits");
+        }
+    }
+
 
     public void AdvanceDay()
     {
@@ -50,6 +80,7 @@ public class GlobalStats : MonoBehaviour
             Month++;
         }
         TotalDaysPassed++;
+        CheckWin();
     }
 
     [Range (5,24)]

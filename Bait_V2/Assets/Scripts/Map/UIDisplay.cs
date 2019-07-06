@@ -39,5 +39,16 @@ public class UIDisplay : MonoBehaviour
         }
 
         Time.text = GlobalStats.Instance.CurTime.ToString() + ":00";
+
+
+        if (GlobalStats.Instance.PlayerSavings < 0)
+        {
+            Savings.color = Color.red;
+        }
+        else
+        {
+            Savings.color = Color.white;
+        }
+
     }
 }

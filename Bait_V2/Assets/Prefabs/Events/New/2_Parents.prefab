@@ -47,6 +47,7 @@ MonoBehaviour:
     doctor
   StartMonth: 7
   StartDay: 10
-  originalDays: 8
+  originalDays: 7
   DaysRemaining: 0
   MoneyRequirement: 600
+  Completed: 0

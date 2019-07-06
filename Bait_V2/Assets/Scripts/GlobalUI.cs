@@ -23,6 +23,10 @@ public class GlobalUI : MonoBehaviour
         GlobalStats.Instance.TotalFishCaught = 0;
         GlobalStats.Instance.TotalDaysPassed = 0;
 
+        GlobalStats.Instance.PerDayEarning = 0;
+        GlobalStats.Instance.YesterdayEarning = 0;
+        GlobalStats.Instance.HighestEarnings = 0;
+
         GlobalStats.Instance.Month = 7;
         GlobalStats.Instance.Day = 1;
         GlobalStats.Instance.CurTime = 5;
@@ -40,6 +44,10 @@ public class GlobalUI : MonoBehaviour
         GlobalStats.Instance.TrawlingNetLevel = 1;
         GlobalStats.Instance.CastNetLevel = 1;
         GlobalStats.Instance.RodNetLevel = 1;
+
+        GlobalStats.Instance.PerDayEarning = 0;
+
+        GlobalStats.Instance.UpdateRate();
 
         GlobalStats.Instance.ActiveEvent = null;
         GlobalStats.Instance.ResetAllEvents();

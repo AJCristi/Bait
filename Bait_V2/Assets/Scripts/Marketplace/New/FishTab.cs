@@ -98,6 +98,7 @@ public class FishTab : MonoBehaviour
         GlobalStats.Instance.largeKG -= PLapu;
 
         GlobalStats.Instance.PlayerSavings += totalearning;
+        GlobalStats.Instance.PerDayEarning += totalearning;
         GlobalStats.Instance.TotalMoneyEarned += totalearning;
     }
 
