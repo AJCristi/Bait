@@ -204,17 +204,18 @@ public class MapController : MonoBehaviour
         switch(GlobalStats.Instance.PricesToday)
         {
             case GlobalStats.MarketPrices.Higher:
-                
+                MarketPlaceIndicator.enabled = true;
                 MarketPlaceIndicator.sprite = Up;
                 break;
 
             case GlobalStats.MarketPrices.Normal:
-                MarketPlaceIndicator.sprite = null;
+                MarketPlaceIndicator.enabled = false;
+                //MarketPlaceIndicator.sprite = null;
 
                 break;
 
             case GlobalStats.MarketPrices.Lower:
-                
+                MarketPlaceIndicator.enabled = true;
                 MarketPlaceIndicator.sprite = Down;
                 break;
         }

@@ -28,7 +28,8 @@ public class MainFishing : MonoBehaviour
     float zz;
     bool FF;
 
-    public Button Done;
+    //public Button Done;
+    public GameObject DoneNotif; 
 
     public Text FishcaughtGG, FishcaughtTila, FishcaughtLL;
 
@@ -78,9 +79,9 @@ public class MainFishing : MonoBehaviour
         CaughtFishTxt.enabled = false;
         BaitUsedTxt.enabled = false;
 
-        Done.interactable = false;
+        DoneNotif.SetActive(false);
         catchResetTime = 0;
-        SetCatchResetTime();
+       
 
        
     }
@@ -91,7 +92,7 @@ public class MainFishing : MonoBehaviour
     }
 
     void SetCatchResetTime()
-    {
+    {        
         switch(GlobalStats.Instance.CurrentNet)
         {
             case GlobalStats.NetType.Cast:
@@ -148,7 +149,7 @@ public class MainFishing : MonoBehaviour
                 switch (GlobalStats.Instance.TrawlingNetLevel)
                 {
                     case 1:
-                        catchResetTime = 10;
+                        catchResetTime = 10;                        
                         break;
 
                     case 2:
@@ -235,7 +236,7 @@ public class MainFishing : MonoBehaviour
 
         if (Started)
         {
-            
+            SetCatchResetTime();
             StartFishing();
 
             if (FF)
@@ -246,14 +247,12 @@ public class MainFishing : MonoBehaviour
             {
                 Time.timeScale = 1;
             }
-
-           
         }
         else
         {
             TimerTxt.text = "0:00";
             Time.timeScale = 1;
-            Done.interactable = true;
+            DoneNotif.SetActive(true);
 
             if (!addedGlobal)
             {
@@ -261,6 +260,8 @@ public class MainFishing : MonoBehaviour
                 GlobalStats.Instance.smallKG += galunggongAmt;
                 GlobalStats.Instance.medKG += tilapiaAmt;
                 GlobalStats.Instance.largeKG += lapu2Amt;
+                GetComponent<EndNotif>().TotalKGAdd(galunggongAmt, tilapiaAmt, lapu2Amt);
+
                 addedGlobal = true;
             }
         }
@@ -273,6 +274,12 @@ public class MainFishing : MonoBehaviour
         else
         {
             zz = 0;
+            GetComponent<GraphicChanger>().Default();
+        }
+
+        if(zz > 2f)
+        {
+            Debug.Log("Default");
             GetComponent<GraphicChanger>().Default();
         }
 
@@ -362,8 +369,7 @@ public class MainFishing : MonoBehaviour
         if (x <= catchResetTime)
         {
             x += Time.deltaTime;
-            timeRatio = x / catchResetTime;
-            
+            timeRatio = x / catchResetTime;            
             //add 
         }
         else
@@ -416,12 +422,15 @@ public class MainFishing : MonoBehaviour
         {
             case GlobalStats.NetType.Rod:
                 SubtractBait(1);
+                GetComponent<EndNotif>().AddBait(1);
                 break;
             case GlobalStats.NetType.Cast:
                 SubtractBait(5);
+                GetComponent<EndNotif>().AddBait(5);
                 break;
             case GlobalStats.NetType.Trawling:
                 SubtractBait(10);
+                GetComponent<EndNotif>().AddBait(10);
                 break;
         }
     }
@@ -497,6 +506,12 @@ public class MainFishing : MonoBehaviour
                 CatchLL();
                 return;
             }
+
+            else
+            {
+                NoCatch();
+            }
+           
         }
         else
         {
@@ -513,10 +528,12 @@ public class MainFishing : MonoBehaviour
                             GlobalStats.Instance.SmallMaxKG);
         galunggongAmt += (fx * numOfFish);
         GlobalStats.Instance.TotalFishCaught += galunggongAmt;
-        caughtFish = true;
-        Debug.Log("GG");
+        caughtFish = true;        
         GlobalStats.Instance.GGPieces += numOfFish;
+
+        Debug.Log("CaughtGraphic");
         GetComponent<GraphicChanger>().Caught();
+
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(1, numOfFish);
     }
@@ -528,10 +545,12 @@ public class MainFishing : MonoBehaviour
                             GlobalStats.Instance.MedMaxKG);
         tilapiaAmt += (fx * numOfFish);
         GlobalStats.Instance.TotalFishCaught += tilapiaAmt;
-        caughtFish = true;
-        Debug.Log("Med");
+        caughtFish = true;        
         GlobalStats.Instance.TilaPieces += numOfFish;
+
+        Debug.Log("CaughtGraphic");
         GetComponent<GraphicChanger>().Caught();
+
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(2, numOfFish);
     }
@@ -543,11 +562,12 @@ public class MainFishing : MonoBehaviour
                             GlobalStats.Instance.LargeMaxKG);
         lapu2Amt += (fx * numOfFish);
         GlobalStats.Instance.TotalFishCaught += lapu2Amt;
-        caughtFish = true;
-        Debug.Log("LARGE");
+        caughtFish = true;        
         GlobalStats.Instance.LapuPieces += numOfFish;
 
+        Debug.Log("CaughtGraphic");
         GetComponent<GraphicChanger>().Caught();
+
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(3, numOfFish);
     }
@@ -556,7 +576,8 @@ public class MainFishing : MonoBehaviour
     {
         GetComponent<GraphicChanger>().None();
         nofish = true;
-        Debug.Log("No fish");
+
+        Debug.Log("NoneGraphic");
         gameObject.GetComponent<Notifs>().NoCatch();
     }
 
@@ -619,6 +640,7 @@ public class MainFishing : MonoBehaviour
             {
                 case GlobalStats.NetType.Rod:
                     GlobalStats.Instance.RodPieces--;
+                    GetComponent<EndNotif>().LostGear(1);
                     if (GlobalStats.Instance.RodPieces < 0)
                     {
                         GlobalStats.Instance.RodPieces = 0;
@@ -627,6 +649,7 @@ public class MainFishing : MonoBehaviour
 
                 case GlobalStats.NetType.Cast:
                     GlobalStats.Instance.CastPieces--;
+                    GetComponent<EndNotif>().LostGear(1);
                     if (GlobalStats.Instance.CastPieces < 0)
                     {
                         GlobalStats.Instance.CastPieces = 0;
@@ -635,6 +658,7 @@ public class MainFishing : MonoBehaviour
 
                 case GlobalStats.NetType.Trawling:
                     GlobalStats.Instance.TrawlPieces--;
+                    GetComponent<EndNotif>().LostGear(1);
                     if (GlobalStats.Instance.TrawlPieces < 0)
                     {
                         GlobalStats.Instance.TrawlPieces = 0;

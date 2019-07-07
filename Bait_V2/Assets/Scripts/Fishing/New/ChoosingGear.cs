@@ -20,6 +20,8 @@ public class ChoosingGear : MonoBehaviour
     public Text NetTitle, NetLevel, NetDesc;
     public Text NetPieces;
 
+    public Text RodAmt, CastAmt, TrawlAmt;
+
     public Image BaitImg;
     public Sprite Bread, Insect, Worm;
     public Text BaitTitle, BaitAmt, BaitDesc;
@@ -108,6 +110,10 @@ public class ChoosingGear : MonoBehaviour
                 NetPieces.text = GlobalStats.Instance.TrawlPieces.ToString() + " pieces";
                 break;
         }
+
+        RodAmt.text = GlobalStats.Instance.RodPieces.ToString();
+        CastAmt.text = GlobalStats.Instance.CastPieces.ToString();
+        TrawlAmt.text = GlobalStats.Instance.TrawlPieces.ToString();
     }
 
     void UpdateBait()
@@ -115,19 +121,19 @@ public class ChoosingGear : MonoBehaviour
         switch(GlobalStats.Instance.CurrentBait)
         {
             case GlobalStats.BaitType.Bread:
-                BaitImg.sprite = Bread;
+                BaitImg.overrideSprite = Bread;
                 BaitAmt.text = GlobalStats.Instance.BreadAmt.ToString() + " Pieces left";
                 BaitDesc.text = "Attracts more Galunggong";
                 break;
 
             case GlobalStats.BaitType.Insects:
-                BaitImg.sprite = Insect;
+                BaitImg.overrideSprite = Insect;
                 BaitAmt.text = GlobalStats.Instance.InsectAmt.ToString() + " Pieces left";
                 BaitDesc.text = "Attracts more Tilapia";
                 break;
 
             case GlobalStats.BaitType.Worms:
-                BaitImg.sprite = Worm;
+                BaitImg.overrideSprite = Worm;
                 BaitAmt.text = GlobalStats.Instance.WormAmt.ToString() + " Pieces left";
                 BaitDesc.text = "Attracts more Lapu-Lapu";
                 break;

@@ -46,7 +46,7 @@ public class Radio : MonoBehaviour
             else
             {
                 x += Time.deltaTime;
-                Debug.Log(x);
+                //Debug.Log(x);
                 if (x > 5)
                 {
                     Ticker.transform.localPosition = StartPos.transform.localPosition;

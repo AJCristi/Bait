@@ -52,7 +52,7 @@ public class Notifs : MonoBehaviour
 
             case GlobalStats.BaitType.Worms:
                 BaitImg.sprite = Worms;
-                CurBait.sprite = Insect;
+                CurBait.sprite = Worms;
                 break;
         }
 
@@ -112,6 +112,7 @@ public class Notifs : MonoBehaviour
     public void ActivateBait()
     {
         x = 0;
+        Debug.Log("Bait notif");
     }
 
     public void ActivateFish(int type, float KgAmt)
@@ -138,6 +139,7 @@ public class Notifs : MonoBehaviour
     public void ActivateGear()
     {
         z = 0;
+        Debug.Log("Gear Notif");
     }
 
     public void NoCatch()

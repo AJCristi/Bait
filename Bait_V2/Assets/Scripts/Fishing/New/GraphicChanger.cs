@@ -43,7 +43,7 @@ public class GraphicChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(CurrentFState);
+       
         switch(CurrentFState)
         {
             case FishingState.Default:
