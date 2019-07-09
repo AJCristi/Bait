@@ -32,4 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final/5_Credits.unity
     guid: 30f1cc208bb7dd3468a090534365d991
+  - enabled: 1
+    path: Assets/Scenes/Final/Tutorials/1_MapSelectorTutorial.unity
+    guid: f7a7340d21c16d8499fdfa6420f94e79
+  - enabled: 1
+    path: Assets/Scenes/Final/Tutorials/3_FishingTutorial.unity
+    guid: 1f76f8a732eef5542bb49f2b039b1c03
+  - enabled: 1
+    path: Assets/Scenes/Final/Tutorials/1_MapSelectorTutorial2.unity
+    guid: 7e2b79deca21d08418cd2dca4f9e5faa
   m_configObjects: {}

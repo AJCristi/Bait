@@ -301,4 +301,13 @@ public class GlobalStats : MonoBehaviour
         }
 
     }
+
+    public enum MapTutorialStage
+    {
+        S1,
+        S2,
+        S3
+    }
+
+    public MapTutorialStage CurStage;
 }

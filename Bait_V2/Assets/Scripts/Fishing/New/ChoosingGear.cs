@@ -32,11 +32,20 @@ public class ChoosingGear : MonoBehaviour
 
     public Text LocationName,Hours;
 
-    
+    public Button StartBtn;
+    public bool CanStart;
+
+    public string ReturnActiveTab()
+    {
+        return ActiveTab.ToString();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        ActiveTab = Tab.Bait;
+
+        CanStart = false;
         FishingScene.SetActive(false);
         LocationName.text = GlobalStats.Instance.SelectedLocation.ToString();
 
@@ -63,7 +72,18 @@ public class ChoosingGear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(ActiveTab)
+
+        if (CanStart)
+        {
+            StartBtn.interactable = true;
+        }
+        else
+        {
+            StartBtn.interactable = false;
+        }
+        Debug.Log(CanStart);
+           
+        switch (ActiveTab)
         {
             case Tab.Bait:
                 Bait.SetActive(true);
@@ -75,9 +95,89 @@ public class ChoosingGear : MonoBehaviour
                 Bait.SetActive(false);
                 break;
         }
+        CheckGear();
+        
 
         UpdateNet();
         UpdateBait();
+    }
+
+    void CheckGear()
+    {
+        switch(GlobalStats.Instance.CurrentNet)
+        {
+            case GlobalStats.NetType.Cast:
+                if (GlobalStats.Instance.CastPieces > 0)
+                {
+                    CheckBait();
+                }
+                else
+                {
+                    CanStart = false;
+                }
+                break;
+
+            case GlobalStats.NetType.Rod:
+                if (GlobalStats.Instance.RodPieces > 0)
+                {
+                    CheckBait();
+                }
+                else
+                {
+                    CanStart = false;
+                }
+                break;
+
+            case GlobalStats.NetType.Trawling:
+                if (GlobalStats.Instance.TrawlPieces > 0)
+                {
+                    CheckBait();
+                }
+                else
+                {
+                    CanStart = false;
+                }
+                break;
+        }
+    }
+
+    void CheckBait()
+    {
+        switch(GlobalStats.Instance.CurrentBait)
+        {
+            case GlobalStats.BaitType.Bread:
+                if(GlobalStats.Instance.BreadAmt > 0)
+                {
+                    CanStart = true;
+                }
+                else
+                {
+                    CanStart = false;
+                }
+                break;
+
+            case GlobalStats.BaitType.Insects:
+                if (GlobalStats.Instance.InsectAmt > 0)
+                {
+                    CanStart = true;
+                }
+                else
+                {
+                    CanStart = false;
+                }
+                break;
+
+            case GlobalStats.BaitType.Worms:
+                if (GlobalStats.Instance.WormAmt > 0)
+                {
+                    CanStart = true;
+                }
+                else
+                {
+                    CanStart = false;
+                }
+                break;
+        }
     }
 
     void UpdateNet()
@@ -122,6 +222,7 @@ public class ChoosingGear : MonoBehaviour
         {
             case GlobalStats.BaitType.Bread:
                 BaitImg.overrideSprite = Bread;
+                
                 BaitAmt.text = GlobalStats.Instance.BreadAmt.ToString() + " Pieces left";
                 BaitDesc.text = "Attracts more Galunggong";
                 break;
@@ -138,7 +239,7 @@ public class ChoosingGear : MonoBehaviour
                 BaitDesc.text = "Attracts more Lapu-Lapu";
                 break;
         }
-
+        BaitTitle.text = GlobalStats.Instance.CurrentBait.ToString();
         BaitBreadAmt.text = GlobalStats.Instance.BreadAmt.ToString();
         BaitInsectAmt.text = GlobalStats.Instance.InsectAmt.ToString();
         BaitWormsAmt.text = GlobalStats.Instance.WormAmt.ToString();

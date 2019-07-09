@@ -630,6 +630,11 @@ public class MainFishing : MonoBehaviour
         }
     }
 
+    public void DoneTutorial()
+    {
+        SceneManager.LoadScene("1_MapSelectorTutorial2");
+    }
+
     void SubtractGear()
     {
         if(Random100() < 10)

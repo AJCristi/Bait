@@ -37,7 +37,7 @@ public class EndNotif : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TotalKGCaught.text = TotalKG.ToString() + " Kgs";
+        TotalKGCaught.text = TotalKG.ToString("F2") + " Kgs";
 
         AmtBaitUsed.text = BaitUsed.ToString() + " Used";
         AmtGearLost.text = GearLost.ToString() + " Lost";
