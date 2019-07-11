@@ -20,6 +20,8 @@ public class BaitTab : MonoBehaviour
     public Text BaitPriceTxt;
 
     public Button DecreaseButton, BuyBtn;
+
+    public AudioClip Next, BuySFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,15 +40,6 @@ public class BaitTab : MonoBehaviour
 
         BuyBaitAmt.text = baitAmt.ToString();
 
-        if(baitAmt <= 0)
-        {
-            DecreaseButton.interactable = false;
-        }
-        else
-        {
-            DecreaseButton.interactable = true;
-        }
-
         if (GlobalStats.Instance.PlayerSavings < baitPrice)
         {
             BuyBtn.interactable = false;
@@ -55,6 +48,17 @@ public class BaitTab : MonoBehaviour
         {
             BuyBtn.interactable = true;
         }
+
+        if (baitAmt <= 0)
+        {
+            DecreaseButton.interactable = false;
+            BuyBtn.interactable = false;
+        }
+        else
+        {
+            DecreaseButton.interactable = true;
+            BuyBtn.interactable = true;
+        }        
     }
 
     void CheckSelected()
@@ -64,21 +68,21 @@ public class BaitTab : MonoBehaviour
         switch (GlobalStats.Instance.CurrentBait)
         {
             case GlobalStats.BaitType.Bread:
-                CurSelectedImage.sprite = Bread;
+                CurSelectedImage.overrideSprite = Bread;
 
                 CurSelectedDesc.text = "Attracts more Galunggong";
                 CurSelectedAmt.text = GlobalStats.Instance.BreadAmt.ToString();
                 break;
 
             case GlobalStats.BaitType.Insects:
-                CurSelectedImage.sprite = Insect;
+                CurSelectedImage.overrideSprite = Insect;
 
                 CurSelectedDesc.text = "Attracts more Tilapia";
                 CurSelectedAmt.text = GlobalStats.Instance.InsectAmt.ToString();
                 break;
 
             case GlobalStats.BaitType.Worms:
-                CurSelectedImage.sprite = Worm;
+                CurSelectedImage.overrideSprite = Worm;
 
                 CurSelectedDesc.text = "Attracts more Lapu-Lapu";
                 CurSelectedAmt.text = GlobalStats.Instance.WormAmt.ToString();
@@ -88,7 +92,8 @@ public class BaitTab : MonoBehaviour
 
     public void ChangeBait()
     {
-        switch(GlobalStats.Instance.CurrentBait)
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (GlobalStats.Instance.CurrentBait)
         {
             case GlobalStats.BaitType.Bread:
                 GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Insects;
@@ -125,12 +130,14 @@ public class BaitTab : MonoBehaviour
 
     public void IncreaseBaitAmt()
     {
+        SFXcontroller.instance.PlaySingle(Next);
         baitAmt++;
     }
 
     public void DecreaseBaitAmt()
     {
         baitAmt--;
+        SFXcontroller.instance.PlaySingle(Next);
     }
 
     public void Buy()
@@ -152,6 +159,7 @@ public class BaitTab : MonoBehaviour
                     break;
             }
             GlobalStats.Instance.PlayerSavings -= baitPrice;
+            SFXcontroller.instance.PlaySingle(BuySFX    );
         }
     }
 }

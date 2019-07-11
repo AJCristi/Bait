@@ -35,6 +35,8 @@ public class MapController : MonoBehaviour
     public Image MarketPlaceIndicator;
     public Sprite Up, Down;
 
+    public AudioClip Select;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,10 +63,25 @@ public class MapController : MonoBehaviour
         Loc3ConfirmMenu = false;
     }
 
+    public void PlaySelectSFX()
+    {
+        SFXcontroller.instance.PlaySingle(Select);
+    }
+
     public void Loc1Tutorial()
     {
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
         SceneManager.LoadScene("3_FishingTutorial");
+    }
+
+    public void MarketTutorial()
+    {
+        SceneManager.LoadScene("2_MarketPlaceTutorial");
+    }
+
+    public void HomeTutorial()
+    {
+        SceneManager.LoadScene("4_HomeTutorial");
     }
 
     // Update is called once per frame
@@ -81,6 +98,7 @@ public class MapController : MonoBehaviour
 
         if (EventSystem.current.currentSelectedGameObject == HomeBtn.gameObject)
         {
+            
             HomeMenu.SetActive(true);
             HomeTimer = 0;
         }

@@ -8,6 +8,7 @@ public class QuestSmallBox : MonoBehaviour, IPointerEnterHandler
 {
 
     public bool OnHover;
+    public AudioClip Select;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class QuestSmallBox : MonoBehaviour, IPointerEnterHandler
   
     public void OnPointerEnter(PointerEventData eventData)
     {
+        SFXcontroller.instance.PlaySingle(Select);
         OnHover = true;
     }
 

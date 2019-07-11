@@ -22,6 +22,9 @@ public class NetTab : MonoBehaviour
     public GameObject BuyNetBtn;
     float gearPrice;
 
+    public AudioClip BuySFX;
+    public AudioClip Switch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +95,7 @@ public class NetTab : MonoBehaviour
 
     public void ChangeNet()
     {
+        SFXcontroller.instance.PlaySingle(Switch);
         switch (GlobalStats.Instance.CurrentNet)
         {
             case GlobalStats.NetType.Cast:
@@ -236,6 +240,7 @@ public class NetTab : MonoBehaviour
                     break;
             }
             GlobalStats.Instance.PlayerSavings -= curPrice;
+            SFXcontroller.instance.PlaySingle(BuySFX);
         }
     }
 
@@ -282,6 +287,7 @@ public class NetTab : MonoBehaviour
                     break;
             }
             GlobalStats.Instance.PlayerSavings -= gearPrice;
+            SFXcontroller.instance.PlaySingle(BuySFX);
         }
     }
 }

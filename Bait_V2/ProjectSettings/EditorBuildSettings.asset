@@ -41,4 +41,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final/Tutorials/1_MapSelectorTutorial2.unity
     guid: 7e2b79deca21d08418cd2dca4f9e5faa
+  - enabled: 1
+    path: Assets/Scenes/Final/Tutorials/2_MarketPlaceTutorial.unity
+    guid: 2a7f65a0d0bc54142a994bdb5d41da06
+  - enabled: 1
+    path: Assets/Scenes/Final/Tutorials/1_MapSelectorTutorial3.unity
+    guid: ac3b4a26869b4e64f97910eeaaebb693
+  - enabled: 1
+    path: Assets/Scenes/Final/Tutorials/1_MapSelectorTutorial4.unity
+    guid: 33e848bdb08d81449a2c70c0608abb51
+  - enabled: 1
+    path: Assets/Scenes/Final/Tutorials/4_HomeTutorial.unity
+    guid: 82608ffcbae3f8247b8b5e7e8992e38e
   m_configObjects: {}

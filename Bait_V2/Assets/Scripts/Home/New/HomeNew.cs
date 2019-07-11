@@ -30,6 +30,8 @@ public class HomeNew : MonoBehaviour
 
     public Text TTFishCaught, TTMoneyEarned, TTDays;
 
+    public AudioClip Next, SleepSfx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -128,16 +130,19 @@ public class HomeNew : MonoBehaviour
 
     public void BillsTab()
     {
+        SFXcontroller.instance.PlaySingle(Next);
         Active = Tab.Bills;
     }
 
     public void ScoreTab()
     {
+        SFXcontroller.instance.PlaySingle(Next);
         Active = Tab.Score;
     }
 
     public void Sleep()
     {
+        SFXcontroller.instance.PlaySingle(SleepSfx);
         GlobalStats.Instance.AdvanceDay();
         GlobalStats.Instance.EventMinusDay();
 

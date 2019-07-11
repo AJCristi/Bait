@@ -13,6 +13,8 @@ public class FishDisplay : MonoBehaviour, IPointerEnterHandler
     public Text GG, Tilapia, Lapu2;
     public Text GGPcs, TilaPcs, LapuPcs;
 
+    public AudioClip Select;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class FishDisplay : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        SFXcontroller.instance.PlaySingle(Select);
         Window.SetActive(true);
     }
 

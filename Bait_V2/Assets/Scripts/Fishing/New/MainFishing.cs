@@ -50,6 +50,8 @@ public class MainFishing : MonoBehaviour
 
     public bool hasGear;
 
+    public AudioClip CaughtFish, NoFishSFX, Broken, Done;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -261,7 +263,7 @@ public class MainFishing : MonoBehaviour
                 GlobalStats.Instance.medKG += tilapiaAmt;
                 GlobalStats.Instance.largeKG += lapu2Amt;
                 GetComponent<EndNotif>().TotalKGAdd(galunggongAmt, tilapiaAmt, lapu2Amt);
-
+                SFXcontroller.instance.PlaySingle(Done);
                 addedGlobal = true;
             }
         }
@@ -533,7 +535,7 @@ public class MainFishing : MonoBehaviour
 
         Debug.Log("CaughtGraphic");
         GetComponent<GraphicChanger>().Caught();
-
+        SFXcontroller.instance.PlaySingle(CaughtFish);
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(1, numOfFish);
     }
@@ -550,7 +552,7 @@ public class MainFishing : MonoBehaviour
 
         Debug.Log("CaughtGraphic");
         GetComponent<GraphicChanger>().Caught();
-
+        SFXcontroller.instance.PlaySingle(CaughtFish);
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(2, numOfFish);
     }
@@ -567,7 +569,7 @@ public class MainFishing : MonoBehaviour
 
         Debug.Log("CaughtGraphic");
         GetComponent<GraphicChanger>().Caught();
-
+        SFXcontroller.instance.PlaySingle(CaughtFish);
         SubtractGear();
         gameObject.GetComponent<Notifs>().ActivateFish(3, numOfFish);
     }
@@ -576,7 +578,7 @@ public class MainFishing : MonoBehaviour
     {
         GetComponent<GraphicChanger>().None();
         nofish = true;
-
+        SFXcontroller.instance.PlaySingle(NoFishSFX);
         Debug.Log("NoneGraphic");
         gameObject.GetComponent<Notifs>().NoCatch();
     }
@@ -588,6 +590,7 @@ public class MainFishing : MonoBehaviour
 
     public void DoneFishing()
     {
+        SFXcontroller.instance.PlaySingle(Done);
         SceneManager.LoadScene("1_MapSelector");
     }
 
@@ -630,18 +633,15 @@ public class MainFishing : MonoBehaviour
         }
     }
 
-    public void DoneTutorial()
-    {
-        SceneManager.LoadScene("1_MapSelectorTutorial2");
-    }
+    
 
     void SubtractGear()
     {
         if(Random100() < 10)
         {
             gameObject.GetComponent<Notifs>().ActivateGear();
-
-            switch(GlobalStats.Instance.CurrentNet)
+            SFXcontroller.instance.PlaySingle(Broken);
+            switch (GlobalStats.Instance.CurrentNet)
             {
                 case GlobalStats.NetType.Rod:
                     GlobalStats.Instance.RodPieces--;

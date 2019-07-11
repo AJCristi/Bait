@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GlobalUI : MonoBehaviour
 {
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
+
     public void NextScene(string scene)
     {
         SceneManager.LoadScene(scene);
@@ -25,6 +30,7 @@ public class GlobalUI : MonoBehaviour
     public void SetTutorialStats()
     {
         Reset();
+        SetGame();
         GlobalStats.Instance.PlayerSavings = 100;
 
         GlobalStats.Instance.BreadAmt = 50;

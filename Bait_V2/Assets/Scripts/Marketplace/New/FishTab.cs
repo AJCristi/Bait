@@ -21,6 +21,10 @@ public class FishTab : MonoBehaviour
     public Image GGprice, Tilaprice, Lapuprice;
     public Sprite UpPrice, DownPrice;
 
+    public Button SellBtn;
+
+    public AudioClip Next, Buy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +43,15 @@ public class FishTab : MonoBehaviour
         PlayerHaul();
         CheckOwnSelling();
         Compute();
+
+        if(PGalung <= 0 && PTilapia <= 0 && PLapu <= 0)
+        {
+            SellBtn.interactable = false;
+        }
+        else
+        {
+            SellBtn.interactable = true;
+        }
 
         switch(GlobalStats.Instance.PricesToday)
         {
@@ -100,6 +113,8 @@ public class FishTab : MonoBehaviour
         GlobalStats.Instance.PlayerSavings += totalearning;
         GlobalStats.Instance.PerDayEarning += totalearning;
         GlobalStats.Instance.TotalMoneyEarned += totalearning;
+
+        SFXcontroller.instance.PlaySingle(Buy);
     }
 
     void CheckOwnSelling()
@@ -146,7 +161,8 @@ public class FishTab : MonoBehaviour
 
     public void IncreaseGG()
     {
-        if(PGalung >= GlobalStats.Instance.smallKG)
+        SFXcontroller.instance.PlaySingle(Next);
+        if (PGalung >= GlobalStats.Instance.smallKG)
         {
             PGalung = GlobalStats.Instance.smallKG;
         }
@@ -158,7 +174,8 @@ public class FishTab : MonoBehaviour
 
     public void DecreaseGG()
     {
-        if(PGalung <= 0)
+        SFXcontroller.instance.PlaySingle(Next);
+        if (PGalung <= 0)
         {
             PGalung = 0;
         }
@@ -170,6 +187,7 @@ public class FishTab : MonoBehaviour
 
     public void IncreaseTila()
     {
+        SFXcontroller.instance.PlaySingle(Next);
         if (PTilapia >= GlobalStats.Instance.medKG)
         {
             PTilapia = GlobalStats.Instance.medKG;
@@ -182,6 +200,7 @@ public class FishTab : MonoBehaviour
 
     public void DecreaseTila()
     {
+        SFXcontroller.instance.PlaySingle(Next);
         if (PTilapia <= 0)
         {
             PTilapia = 0;
@@ -194,6 +213,7 @@ public class FishTab : MonoBehaviour
 
     public void IncreaseLL()
     {
+        SFXcontroller.instance.PlaySingle(Next);
         if (PLapu >= GlobalStats.Instance.largeKG)
         {
             PLapu = GlobalStats.Instance.largeKG;
@@ -206,6 +226,7 @@ public class FishTab : MonoBehaviour
 
     public void DecreaseLL()
     {
+        SFXcontroller.instance.PlaySingle(Next);
         if (PLapu <= 0)
         {
             PLapu = 0;

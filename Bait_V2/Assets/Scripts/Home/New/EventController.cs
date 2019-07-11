@@ -11,6 +11,8 @@ public class EventController : MonoBehaviour
 
     public Text Description, DueDate, ReqMoney;
 
+    public AudioClip Complete;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +75,7 @@ public class EventController : MonoBehaviour
 
     public void TurnInQuest()
     {
-        Debug.Log("TEST");
+        SFXcontroller.instance.PlaySingle(Complete);
         if (GlobalStats.Instance.PlayerSavings >= GlobalStats.Instance.ActiveEvent.MoneyRequirement)
         {
              if (GlobalStats.Instance.ActiveEvent.DaysRemaining >= 0)

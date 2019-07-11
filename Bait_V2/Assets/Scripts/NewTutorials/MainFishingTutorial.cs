@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainFishingTutorial : MonoBehaviour
 {
@@ -27,6 +28,23 @@ public class MainFishingTutorial : MonoBehaviour
 
     public void NextStage()
     {
-        GlobalStats.Instance.CurStage = GlobalStats.MapTutorialStage.S2;
+        if (GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S1)
+            GlobalStats.Instance.CurStage = GlobalStats.MapTutorialStage.S2;
+
+        else if (GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S2)
+        {
+            GlobalStats.Instance.CurStage = GlobalStats.MapTutorialStage.S3;
+        }
+    }
+
+    public void DoneTutorial()
+    {
+        if(GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S1)
+            SceneManager.LoadScene("1_MapSelectorTutorial2");
+
+        else
+        {
+            SceneManager.LoadScene("1_MapSelectorTutorial4");
+        }
     }
 }

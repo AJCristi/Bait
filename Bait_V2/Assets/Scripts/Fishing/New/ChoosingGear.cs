@@ -35,6 +35,8 @@ public class ChoosingGear : MonoBehaviour
     public Button StartBtn;
     public bool CanStart;
 
+    public AudioClip Return, Next, TabSfx, StartFish;
+
     public string ReturnActiveTab()
     {
         return ActiveTab.ToString();
@@ -248,16 +250,19 @@ public class ChoosingGear : MonoBehaviour
     public void SelectGear()
     {
         ActiveTab = Tab.Gear;
+        SFXcontroller.instance.PlaySingle(TabSfx);
     }
 
     public void SelectBait()
     {
         ActiveTab = Tab.Bait;
+        SFXcontroller.instance.PlaySingle(TabSfx);
     }
 
     public void ChangeGear()
     {
-        switch(GlobalStats.Instance.CurrentNet)
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (GlobalStats.Instance.CurrentNet)
         {
             case GlobalStats.NetType.Cast:
                 GlobalStats.Instance.CurrentNet = GlobalStats.NetType.Rod;
@@ -275,7 +280,8 @@ public class ChoosingGear : MonoBehaviour
 
     public void ChangeBait()
     {
-        switch(GlobalStats.Instance.CurrentBait)
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (GlobalStats.Instance.CurrentBait)
         {
             case GlobalStats.BaitType.Bread:
                 GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Insects;
@@ -293,6 +299,7 @@ public class ChoosingGear : MonoBehaviour
 
     public void StartFishing()
     {
+        SFXcontroller.instance.PlaySingle(StartFish);
         FishingScene.SetActive(true);
         FishingScene.GetComponent<MainFishing>().Started = true;
 
@@ -314,6 +321,7 @@ public class ChoosingGear : MonoBehaviour
 
     public void ReturnToMap()
     {
+        SFXcontroller.instance.PlaySingle(Return);
         SceneManager.LoadScene("1_MapSelector");
     }
     

@@ -6,22 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class TabController : MonoBehaviour
 {
-    enum Tabs
+    public enum Tabs
     {
         Fish, 
         Bait,
         Gear
     }
 
-    Tabs ActiveTab;
+    public Tabs ActiveTab;
 
     public GameObject FishTab, BaitTab, GearTab;
 
+    public AudioClip TabSwitch;
     //public Text MarketPrices;
 
     // Start is called before the first frame update
     void Start()
     {
+        ActiveTab = Tabs.Bait;
         FishTab.SetActive(false);
         BaitTab.SetActive(false);
         GearTab.SetActive(false);
@@ -71,14 +73,17 @@ public class TabController : MonoBehaviour
     public void SelectFish()
     {
         ActiveTab = Tabs.Fish;
+        SFXcontroller.instance.PlaySingle(TabSwitch);
     }
     public void SelectBait()
     {
         ActiveTab = Tabs.Bait;
+        SFXcontroller.instance.PlaySingle(TabSwitch);
     }
     public void SelectGear()
     {
         ActiveTab = Tabs.Gear;
+        SFXcontroller.instance.PlaySingle(TabSwitch);
     }
 
     public void ReturnBack()

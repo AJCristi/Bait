@@ -250,6 +250,8 @@ MonoBehaviour:
   rawImage: {fileID: 1168505602}
   videoPlayer: {fileID: 1833007301}
   audioSource: {fileID: 1984099935}
+  time: 0
+  currentTime: 0
 --- !u!114 &737975242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &765301227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -696,7 +698,7 @@ RectTransform:
   m_GameObject: {fileID: 1825268184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0973153, y: 1.0973153, z: 1.0973153}
   m_Children:
   - {fileID: 765301227}
   m_Father: {fileID: 737975245}
@@ -704,8 +706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50, y: 55}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -44.646, y: 51.544}
+  m_SizeDelta: {x: 110, y: 71}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1825268186
 MonoBehaviour:
@@ -805,8 +807,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d4f5513cdb930e747b2aafae5f8854bb, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -847,7 +849,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833007300}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: ba2940690a0d28347839ba1397f3f1b5, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 659fcb65c10738d47a121ef1e5da9d03, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -869,7 +871,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
