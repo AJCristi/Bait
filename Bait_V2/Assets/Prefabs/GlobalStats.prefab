@@ -46,11 +46,14 @@ MonoBehaviour:
   EndSavings: 0
   TotalMoneyEarned: 0
   TotalFishCaught: 0
+  PerDayEarning: 0
+  YesterdayEarning: 0
+  HighestEarnings: 0
   TotalDaysPassed: 0
   Month: 7
   Day: 1
   EndMonth: 7
-  EndDay: 30
+  EndDay: 15
   CurTime: 8
   PlayerSavings: 200
   smallKG: 0
@@ -121,3 +124,4 @@ MonoBehaviour:
   NewsmallFishPerKG: 0
   NewmedFishPerKG: 0
   NewlargeFishPerKG: 0
+  CurStage: 0

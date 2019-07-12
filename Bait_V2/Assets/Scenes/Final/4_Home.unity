@@ -1100,7 +1100,7 @@ MonoBehaviour:
   Description: {fileID: 1865660039}
   DueDate: {fileID: 757506196}
   ReqMoney: {fileID: 819920699}
-  Complete: {fileID: 0}
+  Complete: {fileID: 8300000, guid: b9177af582619524f9deb0261f3b4174, type: 3}
 --- !u!1 &466354013
 GameObject:
   m_ObjectHideFlags: 0

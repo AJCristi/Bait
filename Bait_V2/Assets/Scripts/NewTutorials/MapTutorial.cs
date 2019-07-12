@@ -12,6 +12,8 @@ public class MapTutorial : MonoBehaviour
     public GameObject Gear;
     public GameObject Location1;
 
+    public AudioClip NextTut;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class MapTutorial : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                SFXcontroller.instance.PlaySingle(NextTut);
                 Debug.Log(curStage);
                 curStage++;
             }

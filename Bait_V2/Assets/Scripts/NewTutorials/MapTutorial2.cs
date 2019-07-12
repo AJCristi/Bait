@@ -10,7 +10,7 @@ public class MapTutorial2 : MonoBehaviour
 
     public GameObject MarketIcon, Prices;
 
-
+    public AudioClip NextTut;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class MapTutorial2 : MonoBehaviour
         TutorialObjs[0].SetActive(true);
     }
 
-    // Update is called once per frame
+    // Update is called once per frame  
     void Update()
     {
         CheckStage();
@@ -52,6 +52,7 @@ public class MapTutorial2 : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                SFXcontroller.instance.PlaySingle(NextTut);
                 Debug.Log(curStage);
                 curStage++;
             }

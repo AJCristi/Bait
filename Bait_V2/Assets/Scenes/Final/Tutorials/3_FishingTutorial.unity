@@ -928,6 +928,7 @@ MonoBehaviour:
   Predictions: {fileID: 47519313}
   Weather: {fileID: 1587986301}
   StartBtn: {fileID: 1565570685}
+  Next: {fileID: 8300000, guid: fc47d011f85b07c46ba305f0d3aa98bc, type: 3}
 --- !u!1 &160840854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,6 +1615,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574650236632276291, guid: cbfededd009062c4eb72ca6198bd9f6a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.5999756
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbfededd009062c4eb72ca6198bd9f6a, type: 3}
@@ -8982,6 +8988,10 @@ MonoBehaviour:
   CurBait: {fileID: 1283861162}
   FFtext: {fileID: 1010277293}
   hasGear: 0
+  CaughtFish: {fileID: 8300000, guid: 7a355106be1210b4a90f9ee1c40f49c7, type: 3}
+  NoFishSFX: {fileID: 8300000, guid: f481cf19635c89c41afd2f1387859e92, type: 3}
+  Broken: {fileID: 8300000, guid: 9c9214fa98a274941874dac4d63bb9ad, type: 3}
+  Done: {fileID: 8300000, guid: b9177af582619524f9deb0261f3b4174, type: 3}
 --- !u!114 &1675339385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9223,6 +9233,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694653571}
   m_CullTransparentMesh: 0
+--- !u!1001 &1710378945
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3715456512038167893, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_Name
+      value: SFXManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 722.8667
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 415.06308
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -74.058395
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715456512038167897, guid: 30d0dd3d40cfee54197c8900b3ae830e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 30d0dd3d40cfee54197c8900b3ae830e, type: 3}
 --- !u!1 &1721310807
 GameObject:
   m_ObjectHideFlags: 0
@@ -9926,6 +10005,10 @@ MonoBehaviour:
   Hours: {fileID: 676545065}
   StartBtn: {fileID: 1565570687}
   CanStart: 0
+  Return: {fileID: 8300000, guid: 199ba2a8789fca94cb70e7d8551b4446, type: 3}
+  Next: {fileID: 8300000, guid: 6198bba0e0536b64f9204b4a2c866abd, type: 3}
+  TabSfx: {fileID: 8300000, guid: ca2ac61bb337b684489f790c87a8b6d8, type: 3}
+  StartFish: {fileID: 8300000, guid: 7f427c37297dfda40acebed17cb59185, type: 3}
 --- !u!114 &1829403033
 MonoBehaviour:
   m_ObjectHideFlags: 0

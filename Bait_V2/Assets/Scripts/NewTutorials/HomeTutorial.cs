@@ -9,6 +9,8 @@ public class HomeTutorial : MonoBehaviour
     public List<GameObject> TutorialObjs = new List<GameObject>();
 
     float curStage;
+
+    public AudioClip NextTut,SleepSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class HomeTutorial : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
+                SFXcontroller.instance.PlaySingle(NextTut);
                 curStage++;
             }
         }
@@ -44,7 +47,7 @@ public class HomeTutorial : MonoBehaviour
         foreach (GameObject G in TutorialObjs)
         {
             if (G.name == curStage.ToString())
-            {
+            {   
                 G.SetActive(true);
             }
             else
@@ -56,6 +59,7 @@ public class HomeTutorial : MonoBehaviour
 
     public void ReturnTutorial()
     {
+        SFXcontroller.instance.PlaySingle(SleepSFX);
         SceneManager.LoadScene("1_Prologue");
     }
 }

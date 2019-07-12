@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
     bool paused;
+    bool debugOpen;
 
     public GameObject PauseMenu;
+    public Text NowPlayingText;
+
+    public AudioClip PauseSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +24,18 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        NowPlayingText.text = SFXcontroller.instance.ReturnCurrentPlaying();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            paused = !paused;
+            pause();
         }
 
 
         if (paused)
         {
             //Time.timeScale = 0;
+            
             PauseMenu.SetActive(true);
         }
         else
@@ -37,13 +45,20 @@ public class Pause : MonoBehaviour
         }
     }   
 
+    public void NextSong()
+    {
+        SFXcontroller.instance.NextSong();
+    }
+
     public void pause()
     {
+        SFXcontroller.instance.PlaySingle(PauseSFX);
         paused = !paused;
     }
 
     public void RMM()
     {
+        SFXcontroller.instance.PauseMusic();
         SceneManager.LoadScene(0);
     }
 

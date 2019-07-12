@@ -16,6 +16,8 @@ public class NewMarketTutorial : MonoBehaviour
     public GameObject StartBtn;
 
     public GameObject Hider;
+
+    public AudioClip NextTut;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,7 @@ public class NewMarketTutorial : MonoBehaviour
                 if(curStage != 2 && curStage != 3 && curStage != 4 && 
                     curStage != 5 && curStage != 6 && curStage != 7)
                 {
-                   
+                    SFXcontroller.instance.PlaySingle(NextTut);
                     curStage++;
                 }
                 
@@ -56,6 +58,7 @@ public class NewMarketTutorial : MonoBehaviour
             FishTab.SetActive(true);
             if(TB.ActiveTab == TabController.Tabs.Fish)
             {
+                SFXcontroller.instance.PlaySingle(NextTut);
                 curStage++;
             }
         }
@@ -70,6 +73,7 @@ public class NewMarketTutorial : MonoBehaviour
             BaitTab.SetActive(true);
             if(TB.ActiveTab == TabController.Tabs.Bait)
             {
+                SFXcontroller.instance.PlaySingle(NextTut);
                 curStage++;
             }
         }
@@ -85,6 +89,7 @@ public class NewMarketTutorial : MonoBehaviour
             GearTab.SetActive(true);
             if (TB.ActiveTab == TabController.Tabs.Gear)
             {
+                SFXcontroller.instance.PlaySingle(NextTut);
                 curStage++;
             }
         }
@@ -104,6 +109,7 @@ public class NewMarketTutorial : MonoBehaviour
 
     public void Next()
     {
+        SFXcontroller.instance.PlaySingle(NextTut);
         curStage++;
     }
 

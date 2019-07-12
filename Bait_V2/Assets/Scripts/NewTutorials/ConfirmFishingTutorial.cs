@@ -16,6 +16,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
 
     public GameObject StartBtn;
 
+    public AudioClip Next;
   
     // Start is called before the first frame update
     void Start()
@@ -87,7 +88,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
             {
                 if(curStage != 2 && curStage != 4 && curStage != 5)
                 {
-                    
+                    SFXcontroller.instance.PlaySingle(Next);
                     curStage++;
                 }
                 
@@ -99,6 +100,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
             GearTab.SetActive(true);      
             if(TabCont.GetComponent<ChoosingGear>().ReturnActiveTab() == "Gear")
             {
+                SFXcontroller.instance.PlaySingle(Next);
                 curStage++;
             }
         }
@@ -107,6 +109,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
         {
             if(GlobalStats.Instance.CurrentNet == GlobalStats.NetType.Rod)
             {
+                SFXcontroller.instance.PlaySingle(Next);
                 curStage++;
             }
         }
@@ -116,6 +119,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
             BaitTab.SetActive(true);
             if (TabCont.GetComponent<ChoosingGear>().ReturnActiveTab() == "Bait")
             {
+                SFXcontroller.instance.PlaySingle(Next);
                 curStage++;
             }
         }

@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SFXcontroller : MonoBehaviour
 {
     public AudioSource efxSource;                    //Drag a reference to the audio source which will play the sound effects.
     public AudioSource musicSource;                    //Drag a reference to the audio source which will play the music.
+
+    public List<AudioClip> MusicList = new List<AudioClip>();
+
     public static SFXcontroller instance = null;        //Allows other scripts to call functions from SoundManager.                
     public float lowPitchRange = .95f;                //The lowest a sound effect will be randomly pitched.
     public float highPitchRange = 1.05f;            //The highest a sound effect will be randomly pitched.
 
+    int listIndex;
 
     void Awake()
     {
@@ -24,6 +29,61 @@ public class SFXcontroller : MonoBehaviour
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
+
+        if(musicSource.clip == null)
+        {
+            listIndex = 0;
+            musicSource.clip = MusicList[0];
+            musicSource.Play();
+        }
+    }
+
+    public string ReturnCurrentPlaying()
+    {
+        return musicSource.clip.name.ToString();
+    }
+
+    public void PauseMusic()
+    {
+        Debug.Log("Pause");
+        musicSource.Pause();
+    }
+
+    public void PlayMusic()
+    {
+        Debug.Log("Play");
+        if (!musicSource.isPlaying)
+            musicSource.Play();
+    }
+
+    private void Update()
+    {
+        //Debug.Log(musicSource.time.ToString() + " / " + musicSource.clip.length.ToString());
+        float x = musicSource.time / musicSource.clip.length;
+        //Debug.Log(x);
+
+        //Debug.Log(listIndex.ToString() + " -- " + MusicList.Count);
+        if (x >= 1)
+        {
+            NextSong();
+        }
+    }
+
+    public void NextSong()
+    {
+        if (listIndex + 1 < MusicList.Count)
+        {
+            Debug.Log("Next");
+            listIndex++;
+        }
+        else
+        {
+            Debug.Log("Reset");
+            listIndex = 0;
+        }
+
+        musicSource.clip = MusicList[listIndex];
+        musicSource.Play();
     }
 
 

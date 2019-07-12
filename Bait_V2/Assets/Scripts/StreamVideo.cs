@@ -17,7 +17,9 @@ public class StreamVideo : MonoBehaviour
     void Start()
     {
         time = videoPlayer.clip.length;
+        
         StartCoroutine(PlayVideo());
+        SFXcontroller.instance.PauseMusic();
     }
     IEnumerator PlayVideo()
     {
@@ -42,9 +44,18 @@ public class StreamVideo : MonoBehaviour
 
         if(x > .994)
         {
-            if(SceneManager.GetActiveScene().name == "1_Prologue")
-                SceneManager.LoadScene("1_MapSelector");
-        }
+            SFXcontroller.instance.PlayMusic();
+            switch (SceneManager.GetActiveScene().name)
+            {
+                case "1_Prologue":
+                    SceneManager.LoadScene("1_MapSelector");
+                    break;
 
+                case "5_Credits":
+                    SceneManager.LoadScene("MainMenu");
+                    break;
+            }
+        }
+        
     }
 }
