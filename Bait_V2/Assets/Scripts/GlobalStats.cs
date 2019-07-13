@@ -61,8 +61,9 @@ public class GlobalStats : MonoBehaviour
 
     public void CheckWin()
     {
-        if(EndDay>= Day)
+        if(EndDay <= Day)
         {
+            Debug.Log("xx");
             SceneManager.LoadScene("5_Credits");
         }
     }

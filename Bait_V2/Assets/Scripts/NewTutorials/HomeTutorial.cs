@@ -60,6 +60,7 @@ public class HomeTutorial : MonoBehaviour
     public void ReturnTutorial()
     {
         SFXcontroller.instance.PlaySingle(SleepSFX);
-        SceneManager.LoadScene("1_Prologue");
+        LoadingScreen.Instance.LoadScene("1_Prologue");
+        //SceneManager.LoadScene("1_Prologue");
     }
 }

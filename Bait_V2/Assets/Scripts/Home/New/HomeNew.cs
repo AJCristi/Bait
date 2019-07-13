@@ -151,7 +151,8 @@ public class HomeNew : MonoBehaviour
             if (GlobalStats.Instance.BreadAmt <= 0 && GlobalStats.Instance.InsectAmt <= 0 && 
                 GlobalStats.Instance.WormAmt <= 0)
             {
-                SceneManager.LoadScene("0_GameOver");
+                LoadingScreen.Instance.LoadScene("0_GameOver");
+                //SceneManager.LoadScene("0_GameOver");
             }
         }
        
@@ -159,14 +160,17 @@ public class HomeNew : MonoBehaviour
         {
             if (GlobalStats.Instance.ActiveEvent.DaysRemaining < 0)
             {
-                SceneManager.LoadScene("0_GameOver");
+                LoadingScreen.Instance.LoadScene("0_GameOver");
+                //SceneManager.LoadScene("0_GameOver");
             }
             else
-                SceneManager.LoadScene("1_MapSelector");
+                LoadingScreen.Instance.LoadScene("0_GameOver");
+                //SceneManager.LoadScene("1_MapSelector");
         }
         else
         {
-            SceneManager.LoadScene("1_MapSelector");
+            LoadingScreen.Instance.LoadScene("1_MapSelector");
+            //SceneManager.LoadScene("1_MapSelector");
         }
         GlobalStats.Instance.PerDayEarning = 0;
 

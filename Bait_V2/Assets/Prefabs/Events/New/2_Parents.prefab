@@ -46,8 +46,8 @@ MonoBehaviour:
   Description: Your wife's father is down with a fever and needs money to go to the
     doctor
   StartMonth: 7
-  StartDay: 10
+  StartDay: 9
   originalDays: 7
-  DaysRemaining: 0
+  DaysRemaining: 7
   MoneyRequirement: 600
   Completed: 0

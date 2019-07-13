@@ -93,7 +93,8 @@ public class MapController : MonoBehaviour
         MarketUpdate();
         if (GlobalStats.Instance.CurTime >= 20)
         {
-            SceneManager.LoadScene("4_Home");
+            LoadingScreen.Instance.LoadScene("4_Home");
+            //SceneManager.LoadScene("4_Home");
         }
 
         if (EventSystem.current.currentSelectedGameObject == HomeBtn.gameObject)
@@ -247,7 +248,8 @@ public class MapController : MonoBehaviour
 
     public void YesHome()
     {
-        SceneManager.LoadScene("4_Home");
+        LoadingScreen.Instance.LoadScene("4_Home");
+        //SceneManager.LoadScene("4_Home");
     }
 
     public void NoHome()
@@ -258,7 +260,8 @@ public class MapController : MonoBehaviour
     public void YesMarket()
     {
         GlobalStats.Instance.AdvanceTime(2);
-        SceneManager.LoadScene("2_MarketPlace");      
+        LoadingScreen.Instance.LoadScene("2_MarketPlace");
+        //SceneManager.LoadScene("2_MarketPlace");      
 
 
     }
@@ -277,7 +280,8 @@ public class MapController : MonoBehaviour
     {
         //Loc1ConfirmMenu = true;
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
-        SceneManager.LoadScene("3_Fishing");
+        LoadingScreen.Instance.LoadScene("3_Fishing");
+        //SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc1()
@@ -294,7 +298,8 @@ public class MapController : MonoBehaviour
     {
         //Loc2ConfirmMenu = true;
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.ExposedReef;
-        SceneManager.LoadScene("3_Fishing");
+        LoadingScreen.Instance.LoadScene("3_Fishing");
+        //SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc2()
@@ -312,7 +317,8 @@ public class MapController : MonoBehaviour
     {
         //Loc3ConfirmMenu = true;
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.LonelyIsland;
-        SceneManager.LoadScene("3_Fishing");
+        LoadingScreen.Instance.LoadScene("3_Fishing");
+        //SceneManager.LoadScene("3_Fishing");
     }
 
     public void NoLoc3()

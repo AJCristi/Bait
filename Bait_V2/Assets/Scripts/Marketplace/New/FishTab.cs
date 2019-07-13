@@ -122,7 +122,7 @@ public class FishTab : MonoBehaviour
         if(GlobalStats.Instance.smallKG > 0)
         {
             PlayerGalungKGChoose.gameObject.SetActive(true);
-            PlayerGalungKGChoose.text = PGalung.ToString() + "/Kg";
+            PlayerGalungKGChoose.text = PGalung.ToString("F2") + "/Kg";
         }
         else
         {
@@ -133,7 +133,7 @@ public class FishTab : MonoBehaviour
         if(GlobalStats.Instance.medKG > 0)
         {
             PlayerTilaPerKGChoose.gameObject.SetActive(true);
-            PlayerTilaPerKGChoose.text = PTilapia.ToString() + "/Kg"; ;
+            PlayerTilaPerKGChoose.text = PTilapia.ToString("F2") + "/Kg"; ;
         }
         else
         {
@@ -144,7 +144,7 @@ public class FishTab : MonoBehaviour
         if (GlobalStats.Instance.largeKG > 0)
         {
             PlayerLapuPerKGChoose.gameObject.SetActive(true);
-            PlayerLapuPerKGChoose.text = PLapu.ToString() + "/Kg"; ;
+            PlayerLapuPerKGChoose.text = PLapu.ToString("F2") + "/Kg"; ;
         }
         else
         {
@@ -169,6 +169,11 @@ public class FishTab : MonoBehaviour
         else
         {
             PGalung += .5f;
+        }
+
+        if(PGalung > GlobalStats.Instance.smallKG)
+        {
+            PGalung = GlobalStats.Instance.smallKG;
         }
     }
 
@@ -196,6 +201,11 @@ public class FishTab : MonoBehaviour
         {
             PTilapia += .5f;
         }
+
+        if (PTilapia > GlobalStats.Instance.medKG)
+        {
+            PTilapia = GlobalStats.Instance.medKG;
+        }
     }
 
     public void DecreaseTila()
@@ -221,6 +231,11 @@ public class FishTab : MonoBehaviour
         else
         {
             PLapu += .5f;
+        }
+
+        if (PLapu > GlobalStats.Instance.largeKG)
+        {
+            PLapu = GlobalStats.Instance.largeKG;
         }
     }   
 

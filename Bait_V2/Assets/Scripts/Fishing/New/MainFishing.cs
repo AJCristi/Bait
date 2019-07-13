@@ -591,7 +591,8 @@ public class MainFishing : MonoBehaviour
     public void DoneFishing()
     {
         SFXcontroller.instance.PlaySingle(Done);
-        SceneManager.LoadScene("1_MapSelector");
+        LoadingScreen.Instance.LoadScene("1_MapSelector");
+        //ceneManager.LoadScene("1_MapSelector");
     }
 
     void CheckGear()
@@ -674,3 +675,4 @@ public class MainFishing : MonoBehaviour
     }
 
 }
+

@@ -88,6 +88,7 @@ public class TabController : MonoBehaviour
 
     public void ReturnBack()
     {
-        SceneManager.LoadScene("1_MapSelector");
+        LoadingScreen.Instance.LoadScene("1_MapSelector");
+        //SceneManager.LoadScene("1_MapSelector");
     }
 }

@@ -322,7 +322,8 @@ public class ChoosingGear : MonoBehaviour
     public void ReturnToMap()
     {
         SFXcontroller.instance.PlaySingle(Return);
-        SceneManager.LoadScene("1_MapSelector");
+        LoadingScreen.Instance.LoadScene("1_MapSelector");
+        //SceneManager.LoadScene("1_MapSelector");
     }
     
 }

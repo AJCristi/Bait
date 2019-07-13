@@ -42,7 +42,7 @@ public class GlobalUI : MonoBehaviour
         GlobalStats.Instance.TrawlPieces = 0;
 
         GlobalStats.Instance.CurStage = GlobalStats.MapTutorialStage.S1;
-        SceneManager.LoadScene("1_MapSelectorTutorial");
+        //SceneManager.LoadScene("1_MapSelectorTutorial");
     }
 
     public void Reset()
