@@ -119,6 +119,10 @@ MonoBehaviour:
   - {fileID: 7243169123116590667, guid: b8fe227ea42a21743bc0264fc6b72a1c, type: 3}
   - {fileID: 7243169123116590667, guid: dc895009391a4104dadec6a0096763ef, type: 3}
   - {fileID: 7243169123116590667, guid: d3388e37408e49049b9f83a02e7ca99c, type: 3}
+  - {fileID: 7243169123116590667, guid: 2f191fec5d937824db7e9d92c640e909, type: 3}
+  - {fileID: 7243169123116590667, guid: 9639d260a1bde0e43a99064d1b22646f, type: 3}
+  - {fileID: 7243169123116590667, guid: 52073a7074468eb4abecb96abd238435, type: 3}
+  - {fileID: 7243169123116590667, guid: c369907fb7d48cc4281c2fa8b153a480, type: 3}
   ActiveEvent: {fileID: 0}
   PricesToday: 0
   NewsmallFishPerKG: 0

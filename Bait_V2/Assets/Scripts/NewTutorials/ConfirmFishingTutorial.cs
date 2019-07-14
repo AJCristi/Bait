@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ConfirmFishingTutorial : MonoBehaviour
 {
@@ -10,12 +11,12 @@ public class ConfirmFishingTutorial : MonoBehaviour
 
     float curStage;
 
-    public GameObject GearTab,TabCont;
+    public GameObject GearTab,TabCont,ReturnBtn;
 
     public GameObject BaitTab, Predictions, Weather;
 
     public GameObject StartBtn;
-
+        
     public AudioClip Next;
   
     // Start is called before the first frame update
@@ -43,9 +44,17 @@ public class ConfirmFishingTutorial : MonoBehaviour
 
             StartBtn.SetActive(true);
             BaitTab.SetActive(true);
-
         }
-        
+
+        if(GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S3)
+            ReturnBtn.SetActive(true);
+
+
+    }
+
+    public void ReturnTutorial()
+    {
+        SceneManager.LoadScene("1_MapSelectorTutorial4");
     }
         
     // Update is called once per frame

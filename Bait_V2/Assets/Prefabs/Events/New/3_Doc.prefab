@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bc07be95cd85041ad644c5a64345e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Description: Your daguhter has a slight fever, you should buy medicine
+  Description: Your daughter has a slight fever, you should buy medicine
   StartMonth: 7
   StartDay: 18
-  originalDays: 8
-  DaysRemaining: 0
+  originalDays: 5
+  DaysRemaining: 5
   MoneyRequirement: 450
   Completed: 0

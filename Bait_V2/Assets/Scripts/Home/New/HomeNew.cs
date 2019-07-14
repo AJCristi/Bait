@@ -75,7 +75,22 @@ public class HomeNew : MonoBehaviour
             
             subtracted = true;
         }
+        
+
+
         MoneyText.text = GlobalStats.Instance.PlayerSavings.ToString();
+        if(GlobalStats.Instance.PlayerSavings > 0)
+        {
+            MoneyText.color = Color.green;
+        }
+        else if(GlobalStats.Instance.PlayerSavings == 0)
+        {
+            MoneyText.color = Color.yellow;
+        }
+        else if(GlobalStats.Instance.PlayerSavings < 0)
+        {
+            MoneyText.color = Color.red;
+        }
 
     }
 
@@ -148,9 +163,11 @@ public class HomeNew : MonoBehaviour
 
         if(GlobalStats.Instance.PlayerSavings <= 0)
         {
-            if (GlobalStats.Instance.BreadAmt <= 0 && GlobalStats.Instance.InsectAmt <= 0 && 
+            if (GlobalStats.Instance.BreadAmt <= 0 && 
+                GlobalStats.Instance.InsectAmt <= 0 && 
                 GlobalStats.Instance.WormAmt <= 0)
             {
+                Debug.Log("No more bait");
                 LoadingScreen.Instance.LoadScene("0_GameOver");
                 //SceneManager.LoadScene("0_GameOver");
             }
@@ -160,11 +177,12 @@ public class HomeNew : MonoBehaviour
         {
             if (GlobalStats.Instance.ActiveEvent.DaysRemaining < 0)
             {
+                Debug.Log("Event Loss");
                 LoadingScreen.Instance.LoadScene("0_GameOver");
                 //SceneManager.LoadScene("0_GameOver");
             }
             else
-                LoadingScreen.Instance.LoadScene("0_GameOver");
+                LoadingScreen.Instance.LoadScene("1_MapSelector");
                 //SceneManager.LoadScene("1_MapSelector");
         }
         else

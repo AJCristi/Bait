@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3902368923703449487}
   - component: {fileID: 7243169123116590667}
   m_Layer: 0
-  m_Name: 2_Parents
+  m_Name: 6_Mother
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,11 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bc07be95cd85041ad644c5a64345e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Description: Your wife's father is down with a fever and needs money to go to the
-    doctor
+  Description: It's your mother's death anniversary soon, and you need to pay
   StartMonth: 7
-  StartDay: 9
-  originalDays: 5
-  DaysRemaining: 5
-  MoneyRequirement: 600
+  StartDay: 2
+  originalDays: 4
+  DaysRemaining: 4
+  MoneyRequirement: 250
   Completed: 0

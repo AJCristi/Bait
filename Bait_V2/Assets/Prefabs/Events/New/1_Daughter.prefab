@@ -46,6 +46,7 @@ MonoBehaviour:
   Description: Your daughter starts school soon and need supplies
   StartMonth: 7
   StartDay: 2
-  originalDays: 5
-  DaysRemaining: 0
+  originalDays: 3
+  DaysRemaining: 3
   MoneyRequirement: 200
+  Completed: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EventController : MonoBehaviour
 {
@@ -13,11 +14,20 @@ public class EventController : MonoBehaviour
 
     public AudioClip Complete;
 
+    public Button Pay;
+
+    int R;
+
     // Start is called before the first frame update
     void Start()
     {
         HasQuest = false;
-        StartQuest();
+        if (SceneManager.GetActiveScene().name != "4_HomeTutorial")
+        {
+            
+            StartQuest();
+            R = 0;
+        }
     }
 
     // Update is called once per frame
@@ -45,24 +55,42 @@ public class EventController : MonoBehaviour
         if (GlobalStats.Instance.ActiveEvent == null)
         {
             Debug.Log("Started");
-            foreach (DataEvent Ev in GlobalStats.Instance.EventsList)
-            {
-                Debug.Log(Ev.name +" -- " + Ev.StartMonth + "/" + Ev.StartDay);
+            
+            //foreach (DataEvent Ev in GlobalStats.Instance.EventsList)
+            //{
+            //    Debug.Log(Ev.name +" -- " + Ev.StartMonth + "/" + Ev.StartDay);
 
-                if (Ev.StartMonth == GlobalStats.Instance.Month &&
-                    Ev.StartDay == GlobalStats.Instance.Day && Ev.Completed == false)
-                {
+            //    if (Ev.StartMonth == GlobalStats.Instance.Month &&
+            //        Ev.StartDay == GlobalStats.Instance.Day && Ev.Completed == false)
+            //    {
                     
-                    GlobalStats.Instance.ActiveEvent = Ev;
-                    HasQuest = true;
-                    break;
-                }
+            //        GlobalStats.Instance.ActiveEvent = Ev;
+            //        HasQuest = true;
+            //        break;
+            //    }
+            //}
+
+            foreach(DataEvent Ev in GlobalStats.Instance.EventsList)
+            {
+                Debug.Log(Ev.name + " -- " + Ev.StartMonth + "/" + Ev.StartDay);               
             }
+            ChooseRandom();
+            GlobalStats.Instance.ActiveEvent =
+                GlobalStats.Instance.EventsList[R];
+
+            HasQuest = true;
+
         }
         else
         {
             HasQuest = true;
         }
+    }
+
+    void ChooseRandom()
+    {
+        R = Random.Range(0, GlobalStats.Instance.EventsList.Count);
+        Debug.Log(R +" -- " + GlobalStats.Instance.EventsList.Count);
     }
 
     void DisplayQuest()
@@ -71,6 +99,14 @@ public class EventController : MonoBehaviour
         DueDate.text = GlobalStats.Instance.ActiveEvent.DaysRemaining.ToString();
         ReqMoney.text = GlobalStats.Instance.ActiveEvent.MoneyRequirement.ToString();
 
+        if(GlobalStats.Instance.PlayerSavings < GlobalStats.Instance.ActiveEvent.MoneyRequirement)
+        {
+            Pay.interactable = false;
+        }
+        else
+        {
+            Pay.interactable = true;
+        }
     }     
 
     public void TurnInQuest()
@@ -83,7 +119,7 @@ public class EventController : MonoBehaviour
                 Debug.Log("Turn in");
                 GlobalStats.Instance.PlayerSavings -= GlobalStats.Instance.ActiveEvent.MoneyRequirement;
                 //GlobalStats.Instance.EventsList.RemoveAt(0);
-                GlobalStats.Instance.ActiveEvent.Completed = true;
+                //GlobalStats.Instance.ActiveEvent.Completed = true;
                 GlobalStats.Instance.ActiveEvent = null;
                 HasQuest = false;
              }

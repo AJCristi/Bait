@@ -27,14 +27,30 @@ public class NewMarketTutorial : MonoBehaviour
         {
             G.SetActive(false);
         }
-        TutorialObjs[0].SetActive(true);
+        if (GlobalStats.Instance.CurStage != GlobalStats.MapTutorialStage.S3)
+        {
+            TutorialObjs[0].SetActive(true);
+        }     
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckStage();
-        AnyKey();
+        if (GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S2)
+        {
+            CheckStage();
+            AnyKey();
+        }
+        else if(GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S3)
+        {
+            GearTab.SetActive(true);
+            BaitTab.SetActive(true);
+            FishTab.SetActive(true);
+
+            StartBtn.SetActive(true);
+            Hider.SetActive(false);
+        }
     }
 
     void AnyKey()
@@ -130,6 +146,12 @@ public class NewMarketTutorial : MonoBehaviour
 
     public void ReturnTutorial()
     {
-        SceneManager.LoadScene("1_MapSelectorTutorial3");
+        if(GlobalStats.Instance.CurStage != GlobalStats.MapTutorialStage.S3)
+            SceneManager.LoadScene("1_MapSelectorTutorial3");
+
+        else
+        {
+            SceneManager.LoadScene("1_MapSelectorTutorial4");
+        }
     }
 }

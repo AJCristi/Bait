@@ -702,17 +702,12 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8893148613172742403, guid: a3173d243f5e4544d9b60afad350c265,
+    - target: {fileID: 8893148612862625262, guid: a3173d243f5e4544d9b60afad350c265,
         type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 8893148613391571135, guid: a3173d243f5e4544d9b60afad350c265,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893148613718961144, guid: a3173d243f5e4544d9b60afad350c265,
+    - target: {fileID: 8893148613383134282, guid: a3173d243f5e4544d9b60afad350c265,
         type: 3}
       propertyPath: m_Layer
       value: 8
@@ -727,17 +722,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 8893148612862625262, guid: a3173d243f5e4544d9b60afad350c265,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893148613383134282, guid: a3173d243f5e4544d9b60afad350c265,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8893148614040794398, guid: a3173d243f5e4544d9b60afad350c265,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893148613172742403, guid: a3173d243f5e4544d9b60afad350c265,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893148613391571135, guid: a3173d243f5e4544d9b60afad350c265,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893148613718961144, guid: a3173d243f5e4544d9b60afad350c265,
         type: 3}
       propertyPath: m_Layer
       value: 8
@@ -924,6 +924,7 @@ MonoBehaviour:
   - {fileID: 1996773758}
   GearTab: {fileID: 610018542}
   TabCont: {fileID: 1829403026}
+  ReturnBtn: {fileID: 1023710553}
   BaitTab: {fileID: 400262963}
   Predictions: {fileID: 47519313}
   Weather: {fileID: 1587986301}
@@ -5523,8 +5524,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1829403032}
-        m_MethodName: ReturnToMap
+      - m_Target: {fileID: 157463602}
+        m_MethodName: ReturnTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
