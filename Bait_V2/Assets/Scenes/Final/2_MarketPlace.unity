@@ -5867,7 +5867,7 @@ GameObject:
   - component: {fileID: 1202479060}
   - component: {fileID: 1202479059}
   m_Layer: 5
-  m_Name: Sell (1)
+  m_Name: SellAll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7608,6 +7608,7 @@ MonoBehaviour:
   DownPrice: {fileID: -1165338188888857816, guid: fcfc1d9843eea0949993d9a2f36050f1,
     type: 3}
   SellBtn: {fileID: 654782997}
+  SellAllBtn: {fileID: 1202479059}
   Next: {fileID: 8300000, guid: 6198bba0e0536b64f9204b4a2c866abd, type: 3}
   Buy: {fileID: 8300000, guid: 00d0bcf5df4d69d43a32716af9042b9a, type: 3}
 --- !u!1 &1742020560
