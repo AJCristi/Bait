@@ -12,12 +12,27 @@ public class ChoosingGear : MonoBehaviour
         Gear,
         Bait
     }
-
     Tab ActiveTab;
+
+    enum tempGear
+    {
+        Rod,
+        Cast,
+        Trawl
+    }
+    tempGear tempgear;
+
+    enum tempBait
+    {
+        Bread,
+        Insects,
+        Worm
+    }
+    tempBait tempbait;
 
     public Image NetImg;
     public Sprite Rod, Cast, Trawl;
-    public Text NetTitle, NetLevel, NetDesc;
+    public Text NetTitle, NetLevel, NetDesc, NetDesc2;
     public Text NetPieces;
 
     public Text RodAmt, CastAmt, TrawlAmt;
@@ -28,6 +43,9 @@ public class ChoosingGear : MonoBehaviour
 
     public Text BaitBreadAmt, BaitInsectAmt, BaitWormsAmt;
 
+    public Image FishIndic;
+    public Sprite GG, Tila, LL;
+
     public GameObject FishingScene;
 
     public Text LocationName,Hours;
@@ -36,6 +54,13 @@ public class ChoosingGear : MonoBehaviour
     public bool CanStart;
 
     public AudioClip Return, Next, TabSfx, StartFish;
+
+    public Button SelectGearBtn, SelectBaitBtn;
+
+    public Text SelectedGearText, SelectedBaitText;
+    public Image SelectedGearImg, SelectedBaitImg;
+
+    public AudioClip Selected;
 
     public string ReturnActiveTab()
     {
@@ -46,7 +71,7 @@ public class ChoosingGear : MonoBehaviour
     void Start()
     {
         ActiveTab = Tab.Bait;
-
+        tempgear = tempGear.Cast;
         CanStart = false;
         FishingScene.SetActive(false);
         LocationName.text = GlobalStats.Instance.SelectedLocation.ToString();
@@ -68,6 +93,44 @@ public class ChoosingGear : MonoBehaviour
                     " Hours";
                 break;
 
+        }
+    }
+
+    public void SelectedNet()
+    {
+        SFXcontroller.instance.PlaySingle(Selected);
+        switch(tempgear)
+        {
+            case tempGear.Cast:
+                GlobalStats.Instance.CurrentNet = GlobalStats.NetType.Cast;
+                break;
+
+            case tempGear.Rod:
+                GlobalStats.Instance.CurrentNet = GlobalStats.NetType.Rod;
+                break;
+
+            case tempGear.Trawl:
+                GlobalStats.Instance.CurrentNet = GlobalStats.NetType.Trawling;
+                break;
+        }
+    }
+
+    public void SelectedBait()
+    {
+        SFXcontroller.instance.PlaySingle(Selected);
+        switch (tempbait)
+        {
+            case tempBait.Bread:
+                GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Bread;
+                break;
+
+            case tempBait.Insects:
+                GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Insects;
+                break;
+
+            case tempBait.Worm:
+                GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Worms;
+                break;
         }
     }
 
@@ -102,6 +165,39 @@ public class ChoosingGear : MonoBehaviour
 
         UpdateNet();
         UpdateBait();
+
+        SelectedGearText.text = GlobalStats.Instance.CurrentNet.ToString();
+        SelectedBaitText.text = GlobalStats.Instance.CurrentBait.ToString();
+
+        switch(GlobalStats.Instance.CurrentNet)
+        {
+            case GlobalStats.NetType.Cast:
+                SelectedGearImg.overrideSprite = Cast;
+                break;
+
+            case GlobalStats.NetType.Rod:
+                SelectedGearImg.overrideSprite = Rod;
+                break;
+
+            case GlobalStats.NetType.Trawling:
+                SelectedGearImg.overrideSprite = Trawl;
+                break;
+        }
+
+        switch(GlobalStats.Instance.CurrentBait)
+        {
+            case GlobalStats.BaitType.Bread:
+                SelectedBaitImg.overrideSprite = Bread;
+                break;
+
+            case GlobalStats.BaitType.Insects:
+                SelectedBaitImg.overrideSprite = Insect;
+                break;
+
+            case GlobalStats.BaitType.Worms:
+                SelectedBaitImg.overrideSprite = Worm;
+                break;
+        }
     }
 
     void CheckGear()
@@ -184,30 +280,33 @@ public class ChoosingGear : MonoBehaviour
 
     void UpdateNet()
     {
-        NetTitle.text = GlobalStats.Instance.CurrentNet.ToString();
+        //NetTitle.text = GlobalStats.Instance.CurrentNet.ToString();
+        NetTitle.text = tempgear.ToString();
 
-        switch (GlobalStats.Instance.CurrentNet)
+        switch (tempgear)
         {
-            case GlobalStats.NetType.Cast:
+            case tempGear.Cast:
                 NetImg.sprite = Cast;
                 NetLevel.text = "Level: " + GlobalStats.Instance.CastNetLevel.ToString();
                 NetDesc.text = "Uses 5 bait per cast";
-
+                NetDesc2.text = "Can catch up to 5 fish";
                 NetPieces.text = GlobalStats.Instance.CastPieces.ToString() + " pieces";
                 break;
 
-            case GlobalStats.NetType.Rod:
+            case tempGear.Rod:
                 NetImg.sprite = Rod;
                 NetLevel.text = "Level: " + GlobalStats.Instance.RodNetLevel.ToString();
                 NetDesc.text = "Uses 1 bait per cast";
+                NetDesc2.text = "Can catch only 1 fish";
 
                 NetPieces.text = GlobalStats.Instance.RodPieces.ToString() + " pieces";
                 break;
 
-            case GlobalStats.NetType.Trawling:
+            case tempGear.Trawl:
                 NetImg.sprite = Trawl;
                 NetLevel.text = "Level: " + GlobalStats.Instance.TrawlingNetLevel.ToString();
                 NetDesc.text = "Uses 10 bait per cast";
+                NetDesc2.text = "Can catch up to 10 fish";
 
                 NetPieces.text = GlobalStats.Instance.TrawlPieces.ToString() + " pieces";
                 break;
@@ -220,23 +319,26 @@ public class ChoosingGear : MonoBehaviour
 
     void UpdateBait()
     {
-        switch(GlobalStats.Instance.CurrentBait)
+        switch(tempbait)
         {
-            case GlobalStats.BaitType.Bread:
+            case tempBait.Bread:
                 BaitImg.overrideSprite = Bread;
-                
+                FishIndic.overrideSprite = GG;
                 BaitAmt.text = GlobalStats.Instance.BreadAmt.ToString() + " Pieces left";
                 BaitDesc.text = "Attracts more Galunggong";
+
                 break;
 
-            case GlobalStats.BaitType.Insects:
+            case tempBait.Insects:
                 BaitImg.overrideSprite = Insect;
+                FishIndic.overrideSprite = Tila;
                 BaitAmt.text = GlobalStats.Instance.InsectAmt.ToString() + " Pieces left";
                 BaitDesc.text = "Attracts more Tilapia";
                 break;
 
-            case GlobalStats.BaitType.Worms:
+            case tempBait.Worm:
                 BaitImg.overrideSprite = Worm;
+                FishIndic.overrideSprite = LL;
                 BaitAmt.text = GlobalStats.Instance.WormAmt.ToString() + " Pieces left";
                 BaitDesc.text = "Attracts more Lapu-Lapu";
                 break;
@@ -278,6 +380,44 @@ public class ChoosingGear : MonoBehaviour
         }
     }
 
+    public void ChangeGearRight()
+    {
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (tempgear)
+        {
+            case tempGear.Cast:
+                tempgear = tempGear.Rod;
+                break;
+
+            case tempGear.Rod:
+                tempgear = tempGear.Trawl;
+                break;
+
+            case tempGear.Trawl:
+                tempgear = tempGear.Cast;
+                break;
+        }
+    }
+
+    public void ChangeGearLeft()
+    {
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (tempgear)
+        {
+            case tempGear.Cast:
+                tempgear = tempGear.Trawl;
+                break;
+
+            case tempGear.Rod:
+                tempgear = tempGear.Cast;
+                break;
+
+            case tempGear.Trawl:
+                tempgear = tempGear.Rod;
+                break;
+        }
+    }
+
     public void ChangeBait()
     {
         SFXcontroller.instance.PlaySingle(Next);
@@ -293,6 +433,42 @@ public class ChoosingGear : MonoBehaviour
 
             case GlobalStats.BaitType.Worms:
                 GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Bread;
+                break;
+        }
+    }
+
+    public void ChangeBaitRight()
+    {
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (tempbait)
+        {
+            case tempBait.Bread:
+                tempbait = tempBait.Insects;
+                break;
+
+            case tempBait.Insects:
+                tempbait = tempBait.Worm;
+                break;
+            case tempBait.Worm:
+                tempbait = tempBait.Bread;
+                break;
+        }
+    }
+
+    public void ChangeBaitLeft()
+    {
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (tempbait)
+        {
+            case tempBait.Bread:
+                tempbait = tempBait.Worm;
+                break;
+
+            case tempBait.Insects:
+                tempbait = tempBait.Bread;
+                break;
+            case tempBait.Worm:
+                tempbait = tempBait.Insects;
                 break;
         }
     }

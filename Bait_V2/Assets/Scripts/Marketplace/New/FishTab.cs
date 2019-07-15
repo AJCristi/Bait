@@ -21,7 +21,7 @@ public class FishTab : MonoBehaviour
     public Image GGprice, Tilaprice, Lapuprice;
     public Sprite UpPrice, DownPrice;
 
-    public Button SellBtn;
+    public Button SellBtn, SellAllBtn;
 
     public AudioClip Next, Buy;
 
@@ -47,10 +47,12 @@ public class FishTab : MonoBehaviour
         if(PGalung <= 0 && PTilapia <= 0 && PLapu <= 0)
         {
             SellBtn.interactable = false;
+            SellAllBtn.interactable = false;
         }
         else
         {
             SellBtn.interactable = true;
+            SellAllBtn.interactable = false;
         }
 
         switch(GlobalStats.Instance.PricesToday)
@@ -109,6 +111,28 @@ public class FishTab : MonoBehaviour
         GlobalStats.Instance.smallKG -= PGalung;
         GlobalStats.Instance.medKG -= PTilapia;
         GlobalStats.Instance.largeKG -= PLapu;
+
+        GlobalStats.Instance.PlayerSavings += totalearning;
+        GlobalStats.Instance.PerDayEarning += totalearning;
+        GlobalStats.Instance.TotalMoneyEarned += totalearning;
+
+        SFXcontroller.instance.PlaySingle(Buy);
+    }
+
+    public void SellAll()
+    {
+
+        GlobalStats.Instance.smallKG = 0;
+        GlobalStats.Instance.medKG = 0;
+        GlobalStats.Instance.largeKG = 0;
+
+        PGalung = 0;
+        PTilapia = 0;
+        PLapu = 0;
+
+        GlobalStats.Instance.GGPieces = 0;
+        GlobalStats.Instance.TilaPieces = 0;
+        GlobalStats.Instance.LapuPieces = 0;
 
         GlobalStats.Instance.PlayerSavings += totalearning;
         GlobalStats.Instance.PerDayEarning += totalearning;

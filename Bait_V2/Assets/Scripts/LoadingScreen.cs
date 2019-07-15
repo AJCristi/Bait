@@ -44,6 +44,8 @@ public class LoadingScreen : MonoBehaviour
     private void Start()
     {
         LoadingScrn.SetActive(false);
+        DisplayOff();
+
     }
 
     void DisplayOn()
@@ -77,17 +79,12 @@ public class LoadingScreen : MonoBehaviour
         // Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
         AsyncOperation async = SceneManager.LoadSceneAsync(scene);
         Debug.Log("Pro :" + async.progress);
-
-        if (async.isDone)
+        
+        // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
+        while (!async.isDone)
         {
             loadScene = false;
             DisplayOff();
-
-        }
-        // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
-        while (!async.isDone)
-        {            
-            
             yield return null;
         }
         

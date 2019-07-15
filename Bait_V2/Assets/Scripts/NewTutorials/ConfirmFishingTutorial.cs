@@ -15,7 +15,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
 
     public GameObject BaitTab, Predictions, Weather;
 
-    public GameObject StartBtn;
+    public GameObject StartBtn, Selection, Hider;
         
     public AudioClip Next;
   
@@ -25,7 +25,8 @@ public class ConfirmFishingTutorial : MonoBehaviour
         
         MainFishTut.SetActive(false);
         curStage = 1;
-        
+        Hider.SetActive(true);
+
         foreach (GameObject G in TutorialObjs)
         {
             G.SetActive(false);
@@ -36,14 +37,18 @@ public class ConfirmFishingTutorial : MonoBehaviour
         }
         else
         {
+            Debug.Log("xd");
             GearTab.SetActive(true);
             TabCont.SetActive(true);
             
             Predictions.SetActive(true);
+            Selection.SetActive(true);
             Weather.SetActive(true);
 
             StartBtn.SetActive(true);
             BaitTab.SetActive(true);
+
+            Hider.SetActive(false);
         }
 
         if(GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S3)
@@ -65,7 +70,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
             //Debug.Log(curStage);
             CheckStage();
             AnyKey();
-        }
+        }   
     }
 
     void CheckStage()
@@ -106,9 +111,11 @@ public class ConfirmFishingTutorial : MonoBehaviour
 
         if (curStage == 2)
         {
-            GearTab.SetActive(true);      
+            GearTab.SetActive(true);
+           
             if(TabCont.GetComponent<ChoosingGear>().ReturnActiveTab() == "Gear")
             {
+                Hider.SetActive(false);
                 SFXcontroller.instance.PlaySingle(Next);
                 curStage++;
             }
@@ -116,6 +123,7 @@ public class ConfirmFishingTutorial : MonoBehaviour
 
         if(curStage == 4)
         {
+            Selection.SetActive(true);
             if(GlobalStats.Instance.CurrentNet == GlobalStats.NetType.Rod)
             {
                 SFXcontroller.instance.PlaySingle(Next);
@@ -126,8 +134,10 @@ public class ConfirmFishingTutorial : MonoBehaviour
         if (curStage == 5)
         {
             BaitTab.SetActive(true);
+            Hider.SetActive(true);
             if (TabCont.GetComponent<ChoosingGear>().ReturnActiveTab() == "Bait")
             {
+                Hider.SetActive(false);
                 SFXcontroller.instance.PlaySingle(Next);
                 curStage++;
             }
