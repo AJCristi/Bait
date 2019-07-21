@@ -93,18 +93,18 @@ TextureImporter:
       name: MainMenuButtons_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 18
-        width: 211
-        height: 136
+        x: 39
+        y: 37
+        width: 180
+        height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3df8b49275c11f043b297597f479bebd
+      spriteID: fafb9d510edcb1b489da45d6765b090c
       internalID: 6182443410152869186
       vertices: []
       indices: 
@@ -114,18 +114,18 @@ TextureImporter:
       name: MainMenuButtons_1
       rect:
         serializedVersion: 2
-        x: 346
-        y: 17
-        width: 137
-        height: 138
+        x: 365
+        y: 37
+        width: 180
+        height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9d1d81d11b0a7541be6492b61aa2b64
+      spriteID: 23990a7dea95f5142b3463c8a904f8e1
       internalID: -3274239917416431365
       vertices: []
       indices: 

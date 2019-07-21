@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class NewMarketTutorial : MonoBehaviour
@@ -18,6 +19,9 @@ public class NewMarketTutorial : MonoBehaviour
     public GameObject Hider;
 
     public AudioClip NextTut;
+
+    public GameObject GearUpgradeBtn;
+    Vector3 oldpos;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +34,10 @@ public class NewMarketTutorial : MonoBehaviour
         if (GlobalStats.Instance.CurStage != GlobalStats.MapTutorialStage.S3)
         {
             TutorialObjs[0].SetActive(true);
-        }     
-        
+        }
+
+        oldpos = GearUpgradeBtn.transform.position;
+
     }
 
     // Update is called once per frame
@@ -41,12 +47,19 @@ public class NewMarketTutorial : MonoBehaviour
         {
             CheckStage();
             AnyKey();
+            //GearUpgradeBtn.GetComponent<Button>().interactable = false;
+            //GearUpgradeBtn.SetActive(false);
+            GearUpgradeBtn.transform.position = new Vector3(2000, 0, 0);
+
         }
         else if(GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S3)
         {
             GearTab.SetActive(true);
             BaitTab.SetActive(true);
             FishTab.SetActive(true);
+            //GearUpgradeBtn.GetComponent<Button>().interactable = true;
+            //GearUpgradeBtn.SetActive(true);
+            GearUpgradeBtn.transform.position = oldpos;
 
             StartBtn.SetActive(true);
             Hider.SetActive(false);
@@ -86,6 +99,7 @@ public class NewMarketTutorial : MonoBehaviour
         if(curStage == 4)
         {
             Hider.SetActive(true);
+            FishTab.SetActive(false);
             BaitTab.SetActive(true);
             if(TB.ActiveTab == TabController.Tabs.Bait)
             {
@@ -103,6 +117,7 @@ public class NewMarketTutorial : MonoBehaviour
         {
             Hider.SetActive(true);            
             GearTab.SetActive(true);
+            BaitTab.SetActive(false);
             if (TB.ActiveTab == TabController.Tabs.Gear)
             {
                 SFXcontroller.instance.PlaySingle(NextTut);
@@ -119,6 +134,8 @@ public class NewMarketTutorial : MonoBehaviour
         {
             Hider.SetActive(true);
             StartBtn.SetActive(true);
+            FishTab.SetActive(true);
+            BaitTab.SetActive(true);
         }
 
     }

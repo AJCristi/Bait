@@ -11,15 +11,17 @@ public class StreamVideo : MonoBehaviour
     public VideoPlayer videoPlayer;
     public AudioSource audioSource;
 
+    public GameObject Hider;
+
     public double time;
     public double currentTime;
     // Use this for initialization
     void Start()
     {
         time = videoPlayer.clip.length;
-        
+        Hider.SetActive(true);
         StartCoroutine(PlayVideo());
-        SFXcontroller.instance.PauseMusic();
+        //SFXcontroller.instance.PauseMusic();
     }
     IEnumerator PlayVideo()
     {
@@ -30,6 +32,7 @@ public class StreamVideo : MonoBehaviour
             yield return waitForSeconds;
             break;
         }
+        Hider.SetActive(false);
         rawImage.texture = videoPlayer.texture;
         videoPlayer.Play();
         audioSource.Play();
@@ -44,7 +47,7 @@ public class StreamVideo : MonoBehaviour
 
         if(x > .994)
         {
-            SFXcontroller.instance.PlayMusic();
+            //SFXcontroller.instance.PlayMusic();
             switch (SceneManager.GetActiveScene().name)
             {
                 case "1_Prologue":

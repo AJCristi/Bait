@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bc07be95cd85041ad644c5a64345e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Description: 'It''s your daughter''s birthday soon, you should pick up a '
+  Description: It's your daughter's birthday soon, you should pick up a present for
+    her
   StartMonth: 7
   StartDay: 2
   originalDays: 4

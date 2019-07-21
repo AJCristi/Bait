@@ -22,6 +22,10 @@ public class BaitTab : MonoBehaviour
     public Button DecreaseButton, BuyBtn;
 
     public AudioClip Next, BuySFX;
+
+    public Image FishIndic;
+    public Sprite GG, Tila, LL;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +76,8 @@ public class BaitTab : MonoBehaviour
 
                 CurSelectedDesc.text = "Attracts more Galunggong";
                 CurSelectedAmt.text = GlobalStats.Instance.BreadAmt.ToString();
+
+                FishIndic.overrideSprite = GG;
                 break;
 
             case GlobalStats.BaitType.Insects:
@@ -79,6 +85,8 @@ public class BaitTab : MonoBehaviour
 
                 CurSelectedDesc.text = "Attracts more Tilapia";
                 CurSelectedAmt.text = GlobalStats.Instance.InsectAmt.ToString();
+
+                FishIndic.overrideSprite = Tila;
                 break;
 
             case GlobalStats.BaitType.Worms:
@@ -86,6 +94,8 @@ public class BaitTab : MonoBehaviour
 
                 CurSelectedDesc.text = "Attracts more Lapu-Lapu";
                 CurSelectedAmt.text = GlobalStats.Instance.WormAmt.ToString();
+
+                FishIndic.overrideSprite = LL;
                 break;
         }
     }
@@ -108,6 +118,26 @@ public class BaitTab : MonoBehaviour
                 break;
         }
     }
+
+    public void ChangeBaitLeft()
+    {
+        SFXcontroller.instance.PlaySingle(Next);
+        switch (GlobalStats.Instance.CurrentBait)
+        {
+            case GlobalStats.BaitType.Bread:
+                GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Worms;
+                break;
+
+            case GlobalStats.BaitType.Insects:
+                GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Bread;
+                break;
+
+            case GlobalStats.BaitType.Worms:
+                GlobalStats.Instance.CurrentBait = GlobalStats.BaitType.Insects;
+                break;
+        }
+    }
+
 
     void ComputePrice()
     {
@@ -159,7 +189,7 @@ public class BaitTab : MonoBehaviour
                     break;
             }
             GlobalStats.Instance.PlayerSavings -= baitPrice;
-            SFXcontroller.instance.PlaySingle(BuySFX    );
+            SFXcontroller.instance.PlaySingle(BuySFX);
         }
     }
 }

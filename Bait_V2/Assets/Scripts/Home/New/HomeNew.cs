@@ -40,13 +40,17 @@ public class HomeNew : MonoBehaviour
         Bills.SetActive(false);
         Score.SetActive(false);
 
+        CalculateRate();
+        GlobalStats.Instance.CheckHighestEarnings();
+
         beforeMoney = GlobalStats.Instance.PlayerSavings;
 
-        Date.text = GlobalStats.Instance.Month.ToString() + "/" + GlobalStats.Instance.Day.ToString();
+        //Date.text = GlobalStats.Instance.Month.ToString() + "/" + GlobalStats.Instance.Day.ToString();
+        Date.text = "Day " + GlobalStats.Instance.DisplayDay.ToString();
         bills = 200;
         food = 300;
 
-        CalculateRate();
+        
     }
 
     // Update is     called once per frame
@@ -96,14 +100,14 @@ public class HomeNew : MonoBehaviour
 
     void ScoreUI()
     {
-        TTFishCaught.text = GlobalStats.Instance.TotalFishCaught.ToString();
-        TTMoneyEarned.text = GlobalStats.Instance.TotalMoneyEarned.ToString();
+        TTFishCaught.text = GlobalStats.Instance.TotalFishCaught.ToString("F2");
+        TTMoneyEarned.text = GlobalStats.Instance.TotalMoneyEarned.ToString("F2");
         TTDays.text = GlobalStats.Instance.TotalDaysPassed.ToString();
 
         CPD = GlobalStats.Instance.PerDayEarning;
-        CashPerDay.text = CPD.ToString();
+        CashPerDay.text = CPD.ToString("F2");
 
-        
+        HighestCPD.text = GlobalStats.Instance.HighestEarnings.ToString("F2");
         CashRate.text = Rate.ToString() + "%";
 
 
@@ -111,7 +115,7 @@ public class HomeNew : MonoBehaviour
 
     void BillsUI()
     {
-        BeforeMoneyTxt.text = beforeMoney.ToString();
+        BeforeMoneyTxt.text = beforeMoney.ToString("F2");
         BillTxt.text = bills.ToString();
         FoodTxt.text = food.ToString();
     }
@@ -119,6 +123,9 @@ public class HomeNew : MonoBehaviour
     void CalculateRate()
     {
         Rate = 0;
+        Debug.Log("Yester -- " + GlobalStats.Instance.YesterdayEarning.ToString());
+        Debug.Log("Tod -- " + GlobalStats.Instance.PerDayEarning.ToString());
+
         if (GlobalStats.Instance.YesterdayEarning > GlobalStats.Instance.PerDayEarning)
         {
             float dec = GlobalStats.Instance.YesterdayEarning - GlobalStats.Instance.PerDayEarning;
@@ -157,23 +164,58 @@ public class HomeNew : MonoBehaviour
 
     public void Sleep()
     {
+       
+
         SFXcontroller.instance.PlaySingle(SleepSfx);
         GlobalStats.Instance.AdvanceDay();
+        GlobalStats.Instance.CheckWin();
         GlobalStats.Instance.EventMinusDay();
+        CheckWin();
+        GlobalStats.Instance.UpdateRate();
 
-        if(GlobalStats.Instance.PlayerSavings <= 0)
+        GlobalStats.Instance.PerDayEarning = 0;  
+
+        GlobalStats.Instance.CurTime = 5;
+        GlobalStats.Instance.RandomForecast();
+        GlobalStats.Instance.MarketDecide();
+    }
+
+    void CheckWin()
+    {
+        if(GlobalStats.Instance.DisplayDay > 14)
         {
-            if (GlobalStats.Instance.BreadAmt <= 0 && 
-                GlobalStats.Instance.InsectAmt <= 0 && 
+            LoadingScreen.Instance.LoadScene("5_Credits");
+        }
+        else
+        {
+            CheckLose();
+        }
+    }
+
+    void CheckLose()
+    {
+        
+        if (GlobalStats.Instance.PlayerSavings <= 0)
+        {
+            Debug.Log("CheckLose");
+            if (GlobalStats.Instance.BreadAmt <= 0 &&
+                GlobalStats.Instance.InsectAmt <= 0 &&
                 GlobalStats.Instance.WormAmt <= 0)
             {
                 Debug.Log("No more bait");
                 LoadingScreen.Instance.LoadScene("0_GameOver");
+                return;
                 //SceneManager.LoadScene("0_GameOver");
             }
+
+            else
+            {
+                LoadingScreen.Instance.LoadScene("1_MapSelector");
+                return;
+            }
         }
-       
-        if(GlobalStats.Instance.ActiveEvent != null)
+        
+        if (GlobalStats.Instance.ActiveEvent != null)
         {
             if (GlobalStats.Instance.ActiveEvent.DaysRemaining < 0)
             {
@@ -183,20 +225,13 @@ public class HomeNew : MonoBehaviour
             }
             else
                 LoadingScreen.Instance.LoadScene("1_MapSelector");
-                //SceneManager.LoadScene("1_MapSelector");
+            //SceneManager.LoadScene("1_MapSelector");
         }
         else
         {
             LoadingScreen.Instance.LoadScene("1_MapSelector");
             //SceneManager.LoadScene("1_MapSelector");
         }
-        GlobalStats.Instance.PerDayEarning = 0;
-
-        GlobalStats.Instance.UpdateRate();
-        GlobalStats.Instance.CheckHighestEarnings();
-
-        GlobalStats.Instance.CurTime = 5;
-        GlobalStats.Instance.RandomForecast();
-        GlobalStats.Instance.MarketDecide();
+               
     }
 }

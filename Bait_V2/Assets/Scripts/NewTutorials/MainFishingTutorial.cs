@@ -18,11 +18,14 @@ public class MainFishingTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!MF.Started)
-        {
-            First.SetActive(false);
-            Second.SetActive(true);
-        }
+       
+            if (!MF.Started)
+            {
+                First.SetActive(false);
+                Second.SetActive(true);
+            }
+        
+        
 
     }
 
@@ -39,12 +42,14 @@ public class MainFishingTutorial : MonoBehaviour
 
     public void DoneTutorial()
     {
-        if(GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S1)
-            SceneManager.LoadScene("1_MapSelectorTutorial2");
+        if (GlobalStats.Instance.CurStage == GlobalStats.MapTutorialStage.S1)
+            LoadingScreen.Instance.LoadScene("1_MapSelectorTutorial2");
+        //SceneManager.LoadScene("1_MapSelectorTutorial2");
 
         else
         {
-            SceneManager.LoadScene("1_MapSelectorTutorial4");
+            LoadingScreen.Instance.LoadScene("1_MapSelectorTutorial4");
+            //SceneManager.LoadScene("1_MapSelectorTutorial4");
         }
     }
 }

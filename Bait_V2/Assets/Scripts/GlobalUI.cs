@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GlobalUI : MonoBehaviour
 {
+    public AudioClip Click;
+
     public void QuitApp()
     {
+        SFXcontroller.instance.PlaySingle(Click);
         Application.Quit();
     }
 
@@ -17,6 +20,7 @@ public class GlobalUI : MonoBehaviour
 
     public void StartMenu(GameObject Menu)
     {
+        SFXcontroller.instance.PlaySingle(Click);
         Menu.SetActive(true);
     }
 
@@ -29,9 +33,10 @@ public class GlobalUI : MonoBehaviour
 
     public void SetTutorialStats()
     {
+        SFXcontroller.instance.PlaySingle(Click);
         Reset();
         SetGame();
-        GlobalStats.Instance.PlayerSavings = 100;
+        GlobalStats.Instance.PlayerSavings = 50;
 
         GlobalStats.Instance.BreadAmt = 50;
         GlobalStats.Instance.InsectAmt = 0;
@@ -43,6 +48,13 @@ public class GlobalUI : MonoBehaviour
 
         GlobalStats.Instance.CurStage = GlobalStats.MapTutorialStage.S1;
         //SceneManager.LoadScene("1_MapSelectorTutorial");
+        LoadingScreen.Instance.LoadScene("1_MapSelectorTutorial");
+    }
+
+    public void LoadPrologue()
+    {
+        SFXcontroller.instance.PlaySingle(Click);
+        LoadingScreen.Instance.LoadScene("1_Prologue");
     }
 
     public void Reset()
@@ -58,6 +70,8 @@ public class GlobalUI : MonoBehaviour
         GlobalStats.Instance.Month = 7;
         GlobalStats.Instance.Day = 1;
         GlobalStats.Instance.CurTime = 5;
+
+        GlobalStats.Instance.DisplayDay = 1;
 
         GlobalStats.Instance.PlayerSavings = 500;
 

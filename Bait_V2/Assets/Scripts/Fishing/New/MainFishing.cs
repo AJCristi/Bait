@@ -52,6 +52,8 @@ public class MainFishing : MonoBehaviour
 
     public AudioClip CaughtFish, NoFishSFX, Broken, Done;
 
+    public GameObject RanOutBait, RanOutGear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,9 +85,11 @@ public class MainFishing : MonoBehaviour
 
         DoneNotif.SetActive(false);
         catchResetTime = 0;
-       
 
-       
+        RanOutBait.SetActive(false);
+        RanOutGear.SetActive(false);
+
+
     }
 
     public void FastForward()
@@ -101,15 +105,15 @@ public class MainFishing : MonoBehaviour
                 switch(GlobalStats.Instance.CastNetLevel)
                 {
                     case 1:
-                        catchResetTime = 8;
+                        catchResetTime = 11;
                         break;
 
                     case 2:
-                        catchResetTime = 7.5f;
+                        catchResetTime = 10f;
                         break;
 
                     case 3:
-                        catchResetTime = 7;
+                        catchResetTime = 8;
                         break;
 
                     case 4:
@@ -126,23 +130,23 @@ public class MainFishing : MonoBehaviour
                 switch (GlobalStats.Instance.RodNetLevel)
                 {
                     case 1:
-                        catchResetTime = 5;
+                        catchResetTime = 15;
                         break;
 
                     case 2:
-                        catchResetTime = 4.5f;
+                        catchResetTime = 13f;
                         break;
 
                     case 3:
-                        catchResetTime = 3;
+                        catchResetTime = 11;
                         break;
 
                     case 4:
-                        catchResetTime = 2;
+                        catchResetTime = 9;
                         break;
 
                     case 5:
-                        catchResetTime = 1;
+                        catchResetTime = 6;
                         break;
                 }
                 break;
@@ -151,23 +155,23 @@ public class MainFishing : MonoBehaviour
                 switch (GlobalStats.Instance.TrawlingNetLevel)
                 {
                     case 1:
-                        catchResetTime = 10;                        
+                        catchResetTime = 20;                        
                         break;
 
                     case 2:
-                        catchResetTime = 8;
+                        catchResetTime = 18;
                         break;
 
                     case 3:
-                        catchResetTime = 7;
+                        catchResetTime = 15;
                         break;
 
                     case 4:
-                        catchResetTime = 6;
+                        catchResetTime = 13;
                         break;
 
                     case 5:
-                        catchResetTime = 4;
+                        catchResetTime = 10;
                         break;
                 }
                 break;
@@ -344,8 +348,14 @@ public class MainFishing : MonoBehaviour
 
         if (!hasBait)
         {
-            NoFish.enabled = true;
-            NoFish.text = "Ran out of Bait";
+            //NoFish.enabled = true;
+            //NoFish.text = "Ran out of Bait";
+            RanOutBait.SetActive(true);
+        }
+
+        if(!hasGear)
+        {
+            RanOutGear.SetActive(true);
         }
 
     }
@@ -378,7 +388,7 @@ public class MainFishing : MonoBehaviour
         {
             x = 0;
             Debug.Log("compute");
-            Bait();
+            
             CatchFish();
         }
     }
@@ -494,18 +504,21 @@ public class MainFishing : MonoBehaviour
             if (Random100() <= P.GalunggongChances)
             {
                 CatchGG();
+                Bait();
                 return;
             }
 
             if (Random100() <= P.TilapiaChances)
             {
                 CatchTilapia();
+                Bait();
                 return;
             }
 
             if (Random100() <= P.LapuChances)
             {
                 CatchLL();
+                Bait();
                 return;
             }
 
@@ -513,7 +526,8 @@ public class MainFishing : MonoBehaviour
             {
                 NoCatch();
             }
-           
+            Bait();
+
         }
         else
         {

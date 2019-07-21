@@ -240,10 +240,8 @@ MonoBehaviour:
   efxSource: {fileID: 3715456512038167896}
   musicSource: {fileID: 3715456512038167899}
   MusicList:
-  - {fileID: 8300000, guid: 31f9bf6c286eaa243b3f3394a03015bf, type: 3}
-  - {fileID: 8300000, guid: 2d9da9f1bddfcb34997787efc2a26a7f, type: 3}
-  - {fileID: 8300000, guid: 7abd4d0d6ef8a3f4bbc711965e1ee8d1, type: 3}
-  - {fileID: 8300000, guid: 28c2ae068e116384384b31a69c9ac1d2, type: 3}
-  - {fileID: 8300000, guid: a5efbfe6c2700084ead503f10eecbe7e, type: 3}
+  - {fileID: 8300000, guid: 506ca5623340b564a81495ab2086517f, type: 3}
+  - {fileID: 8300000, guid: 5e38e69d109d77e4686e6c2f895c3927, type: 3}
+  - {fileID: 8300000, guid: 8d66c6dac752eda4587004c814f0c9e4, type: 3}
   lowPitchRange: 0.95
   highPitchRange: 1.05

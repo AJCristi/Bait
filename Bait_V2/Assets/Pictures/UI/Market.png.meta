@@ -23,6 +23,12 @@ TextureImporter:
   - first:
       213: -5496705720655424501
     second: Market_6
+  - first:
+      213: -1297393341998518806
+    second: Market_7
+  - first:
+      213: -6432481800577028006
+    second: Market_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -113,7 +119,7 @@ TextureImporter:
         width: 201
         height: 117
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,7 +140,7 @@ TextureImporter:
         width: 388
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,7 +161,7 @@ TextureImporter:
         width: 504
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +177,12 @@ TextureImporter:
       name: Market_3
       rect:
         serializedVersion: 2
-        x: 75
-        y: 380
-        width: 220
-        height: 120
+        x: 30
+        y: 356
+        width: 309
+        height: 168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,12 +198,12 @@ TextureImporter:
       name: Market_4
       rect:
         serializedVersion: 2
-        x: 372
-        y: 384
-        width: 632
-        height: 119
+        x: 363
+        y: 357
+        width: 662
+        height: 169
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,12 +219,12 @@ TextureImporter:
       name: Market_5
       rect:
         serializedVersion: 2
-        x: 1066
-        y: 388
-        width: 178
-        height: 116
+        x: 1033
+        y: 365
+        width: 242
+        height: 161
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,7 +245,7 @@ TextureImporter:
         width: 238
         height: 269
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,6 +253,48 @@ TextureImporter:
       bones: []
       spriteID: 99c926aec2f2d2746b18e4f2f2b4bbf0
       internalID: -5496705720655424501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Market_7
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 125
+        width: 268
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bae8c768b0917547ad0c9b3624b5e22
+      internalID: -1297393341998518806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Market_8
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 156
+        width: 200
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49370d8b2af63bd458464e190c5f904e
+      internalID: -6432481800577028006
       vertices: []
       indices: 
       edges: []

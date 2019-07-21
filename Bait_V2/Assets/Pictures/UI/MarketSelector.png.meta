@@ -93,10 +93,10 @@ TextureImporter:
       name: MarketSelector_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 154
-        width: 412
-        height: 117
+        x: 35
+        y: 164
+        width: 313
+        height: 87
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,7 +104,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7879d871e747e6b46922046468e2838d
+      spriteID: 36880e5e55857274190370a27dcfaefd
       internalID: 9042096740721671336
       vertices: []
       indices: 
@@ -114,10 +114,10 @@ TextureImporter:
       name: MarketSelector_1
       rect:
         serializedVersion: 2
-        x: 12
-        y: 16
-        width: 387
-        height: 106
+        x: 35
+        y: 21
+        width: 312
+        height: 87
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ad0643b4ff473c4e97c810ad3947bc9
+      spriteID: 8e6e9aa074169554e8aad69602fd62c0
       internalID: -3941981054078538987
       vertices: []
       indices: 

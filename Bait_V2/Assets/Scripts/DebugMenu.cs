@@ -45,14 +45,30 @@ public class DebugMenu : MonoBehaviour
 
     public void AddGalunggong(InputField IF)
     {
-        GlobalStats.Instance.smallKG += float.Parse(IF.text);
+        GlobalStats.Instance.smallKG = float.Parse(IF.text);
     }
     public void AddTilapia(InputField IF)
     {
-        GlobalStats.Instance.medKG += float.Parse(IF.text);
+        GlobalStats.Instance.medKG = float.Parse(IF.text);
     }
     public void AddLapuLapu(InputField IF)
     {
-        GlobalStats.Instance.largeKG += float.Parse(IF.text);
+        GlobalStats.Instance.largeKG = float.Parse(IF.text);
     }
+
+    public void ChangeBread(InputField IF)
+    {
+        GlobalStats.Instance.BreadAmt = int.Parse(IF.text);
+    }
+
+    public void ChangeInsect(InputField IF)
+    {
+        GlobalStats.Instance.InsectAmt = int.Parse(IF.text);
+    }
+
+    public void ChangeWorm(InputField IF)
+    {
+        GlobalStats.Instance.WormAmt = int.Parse(IF.text);
+    }
+
 }

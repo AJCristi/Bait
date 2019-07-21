@@ -14,6 +14,8 @@ public class Pause : MonoBehaviour
 
     public AudioClip PauseSFX;
 
+    public GameObject RestartBtn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,23 @@ public class Pause : MonoBehaviour
             //Time.timeScale = 1;
             PauseMenu.SetActive(false);
         }
+
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "0_GameOver":
+            case "1_MapSelector":
+            case "2_MarketPlace":
+            case "4_Home":
+            case "5_Credits":
+            case "5_ShowWin":
+                RestartBtn.SetActive(true);
+                break;
+
+            default:
+                RestartBtn.SetActive(false);
+                break;
+        }
+
     }   
 
     public void NextSong()
@@ -58,8 +77,15 @@ public class Pause : MonoBehaviour
 
     public void RMM()
     {
-        SFXcontroller.instance.PauseMusic();
-        SceneManager.LoadScene(0);
+        //SFXcontroller.instance.PauseMusic();
+        LoadingScreen.Instance.LoadScene("MainMenu");
+        //SceneManager.LoadScene(0);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("1_Prologue");
+        
     }
 
 }

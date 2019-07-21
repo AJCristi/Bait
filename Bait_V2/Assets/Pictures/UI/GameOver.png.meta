@@ -101,7 +101,7 @@ TextureImporter:
         width: 441
         height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,12 +117,12 @@ TextureImporter:
       name: GameOver_1
       rect:
         serializedVersion: 2
-        x: 15
-        y: 392
-        width: 567
-        height: 66
+        x: 3
+        y: 370
+        width: 592
+        height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,12 +138,12 @@ TextureImporter:
       name: GameOver_2
       rect:
         serializedVersion: 2
-        x: 76
-        y: 43
-        width: 425
-        height: 298
+        x: 195
+        y: 49
+        width: 255
+        height: 210
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

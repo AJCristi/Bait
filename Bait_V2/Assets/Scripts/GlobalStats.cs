@@ -7,6 +7,11 @@ public class GlobalStats : MonoBehaviour
 {
     public static GlobalStats Instance;
 
+    public string ReturnActiveScene()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     void Awake()
     {
         if (Instance == null)
@@ -59,12 +64,19 @@ public class GlobalStats : MonoBehaviour
 
     public int EndMonth, EndDay;
 
+    public int DisplayDay;
+
     public void CheckWin()
-    {
-        if(EndDay <= Day)
+    {        
+        //if(EndDay <= Day)
+        //{
+        //    Debug.Log("xx");
+        //    SceneManager.LoadScene("5_Credits");
+        //}
+
+        if(DisplayDay > 14)
         {
-            Debug.Log("xx");
-            SceneManager.LoadScene("5_Credits");
+            LoadingScreen.Instance.LoadScene("5_Credits");
         }
     }
 
@@ -81,7 +93,7 @@ public class GlobalStats : MonoBehaviour
             Month++;
         }
         TotalDaysPassed++;
-        CheckWin();
+        DisplayDay++;        
     }
 
     [Range (5,24)]
@@ -310,5 +322,8 @@ public class GlobalStats : MonoBehaviour
         S3
     }
 
-    public MapTutorialStage CurStage;
+    public MapTutorialStage CurStage;   
+
+    [Range (0,5)]
+    public int AltRodLvl, AltCastLvl, AltTrawlLvl;
 }

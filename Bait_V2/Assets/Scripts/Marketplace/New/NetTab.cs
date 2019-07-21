@@ -38,7 +38,7 @@ public class NetTab : MonoBehaviour
         CalculatePrice();
 
         CheckNets();
-
+        
         if (GlobalStats.Instance.PlayerSavings < curPrice)
         {
             BuyBtn.GetComponent<Button>().interactable = false;
@@ -112,6 +112,25 @@ public class NetTab : MonoBehaviour
         }
     }
 
+    public void ChangeNetLeft()
+    {
+        SFXcontroller.instance.PlaySingle(Switch);
+        switch (GlobalStats.Instance.CurrentNet)
+        {
+            case GlobalStats.NetType.Cast:
+                GlobalStats.Instance.CurrentNet = GlobalStats.NetType.Trawling;
+                break;
+
+            case GlobalStats.NetType.Rod:
+                GlobalStats.Instance.CurrentNet = GlobalStats.NetType.Cast;
+                break;
+
+            case GlobalStats.NetType.Trawling:
+                GlobalStats.Instance.CurrentNet = GlobalStats.NetType.Rod;
+                break;
+        }
+    }
+
     void CalculatePrice()
     {
         NetPrice.text = curPrice.ToString();
@@ -123,13 +142,13 @@ public class NetTab : MonoBehaviour
                     case 1:
                         BuyBtn.SetActive(true);
                         NetPrice.gameObject.SetActive(true);
-                        curPrice = 200;
+                        curPrice = 250;
                         break;
 
                     case 2:
                         BuyBtn.SetActive(true);
                         NetPrice.gameObject.SetActive(true);
-                        curPrice = 300;
+                        curPrice = 350;
                         break;
 
                     case 3:
@@ -191,19 +210,19 @@ public class NetTab : MonoBehaviour
                     case 1:
                         BuyBtn.SetActive(true);
                         NetPrice.gameObject.SetActive(true);
-                        curPrice = 300;
+                        curPrice = 350;
                         break;
 
                     case 2:
                         BuyBtn.SetActive(true);
                         NetPrice.gameObject.SetActive(true);
-                        curPrice = 400;
+                        curPrice = 450;
                         break;
 
                     case 3:
                         BuyBtn.SetActive(true);
                         NetPrice.gameObject.SetActive(true);
-                        curPrice = 500;
+                        curPrice = 550;
                         break;
 
                     case 4:

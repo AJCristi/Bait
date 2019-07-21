@@ -23,7 +23,7 @@ public class FishTab : MonoBehaviour
 
     public Button SellBtn, SellAllBtn;
 
-    public AudioClip Next, Buy;
+    public AudioClip Next, Buy, Ding;
 
     // Start is called before the first frame update
     void Start()
@@ -42,19 +42,30 @@ public class FishTab : MonoBehaviour
     {
         PlayerHaul();
         CheckOwnSelling();
+        CheckOwnHaul();
         Compute();
 
         if(PGalung <= 0 && PTilapia <= 0 && PLapu <= 0)
         {
             SellBtn.interactable = false;
-            SellAllBtn.interactable = false;
+            
         }
         else
         {
             SellBtn.interactable = true;
-            SellAllBtn.interactable = false;
+            
         }
 
+        if(GlobalStats.Instance.smallKG > 0 || GlobalStats.Instance.medKG > 0 ||
+            GlobalStats.Instance.largeKG > 0)
+        {
+            SellAllBtn.interactable = true;
+        }
+
+        else
+        {
+            SellAllBtn.interactable = false;
+        }
         switch(GlobalStats.Instance.PricesToday)
         {
             case GlobalStats.MarketPrices.Higher:
@@ -85,6 +96,24 @@ public class FishTab : MonoBehaviour
         }
     }
 
+    void CheckOwnHaul()
+    {
+        if (PGalung >= GlobalStats.Instance.smallKG)
+        {
+            PGalung = GlobalStats.Instance.smallKG;
+        }
+
+        if (PTilapia >= GlobalStats.Instance.medKG)
+        {
+            PTilapia = GlobalStats.Instance.medKG;
+        }
+
+        if (PLapu >= GlobalStats.Instance.largeKG)
+        {
+            PLapu = GlobalStats.Instance.largeKG;
+        }
+    }
+
     void PlayerHaul()
     {
         PlayerGalungKG.text = GlobalStats.Instance.smallKG.ToString("F2") + " kgs";
@@ -106,6 +135,29 @@ public class FishTab : MonoBehaviour
         Earnings.text = totalearning.ToString("F2");
     }
 
+    void ComputeAll()
+    {
+        float x;
+        float y;
+        float z;
+
+        x = GlobalStats.Instance.smallKG * GlobalStats.Instance.NewsmallFishPerKG;
+        y = GlobalStats.Instance.medKG * GlobalStats.Instance.NewmedFishPerKG;
+        z = GlobalStats.Instance.largeKG * GlobalStats.Instance.NewlargeFishPerKG;
+
+        totalearning = x + y + z;
+        Earnings.text = totalearning.ToString("F2");
+
+    }
+
+    public void AddAll()
+    {
+        SFXcontroller.instance.PlaySingle(Ding);    
+        PGalung = GlobalStats.Instance.smallKG;
+        PTilapia = GlobalStats.Instance.medKG;
+        PLapu = GlobalStats.Instance.largeKG;
+    }
+
     public void Sell()
     {
         GlobalStats.Instance.smallKG -= PGalung;
@@ -121,7 +173,7 @@ public class FishTab : MonoBehaviour
 
     public void SellAll()
     {
-
+        ComputeAll();
         GlobalStats.Instance.smallKG = 0;
         GlobalStats.Instance.medKG = 0;
         GlobalStats.Instance.largeKG = 0;
@@ -212,6 +264,11 @@ public class FishTab : MonoBehaviour
         {
             PGalung -= .5f;
         }
+
+        if (PGalung < 0)
+        {
+            PGalung = 0;
+        }
     }
 
     public void IncreaseTila()
@@ -243,6 +300,10 @@ public class FishTab : MonoBehaviour
         {
             PTilapia -= .5f;
         }
+        if (PTilapia < 0)
+        {
+            PTilapia = 0;
+        }
     }
 
     public void IncreaseLL()
@@ -273,6 +334,10 @@ public class FishTab : MonoBehaviour
         else
         {
             PLapu -= .5f;
+        }
+        if (PLapu < 0)
+        {
+            PLapu = 0;
         }
     }
 }

@@ -21,7 +21,10 @@ public class UIDisplay : MonoBehaviour
     void Update()
     {
         Savings.text = GlobalStats.Instance.PlayerSavings.ToString("F2");
-        Date.text = GlobalStats.Instance.Month.ToString() + "/" + GlobalStats.Instance.Day.ToString();
+        //Date.text = GlobalStats.Instance.Month.ToString() + "/" + 
+            GlobalStats.Instance.Day.ToString();
+
+        Date.text = "Day " + GlobalStats.Instance.DisplayDay.ToString();
 
         switch(GlobalStats.Instance.Forecast)
         {

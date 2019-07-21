@@ -13,6 +13,8 @@ public class EndScreen : MonoBehaviour
     public Image Medal;
     public Sprite B, S, G, P;
 
+    public AudioClip Success, NextSFX;
+
     enum Level
     {
         Passed,
@@ -28,6 +30,7 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         CalculateLevel();
+        SFXcontroller.instance.PlaySingle(Success);
     }
 
     // Update is called once per frame
@@ -40,7 +43,9 @@ public class EndScreen : MonoBehaviour
 
     public void Next()
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+        SFXcontroller.instance.PlaySingle(NextSFX);
+        LoadingScreen.Instance.LoadScene("MainMenu");
     }
 
     void CalculateLevel()

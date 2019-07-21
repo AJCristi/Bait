@@ -62,6 +62,10 @@ public class ChoosingGear : MonoBehaviour
 
     public AudioClip Selected;
 
+    public GameObject CurrentlySelectedGear, CurrentlySelectedBait;
+
+    public MapTimeAnim MTA;
+
     public string ReturnActiveTab()
     {
         return ActiveTab.ToString();
@@ -76,7 +80,10 @@ public class ChoosingGear : MonoBehaviour
         FishingScene.SetActive(false);
         LocationName.text = GlobalStats.Instance.SelectedLocation.ToString();
 
-        switch(GlobalStats.Instance.SelectedLocation)
+        CurrentlySelectedGear.SetActive(false);
+        CurrentlySelectedBait.SetActive(false);
+
+        switch (GlobalStats.Instance.SelectedLocation)
         {
             case GlobalStats.FishingLocation.SandyShoals:
                 Hours.text = GlobalStats.Instance.SSHours.ToString() + 
@@ -94,6 +101,16 @@ public class ChoosingGear : MonoBehaviour
                 break;
 
         }
+    }
+
+    public string ReturnTempGear()
+    {
+        return tempgear.ToString();
+    }
+
+    public string ReturnTempBait()
+    {
+        return tempbait.ToString();
     }
 
     public void SelectedNet()
@@ -134,6 +151,162 @@ public class ChoosingGear : MonoBehaviour
         }
     }
 
+    void CheckCurrentEquips()
+    {
+        switch(tempgear)
+        {
+            case tempGear.Cast:  
+                if(GlobalStats.Instance.CurrentNet == GlobalStats.NetType.Cast)
+                {
+                    CurrentlySelectedGear.SetActive(true);
+                    SelectGearBtn.interactable = false;
+                }
+                else
+                {
+                    CurrentlySelectedGear.SetActive(false);
+                    if (GlobalStats.Instance.CastPieces <= 0)
+                    {
+                        SelectGearBtn.interactable = false;
+                        break;
+                    }
+                    else
+                    {
+                        SelectGearBtn.interactable = true;
+                    }
+                }
+
+                
+                break;
+
+            case tempGear.Rod:
+                if (GlobalStats.Instance.CurrentNet == GlobalStats.NetType.Rod)
+                {
+                    CurrentlySelectedGear.SetActive(true);
+                    SelectGearBtn.interactable = false;
+                }
+                else
+                {
+                    CurrentlySelectedGear.SetActive(false);
+                    if (GlobalStats.Instance.RodPieces <= 0)
+                    {
+                        SelectGearBtn.interactable = false;
+                        break;
+                    }
+                    else
+                    {
+                        SelectGearBtn.interactable = true;
+                    }
+                }
+
+
+               
+
+                break;
+
+            case tempGear.Trawl:
+
+               
+                if (GlobalStats.Instance.CurrentNet == GlobalStats.NetType.Trawling)
+                {
+                    CurrentlySelectedGear.SetActive(true);
+                    SelectGearBtn.interactable = false;
+                }
+                else
+                {
+                    CurrentlySelectedGear.SetActive(false);
+                    if (GlobalStats.Instance.TrawlPieces <= 0)
+                    {
+                        SelectGearBtn.interactable = false;
+                        break;
+                    }
+                    else
+                    {
+                        SelectGearBtn.interactable = true;
+                    }
+                }
+
+                
+                break;
+        }
+
+        switch(tempbait)
+        {
+            case tempBait.Bread:
+                
+
+                if(GlobalStats.Instance.CurrentBait == GlobalStats.BaitType.Bread)
+                {
+                    CurrentlySelectedBait.SetActive(true);
+                    SelectBaitBtn.interactable = false;
+                }
+                else
+                {
+                    CurrentlySelectedBait.SetActive(false);
+                    if (GlobalStats.Instance.BreadAmt <= 0)
+                    {
+                        SelectBaitBtn.interactable = false;
+                        break;
+                    }
+                    else
+                    {
+                        SelectBaitBtn.interactable = true;
+                    }
+                }
+
+               
+                break;
+
+            case tempBait.Insects:
+
+                
+                if (GlobalStats.Instance.CurrentBait == GlobalStats.BaitType.Insects)
+                {
+                    CurrentlySelectedBait.SetActive(true);
+                    SelectBaitBtn.interactable = false;
+                }
+                else
+                {
+                    CurrentlySelectedBait.SetActive(false);
+                    if (GlobalStats.Instance.InsectAmt <= 0)
+                    {
+                        SelectBaitBtn.interactable = false;
+                        break;
+                    }
+                    else
+                    {
+                        SelectBaitBtn.interactable = true;
+                    }
+                }
+
+                
+                break;
+
+            case tempBait.Worm:
+
+                
+                if (GlobalStats.Instance.CurrentBait == GlobalStats.BaitType.Worms)
+                {
+                    CurrentlySelectedBait.SetActive(true);
+                    SelectBaitBtn.interactable = false;
+                }
+                else
+                {
+                    CurrentlySelectedBait.SetActive(false);
+                    if (GlobalStats.Instance.WormAmt <= 0)
+                    {
+                        SelectBaitBtn.interactable = false;
+                        break;
+                    }
+                    else
+                    {
+                        SelectBaitBtn.interactable = true;
+                    }
+                }
+               
+                break;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -161,8 +334,8 @@ public class ChoosingGear : MonoBehaviour
                 break;
         }
         CheckGear();
-        
 
+        CheckCurrentEquips();
         UpdateNet();
         UpdateBait();
 
@@ -343,7 +516,7 @@ public class ChoosingGear : MonoBehaviour
                 BaitDesc.text = "Attracts more Lapu-Lapu";
                 break;
         }
-        BaitTitle.text = GlobalStats.Instance.CurrentBait.ToString();
+        BaitTitle.text = tempbait.ToString();
         BaitBreadAmt.text = GlobalStats.Instance.BreadAmt.ToString();
         BaitInsectAmt.text = GlobalStats.Instance.InsectAmt.ToString();
         BaitWormsAmt.text = GlobalStats.Instance.WormAmt.ToString();
@@ -482,14 +655,17 @@ public class ChoosingGear : MonoBehaviour
         switch(GlobalStats.Instance.SelectedLocation)
         {
             case GlobalStats.FishingLocation.SandyShoals:
+                MTA.StartAnimation(GlobalStats.Instance.CurTime);
                 GlobalStats.Instance.AdvanceTime(GlobalStats.Instance.SSHours);
                 break;
 
             case GlobalStats.FishingLocation.ExposedReef:
+                MTA.StartAnimation(GlobalStats.Instance.CurTime);
                 GlobalStats.Instance.AdvanceTime(GlobalStats.Instance.ERHours);
                 break;
 
             case GlobalStats.FishingLocation.LonelyIsland:
+                MTA.StartAnimation(GlobalStats.Instance.CurTime);
                 GlobalStats.Instance.AdvanceTime(GlobalStats.Instance.LIHours);
                 break;
         }

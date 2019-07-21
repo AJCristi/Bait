@@ -37,6 +37,10 @@ public class MapController : MonoBehaviour
 
     public AudioClip Select;
 
+    public MapTimeAnim MTA;
+
+    public GameObject NotifBait, NotifGear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +65,7 @@ public class MapController : MonoBehaviour
         Location3Menu.SetActive(false);
         Location3ConfirmMenu.SetActive(false);
         Loc3ConfirmMenu = false;
+       
     }
 
     public void PlaySelectSFX()
@@ -71,12 +76,23 @@ public class MapController : MonoBehaviour
     public void Loc1Tutorial()
     {
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
-        SceneManager.LoadScene("3_FishingTutorial");
+        LoadingScreen.Instance.LoadScene("3_FishingTutorial");
+        //SceneManager.LoadScene("3_FishingTutorial");
+    }
+
+    public void Loc2Tutorial()
+    {
+        GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.ExposedReef;
+        LoadingScreen.Instance.LoadScene("3_FishingTutorial");
+        //SceneManager.LoadScene("3_FishingTutorial");
     }
 
     public void MarketTutorial()
     {
-        SceneManager.LoadScene("2_MarketPlaceTutorial");
+        MTA.StartAnimation(GlobalStats.Instance.CurTime);
+        GlobalStats.Instance.AdvanceTime(2);
+        LoadingScreen.Instance.LoadScene("2_MarketPlaceTutorial");
+        //SceneManager.LoadScene("2_MarketPlaceTutorial");
     }
 
     public void HomeTutorial()
@@ -91,54 +107,24 @@ public class MapController : MonoBehaviour
         Loc2Hour.text = GlobalStats.Instance.ERHours.ToString() + " hours";
         Loc3Hour.text = GlobalStats.Instance.LIHours.ToString() + " hours";
         MarketUpdate();
+        CheckNotifs();
+
         if (GlobalStats.Instance.CurTime >= 20)
         {
-            LoadingScreen.Instance.LoadScene("4_Home");
-            //SceneManager.LoadScene("4_Home");
-        }
-
-        if (EventSystem.current.currentSelectedGameObject == HomeBtn.gameObject)
-        {
             
-            HomeMenu.SetActive(true);
-            HomeTimer = 0;
-        }
-        else
-        {
-            HomeTimer += Time.deltaTime;            
-            if (HomeTimer > 2)
+            //LoadingScreen.Instance.LoadScene("4_Home");
+            if (SceneManager.GetActiveScene().name == "1_MapSelectorTutorial4")
             {
-                HomeMenu.SetActive(false);
-            }            
+                SceneManager.LoadScene("4_HomeTutorial");
+            }
+            else
+            {
+                SceneManager.LoadScene("4_Home");
+            }
+            
         }
 
-        if (EventSystem.current.currentSelectedGameObject == MarketBtn.gameObject)
-        {
-            MarketMenu.SetActive(true);
-            MarketTimer = 0;
-        }
-        else
-        {
-            MarketTimer += Time.deltaTime;
-            if (MarketTimer > 2)
-            {
-                MarketMenu.SetActive(false);
-            }
-        }
-
-        if (EventSystem.current.currentSelectedGameObject == Loc1Btn.gameObject)
-        {
-            Location1Menu.SetActive(true);
-            Loc1Timer = 0;
-        }
-        else
-        {
-            Loc1Timer += Time.deltaTime;
-            if (Loc1Timer > 2)
-            {
-                Location1Menu.SetActive(false);
-            }
-        }
+        MenuUpdates();
 
         if (Loc1ConfirmMenu)
         {
@@ -158,19 +144,7 @@ public class MapController : MonoBehaviour
             
         }
 
-        if (EventSystem.current.currentSelectedGameObject == Loc2Btn.gameObject)
-        {
-            Location2Menu.SetActive(true);
-            Loc2Timer = 0;
-        }
-        else
-        {
-            Loc2Timer += Time.deltaTime;
-            if (Loc2Timer >2)
-            {
-                Location2Menu.SetActive(false);
-            }
-        }
+        
 
         if (Loc2ConfirmMenu)
         {
@@ -190,19 +164,7 @@ public class MapController : MonoBehaviour
            
         }
 
-        if (EventSystem.current.currentSelectedGameObject == Loc3Btn.gameObject)
-        {
-            Location3Menu.SetActive(true);
-            Loc3Timer = 0;
-        }
-        else
-        {
-            Loc3Timer += Time.deltaTime;
-            if (Loc3Timer > 2)
-            {
-                Location3Menu.SetActive(false);
-            }
-        }
+       
 
         if (Loc3ConfirmMenu)
         {
@@ -221,6 +183,187 @@ public class MapController : MonoBehaviour
             Location3ConfirmMenu.SetActive(false);
            
         }
+
+    }
+
+    void CheckNotifs()
+    {
+        int x = GlobalStats.Instance.RodPieces + GlobalStats.Instance.CastPieces
+            + GlobalStats.Instance.TrawlPieces;
+
+        if (x < 10)
+        {
+            NotifGear.SetActive(true);
+        }
+        else
+        {
+            NotifGear.SetActive(false);
+        }
+
+        int y = GlobalStats.Instance.BreadAmt + GlobalStats.Instance.InsectAmt +
+            GlobalStats.Instance.WormAmt;
+
+        if(y < 20)
+        {
+            NotifBait.SetActive(true);
+        }
+        else
+        {
+            NotifBait.SetActive(false);
+        }
+    }
+
+    void MenuUpdates()
+    {
+        //if (EventSystem.current.currentSelectedGameObject == HomeBtn.gameObject)
+        //{
+
+        //    HomeMenu.SetActive(true);
+        //    HomeTimer = 0;
+        //}
+        //else
+        //{
+        //    HomeTimer += Time.deltaTime;
+        //    if (HomeTimer > 2)
+        //    {
+        //        HomeMenu.SetActive(false);
+        //    }
+        //}
+
+        //if (EventSystem.current.currentSelectedGameObject == MarketBtn.gameObject)
+        //{
+        //    MarketMenu.SetActive(true);
+        //    MarketTimer = 0;
+        //}
+        //else
+        //{
+        //    MarketTimer += Time.deltaTime;
+        //    if (MarketTimer > 2)
+        //    {
+        //        MarketMenu.SetActive(false);
+        //    }
+        //}
+
+        //if (EventSystem.current.currentSelectedGameObject == Loc1Btn.gameObject)
+        //{
+        //    Location1Menu.SetActive(true);
+        //    Loc1Timer = 0;
+        //}
+        //else
+        //{
+        //    Loc1Timer += Time.deltaTime;
+        //    if (Loc1Timer > 2)
+        //    {
+        //        Location1Menu.SetActive(false);
+        //    }
+        //}
+
+        //if (EventSystem.current.currentSelectedGameObject == Loc2Btn.gameObject)
+        //{
+        //    Location2Menu.SetActive(true);
+        //    Loc2Timer = 0;
+        //}
+        //else
+        //{
+        //    Loc2Timer += Time.deltaTime;
+        //    if (Loc2Timer > 2)
+        //    {
+        //        Location2Menu.SetActive(false);
+        //    }
+        //}
+
+        //if (EventSystem.current.currentSelectedGameObject == Loc3Btn.gameObject)
+        //{
+        //    Location3Menu.SetActive(true);
+        //    Loc3Timer = 0;
+        //}
+        //else
+        //{
+        //    Loc3Timer += Time.deltaTime;
+        //    if (Loc3Timer > 2)
+        //    {
+        //        Location3Menu.SetActive(false);
+        //    }
+        //}
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            //Debug.Log("Null");
+
+            HomeMenu.SetActive(false);
+            MarketMenu.SetActive(false);
+
+            Location1Menu.SetActive(false);
+            Location2Menu.SetActive(false);
+            Location3Menu.SetActive(false);
+        }
+        else
+        {
+            if (EventSystem.current.currentSelectedGameObject == HomeBtn.gameObject)
+            {
+                HomeMenu.SetActive(true);
+            }
+            else
+            {
+                if (EventSystem.current.currentSelectedGameObject.transform.parent.gameObject != HomeMenu)
+                {
+                    HomeMenu.SetActive(false);
+                }
+
+            }
+
+            if (EventSystem.current.currentSelectedGameObject == MarketBtn.gameObject)
+            {
+                MarketMenu.SetActive(true);
+            }
+            else
+            {
+                if (EventSystem.current.currentSelectedGameObject.transform.parent.gameObject != MarketMenu)
+                {
+                    MarketMenu.SetActive(false);
+                }
+            }
+
+            if (EventSystem.current.currentSelectedGameObject == Loc1Btn.gameObject)
+            {
+                Location1Menu.SetActive(true);
+            }
+            else
+            {
+                if (EventSystem.current.currentSelectedGameObject.transform.parent.gameObject != Location1Menu)
+                {
+                    Location1Menu.SetActive(false);
+                }
+
+            }
+
+            if (EventSystem.current.currentSelectedGameObject == Loc2Btn.gameObject)
+            {
+                Location2Menu.SetActive(true);
+
+            }
+            else
+            {
+                if (EventSystem.current.currentSelectedGameObject.transform.parent.gameObject != Location2Menu)
+                {
+                    Location2Menu.SetActive(false);
+                }
+            }
+
+            if (EventSystem.current.currentSelectedGameObject == Loc3Btn.gameObject)
+            {
+                Location3Menu.SetActive(true);
+            }
+            else
+            {
+                if (EventSystem.current.currentSelectedGameObject.transform.parent.gameObject != Location3Menu)
+                {
+                    Location3Menu.SetActive(false);
+                }
+            }
+
+        }
+        //Debug.Log(EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.name);
 
     }
 
@@ -248,6 +391,7 @@ public class MapController : MonoBehaviour
 
     public void YesHome()
     {
+        Debug.Log("clicked");
         LoadingScreen.Instance.LoadScene("4_Home");
         //SceneManager.LoadScene("4_Home");
     }
@@ -259,8 +403,11 @@ public class MapController : MonoBehaviour
 
     public void YesMarket()
     {
+        MTA.StartAnimation(GlobalStats.Instance.CurTime);
         GlobalStats.Instance.AdvanceTime(2);
         LoadingScreen.Instance.LoadScene("2_MarketPlace");
+        
+        
         //SceneManager.LoadScene("2_MarketPlace");      
 
 
@@ -279,6 +426,7 @@ public class MapController : MonoBehaviour
     public void YesLoc1()
     {
         //Loc1ConfirmMenu = true;
+        
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.SandyShoals;
         LoadingScreen.Instance.LoadScene("3_Fishing");
         //SceneManager.LoadScene("3_Fishing");
@@ -297,6 +445,7 @@ public class MapController : MonoBehaviour
     public void YesLoc2()
     {
         //Loc2ConfirmMenu = true;
+        
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.ExposedReef;
         LoadingScreen.Instance.LoadScene("3_Fishing");
         //SceneManager.LoadScene("3_Fishing");
@@ -316,6 +465,7 @@ public class MapController : MonoBehaviour
     public void YesLoc3()
     {
         //Loc3ConfirmMenu = true;
+        
         GlobalStats.Instance.SelectedLocation = GlobalStats.FishingLocation.LonelyIsland;
         LoadingScreen.Instance.LoadScene("3_Fishing");
         //SceneManager.LoadScene("3_Fishing");

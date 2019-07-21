@@ -54,31 +54,42 @@ public class EventController : MonoBehaviour
     {
         if (GlobalStats.Instance.ActiveEvent == null)
         {
-            Debug.Log("Started");
-            
-            //foreach (DataEvent Ev in GlobalStats.Instance.EventsList)
-            //{
-            //    Debug.Log(Ev.name +" -- " + Ev.StartMonth + "/" + Ev.StartDay);
+            float x = Random.Range(0, 100);
+            Debug.Log(x);
 
-            //    if (Ev.StartMonth == GlobalStats.Instance.Month &&
-            //        Ev.StartDay == GlobalStats.Instance.Day && Ev.Completed == false)
-            //    {
-                    
-            //        GlobalStats.Instance.ActiveEvent = Ev;
-            //        HasQuest = true;
-            //        break;
-            //    }
-            //}
-
-            foreach(DataEvent Ev in GlobalStats.Instance.EventsList)
+            if(x >=50)
             {
-                Debug.Log(Ev.name + " -- " + Ev.StartMonth + "/" + Ev.StartDay);               
-            }
-            ChooseRandom();
-            GlobalStats.Instance.ActiveEvent =
-                GlobalStats.Instance.EventsList[R];
+                Debug.Log("Started");
 
-            HasQuest = true;
+                //foreach (DataEvent Ev in GlobalStats.Instance.EventsList)
+                //{
+                //    Debug.Log(Ev.name +" -- " + Ev.StartMonth + "/" + Ev.StartDay);
+
+                //    if (Ev.StartMonth == GlobalStats.Instance.Month &&
+                //        Ev.StartDay == GlobalStats.Instance.Day && Ev.Completed == false)
+                //    {
+
+                //        GlobalStats.Instance.ActiveEvent = Ev;
+                //        HasQuest = true;
+                //        break;
+                //    }
+                //}
+
+                foreach (DataEvent Ev in GlobalStats.Instance.EventsList)
+                {
+                    Debug.Log(Ev.name + " -- " + Ev.StartMonth + "/" + Ev.StartDay);
+                }
+                ChooseRandom();
+                GlobalStats.Instance.ActiveEvent =
+                    GlobalStats.Instance.EventsList[R];
+
+                HasQuest = true;
+            }
+
+            else
+            {
+                HasQuest = false;
+            }
 
         }
         else
@@ -122,6 +133,7 @@ public class EventController : MonoBehaviour
                 //GlobalStats.Instance.ActiveEvent.Completed = true;
                 GlobalStats.Instance.ActiveEvent = null;
                 HasQuest = false;
+                GlobalStats.Instance.ResetAllEvents();
              }
         }
     }

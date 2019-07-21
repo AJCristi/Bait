@@ -49,5 +49,5 @@ MonoBehaviour:
   StartDay: 2
   originalDays: 10
   DaysRemaining: 10
-  MoneyRequirement: 1300
+  MoneyRequirement: 1000
   Completed: 0

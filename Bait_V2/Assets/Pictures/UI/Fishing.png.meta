@@ -102,18 +102,18 @@ TextureImporter:
       name: Fishing_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 562
-        width: 411
-        height: 138
+        x: 64
+        y: 567
+        width: 331
+        height: 130
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96fe27cdfd66df54e8ed8b9404de8312
+      spriteID: eaca0cd5221ed2642b69be7b2dc74fef
       internalID: -3138507368751019899
       vertices: []
       indices: 
@@ -123,18 +123,18 @@ TextureImporter:
       name: Fishing_1
       rect:
         serializedVersion: 2
-        x: 497
-        y: 563
-        width: 346
-        height: 136
+        x: 567
+        y: 565
+        width: 293
+        height: 131
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed9f1ba2f8d040b42a940e0d23f18bde
+      spriteID: 5f57c815ea132974ba07a8e42b32a265
       internalID: 2524440706114182215
       vertices: []
       indices: 
@@ -144,18 +144,18 @@ TextureImporter:
       name: Fishing_2
       rect:
         serializedVersion: 2
-        x: 11
-        y: 379
-        width: 424
-        height: 141
+        x: 46
+        y: 376
+        width: 367
+        height: 153
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caca84721f0301a40aeb5a6762220417
+      spriteID: 47a4996197b26f74698eb46c7b53cae9
       internalID: -4378880500076413153
       vertices: []
       indices: 
@@ -165,18 +165,18 @@ TextureImporter:
       name: Fishing_3
       rect:
         serializedVersion: 2
-        x: 18
-        y: 208
-        width: 833
-        height: 144
+        x: 30
+        y: 214
+        width: 880
+        height: 140
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ea50109f8e118841b4ba023bb473849
+      spriteID: a4d3d12d98724cd448b1ca5ec73e5403
       internalID: -5268034225952070921
       vertices: []
       indices: 
@@ -186,18 +186,18 @@ TextureImporter:
       name: Fishing_4
       rect:
         serializedVersion: 2
-        x: 19
-        y: 39
-        width: 274
-        height: 137
+        x: 34
+        y: 29
+        width: 237
+        height: 127
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b46800d49b98914388e3986296b0798
+      spriteID: 4754ee772bdc3624087887c4f5198060
       internalID: -5388911544664180517
       vertices: []
       indices: 
