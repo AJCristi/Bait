@@ -38,7 +38,7 @@ public class EndScreen : MonoBehaviour
     {
         TotalEarnings.text = GlobalStats.Instance.TotalMoneyEarned.ToString();
         TotalKGs.text = GlobalStats.Instance.TotalFishCaught.ToString() + " Kgs";
-        HighestCPD.text = GlobalStats.Instance.HighestEarnings.ToString();
+        HighestCPD.text = GlobalStats.Instance.HighestEarnings.ToString("F2");
     }
 
     public void Next()
