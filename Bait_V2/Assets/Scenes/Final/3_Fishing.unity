@@ -2903,6 +2903,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4574650236632276291, guid: cbfededd009062c4eb72ca6198bd9f6a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -19.900024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbfededd009062c4eb72ca6198bd9f6a, type: 3}
 --- !u!114 &589762038 stripped
@@ -5456,7 +5461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &993477211
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11379,7 +11384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1986253084
 RectTransform:
   m_ObjectHideFlags: 0

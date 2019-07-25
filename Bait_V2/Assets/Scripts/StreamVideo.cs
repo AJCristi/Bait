@@ -39,26 +39,30 @@ public class StreamVideo : MonoBehaviour
     }
 
     void Update()
-    {       
+    {
         currentTime = videoPlayer.time;
 
         double x = currentTime / time;
         Debug.Log(x);
 
-        if(x > .994)
+        if (x > .994)
         {
             //SFXcontroller.instance.PlayMusic();
             switch (SceneManager.GetActiveScene().name)
             {
                 case "1_Prologue":
-                    SceneManager.LoadScene("1_MapSelector");
+                    //SceneManager.LoadScene("1_MapSelector");
+                    GetComponent<GlobalUI>().NextScene("1_MapSelector");
+                    GetComponent<GlobalUI>().SetGame();
+                    GetComponent<GlobalUI>().Reset();
                     break;
 
                 case "5_Credits":
-                    SceneManager.LoadScene("MainMenu");
+                    //SceneManager.LoadScene("MainMenu");
+                    GetComponent<GlobalUI>().NextScene("5_ShowWin");
                     break;
             }
         }
-        
+
     }
 }

@@ -36,8 +36,8 @@ public class EndScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TotalEarnings.text = GlobalStats.Instance.TotalMoneyEarned.ToString();
-        TotalKGs.text = GlobalStats.Instance.TotalFishCaught.ToString() + " Kgs";
+        TotalEarnings.text = GlobalStats.Instance.TotalMoneyEarned.ToString("F2");
+        TotalKGs.text = GlobalStats.Instance.TotalFishCaught.ToString("F2") + " Kgs";
         HighestCPD.text = GlobalStats.Instance.HighestEarnings.ToString("F2");
     }
 

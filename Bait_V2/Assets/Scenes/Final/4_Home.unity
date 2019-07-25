@@ -423,12 +423,12 @@ PrefabInstance:
     - target: {fileID: 3923929537082286830, guid: d74575acafd7f9d44bacbb47eec50fd5,
         type: 3}
       propertyPath: YesterdayEarning
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3923929537082286830, guid: d74575acafd7f9d44bacbb47eec50fd5,
         type: 3}
       propertyPath: PerDayEarning
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3923929537082286830, guid: d74575acafd7f9d44bacbb47eec50fd5,
         type: 3}
@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.21226418, b: 0.21226418, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3135,7 +3135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.21226418, b: 0.21226418, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

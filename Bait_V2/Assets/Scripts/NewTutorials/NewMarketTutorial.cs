@@ -128,6 +128,10 @@ public class NewMarketTutorial : MonoBehaviour
         if(curStage == 7)
         {
             Hider.SetActive(false);
+            if(GlobalStats.Instance.PlayerSavings < 10)
+            {
+                GlobalStats.Instance.PlayerSavings = 300;
+            }
         }
 
         if(curStage == 8)
